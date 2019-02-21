@@ -1,0 +1,114 @@
+
+  <div class="grid__item large--one-quarter inte-side-content pt-6">
+    <h3>{{ section.settings.section_top_title }}</h3>
+
+    <div class="top-text">
+      <p class="side-inte">
+        {{ section.settings.section_top_text }}
+      </p>
+    </div>
+
+    <div class="top-bullets">
+      <p class="side-inte">
+        {{ section.settings.section_top_bullets }}
+      </p>
+    </div>
+
+    <div class="ingre-image" style="text-align: center;">
+      <img alt="" src="{{ section.settings.section_top_img | img_url: 'large' }}" />
+    </div>
+
+  </div>
+  <div class="grid__item large--three-quarters inte-main-content pt-6">
+    <hr />
+    {% for block in section.blocks %}
+      {% case block.type %}
+
+        {% when 'text' %}
+          <div class="grid__item large--two-quarters">
+            <h3>
+              <a href="{{ block.settings.pinpoint_title_link }}" target="_blank" rel="noopener noreferrer">
+              {{ block.settings.pinpoint_title }}
+              </a>
+              <a target="_blank" class="plus-icon" href="{{ block.settings.pinpoint_title_link }}" rel="noopener noreferrer">+</a>
+            </h3>
+            <div class="p-block">
+              <p>
+                {{ block.settings.pinpoint_text }}
+              </p>
+            </div>
+            <div class="bullets">
+              <p>
+                {{ block.settings.pinpoint_bullets }}
+              </p>
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+
+{% schema %}
+
+  {
+    "name": "Ingredients",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "section_top_img",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "section_top_title",
+        "label": "Title",
+        "default": "Section one Title"
+      },
+      {
+        "type": "html",
+        "id": "section_top_text",
+        "label": "Text",
+        "default": "Section Text"
+      },
+      {
+        "type": "html",
+        "id": "section_top_bullets",
+        "label": "Text",
+        "default": "Section Bullets"
+      }
+    ],
+    "name": "Callouts",
+    "blocks" : [
+      {
+        "type": "text",
+        "name": "Pinpoint",
+        "settings": [
+          {
+            "type": "text",
+            "id": "pinpoint_title",
+            "label": "Pinpoint Title",
+            "default": "Title"
+          },
+          {
+            "type": "text",
+            "id": "pinpoint_title_link",
+            "label": "Title Link",
+            "default": "https://www.ncbi.nlm.nih.gov/"
+          },
+          {
+            "type": "html",
+            "id": "pinpoint_text",
+            "label": "Text",
+            "default": "Text"
+          },
+          {
+            "type": "html",
+            "id": "pinpoint_bullets",
+            "label": "Text",
+            "default": "Bullets"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

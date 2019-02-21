@@ -1,0 +1,71 @@
+<style type="text/css">
+  .seal-section {
+  	background: {{ section.settings.seal_bg }};
+  }
+  .seal-{{ section.id }} {
+    color: {{ section.settings.seal_text }};
+  }
+
+</style>
+
+<div data-section-id="{{ section.id }}" data-section-type="seal-text" class="seal-{{ section.id }} product-single-seal-section">
+  <div class="wrapper">
+
+    <div class="grid">
+
+      <div class="grid__item large--two-thirds push--large--one-sixth pre--order-seal-div">
+
+        <div class="product-single-seal-img">
+          <img src="{{ section.settings.image | img_url: 'large' }}" alt="seal" class="product-single-seal" />
+        </div>
+
+        <div class="product-single-seal-text">
+        {% if section.settings.award_text != blank %}
+            {{ section.settings.award_text }}
+        {% endif %}
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Seal Text",
+    "settings": [
+      {
+        "type": "color",
+        "id": "seal_bg",
+        "label": "Background",
+        "default": "#EE4523"
+      },
+      {
+        "type": "color",
+        "id": "seal_text",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "richtext",
+        "id": "award_text",
+        "label": "Award text",
+        "default": "<p>The Nouri Proprietary seal signifies a standard of quality. Each of our products follows a simple innovation funnel: Unique. Better. Impact. We promise every product is created to be uniquely better and offers more global impact than any other product on the market.</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "seal with text",
+        "category": "seal"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,189 @@
+<!-- landing page popup code -->
+<style>
+/*   This is the background overlay   */
+.popup-ovrly {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: #000000;
+	opacity: .54;
+	filter: alpha(opacity=54);
+	-moz-opacity: .54;
+	z-index: 101;
+	display: none;
+}
+.popup-modal {
+  display: none;
+	position: fixed;
+	width: auto;
+	max-width: 480px;
+	height: 310px;
+	top: 50%;
+	left: 50%;
+	margin-left: -260px;
+	margin-top: -180px;
+	z-index: 102;
+	padding: 10px 20px;
+}
+
+.popup-content {
+    background: url({{ section.settings.image  | img_url: 'master' }});
+    background-repeat: no-repeat
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+    padding: 30px;
+    max-width: 448px;
+    height: auto;
+    top: 50%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+    min-height: 392px;
+    max-height: 392px;
+}
+.popup-close {
+  position: absolute;
+  color: #000;
+  right: 30px;
+  top: 30px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: -10px;
+  cursor: pointer;
+}
+.popup-content .heading p {
+  color: #fff;
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+.popup-content h1 {
+  margin-bottom: 0;
+  line-height: 1;
+}
+</style>
+
+<div id="popup-ovrly" class="popup-ovrly"></div>
+
+<div id="popup-modal" class="popup-modal">
+
+  <div class="popup-content">
+
+    <span class="popup-close" id="popup-close">&times;</span>
+
+      <div class="large--one-whole grid__item">
+
+        <div class="heading">
+
+          {{ section.settings.heading }}
+
+        </div>
+
+        <a href="{{ section.settings.button_link }}">
+
+          <h1>{{ section.settings.button_text }}</h1>
+          {% include 'svg-definitions' with 'ul-popup-btn' %}
+
+        </a>
+
+				<div class="signup">
+
+					<header>
+
+						<p>{{ section.settings.signup_header }}</p>
+
+					</header>
+
+					<div class="signup-code">
+
+						<p>{{ section.settings.signup_code }}</p>
+
+					</div>
+
+				</div>
+
+      </div>
+
+  </div>
+
+</div>
+
+<script>
+// from Chris Steurer: https://codepen.io/chrissteurer/pen/vIGAp
+
+  var popupModal = document.getElementById("popup-modal");
+  var popupClose = document.getElementById("popup-close");
+  var popupOvrly = document.getElementById("popup-ovrly");
+
+  //Fade in delay for the background overlay (control timing here)
+  $(popupOvrly).delay(4000).fadeIn(600);
+  //Fade in delay for the popup (control timing here)
+  $(popupModal).delay(4000).fadeIn(600);
+
+  //Hide dialouge and background when the user clicks the close button
+  	$(popupClose).click(function (e) {
+  		HideDialog();
+  		e.preventDefault();
+  	});
+
+    $(popupOvrly).click(function (e) {
+      HideDialog();
+      e.preventDefault();
+    });
+
+  //Controls how the modal popup is closed with the close button
+  function HideDialog() {
+  	$(popupOvrly).fadeOut(400);
+  	$(popupModal).fadeOut(300);
+  }
+</script>
+
+
+{% schema %}
+  {
+    "name": "Popup",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+      },
+      {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "<p>Get 20% OFF +<br />free shipping!</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+			{
+				"type": "richtext",
+				"id": "signup_header",
+				"label": "Signup Header",
+				"default": "<p>New to Nouri? We cannot wait to meet you.</p>"
+			},
+			{
+				"type": "html",
+				"id": "signup_code",
+				"label": "Signup Code"
+			}
+    ]
+  }
+{% endschema %}
