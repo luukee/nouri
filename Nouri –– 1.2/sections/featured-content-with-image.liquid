@@ -2,9 +2,7 @@
   .bg-img-section-{{ section.id }} {
     background: url({{ section.settings.bg_image | img_url: 'master' }});
     border: none;
-    padding: 11em 0;
     margin: 0;
-    display: block;
     text-align: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -49,17 +47,21 @@
     .bg-img-section-{{ section.id }} {
       max-width: 100%;
       background: url({{ section.settings.bg_mobile_image | img_url: 'master' }});
-      height: 460px;
+      background-repeat: no-repeat;
+      height: 85vh;
       margin: 0;
       padding: 0;
     }
     .bg-img-section-{{ section.id }}:not(.bg-img-section-1533990836290) {
-      background-size: 150%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-size: auto 34.5vh;
       background-repeat: no-repeat;
     }
     .bg-img-section-{{ section.id }} .grid__item.text-center .section-content {
       margin: 0 auto !important;
-	    background: url({{ section.settings.bg_mobile_image | img_url: 'master' }});
+      background: url({{ section.settings.bg_mobile_image | img_url: 'master' }});
       background-size: 100% 100%;
       max-width: 320px;
       height: 460px;
@@ -71,9 +73,11 @@
       letter-spacing: 1px;
     }
     .bg-img-section-featured-content-with-image > .wrapper {
-        position: absolute;
-        bottom: 0;
-        font-size: 82%;
+      height: 50.5vh;
+    }
+    .bg-img-section-1533990836290 {
+        background-position: -73vw 0;
+        background-size: 210%;
     }
   }
 </style>
@@ -81,7 +85,7 @@
 {% capture image_layout %}
 <div class="section-content text-left featured-content-with-image">
   {% if section.settings.title != blank %}
-    <h2>{{ section.settings.title | escape }}</h2>
+    <h1>{{ section.settings.title | escape }}</h1>
   {% endif %}
 
   {% if section.settings.text != blank %}
@@ -110,7 +114,7 @@
 
               {% if section.settings.layout == 'right' %}
 
-              <div class="grid__item large--one-quarter push--large--three-quarters medium--one-half">
+              <div class="grid__item">
 
                 {{ image_layout }}
 

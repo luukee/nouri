@@ -128,7 +128,9 @@
       "footer": {
         "type": "footer",
         "settings": {
-          "footer_link_list": "footer"
+          "middle_link_list": "footer",
+          "right_link_list": "right-menu",
+          "right_text": "<p><\/p>\n<p>801 Blacklawn Rd STE N<br>Conyers, GA 30012<\/p>\n<p>hi@dailynouri.com<\/p>"
         }
       },
       "password-header": {
@@ -784,6 +786,12 @@
           "text": "",
           "button_text": "",
           "button_link": ""
+        }
+      },
+      "contact-content": {
+        "type": "contact-content",
+        "settings": {
+          "contact_bottom_content": "<p>801 Blacklawn Rd STE N<br>Conyers, GA 30012<\/p>\n<p>hi@dailynouri.com<\/p>"
         }
       }
     },
