@@ -1,0 +1,153 @@
+<style type="text/css">
+  .icons-section {
+  	background: {{ section.settings.icon_bg }};
+  }
+  .icons-{{ section.id }} {
+    color: {{ section.settings.icon_text }};
+    border: none;
+    padding: 45px 0;
+    margin: 0;
+    display: block;
+    text-align: center;
+    display:table;
+    width:70%;
+    margin: 0 auto;
+  }
+
+</style>
+
+<div data-section-id="{{ section.id }}" data-section-type="icons-section" class="icons-section">
+  <div class="wrapper">
+  {% if section.blocks.size > 0 %}
+    <div class="icons-{{ section.id }} icons-main">
+      {% for block in section.blocks %}
+          <div class="single__icon icon--{{ block.id }}">
+            <span id="modalclick--{{ block.id }}">
+              <!-- initial icon -->
+              <div class="icon"><img src="{{ block.settings.image }}" class="icon__image" /></div>
+              <!-- initial icon text -->
+              <div class="icon__text">{{ block.settings.icon_text_heading | escape }}</div>
+            </span>
+            <div id="modalicon--{{ block.id }}" class="modal">
+              <div class="modal-content ">
+                <span class="close" id="close-{{ block.id }}">&times;</span>
+                <div class="icon-model">
+                  <div class="icon-model-img large--one-quarter grid__item">
+                    <img src="{{ block.settings.popup_image }}" class="icon_model__image" />
+                    {% comment %}<div class="icon__text_modal">{{ block.settings.icon_text_heading }}</div>{% endcomment %}
+                  </div>
+                  <div class="icon-model-content large--six-eighths grid__item">
+                    {{ block.settings.popup_text }}
+                    <div class="conditions">
+                      {{ block.settings.popup_subtext }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+              var modal{{ block.id }} = document.getElementById('modalicon--{{ block.id }}');
+              var btn{{ block.id }} = document.getElementById("modalclick--{{ block.id }}");
+              var span{{ block.id }} = document.getElementById("close-{{ block.id }}");
+              btn{{ block.id }}.onclick = function() {
+                modal{{ block.id }}.style.display = "block";
+              }
+              span{{ block.id }}.onclick = function() {
+                modal{{ block.id }}.style.display = "none";
+              }
+              $('#modalicon--{{ block.id }}').on('click', function(event) {
+                if(event.target == event.currentTarget) {
+                  modal{{ block.id }}.style.display = "none";
+                }
+              });
+            </script>
+          </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if section.settings.cta_text_heading != blank %}
+    <div class="grid one-whole">
+      <div class="grid__item text-center">
+      <h6>{{ section.settings.cta_text_heading | escape }}</h6>
+      </div>
+    </div>
+  {% endif %}
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Icons",
+    "max_blocks": 7,
+    "settings": [
+      {
+        "type": "color",
+        "id": "icon_bg",
+        "label": "Background",
+        "default": "#EE4523"
+      },
+      {
+        "type": "color",
+        "id": "icon_text",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "text",
+        "id": "cta_text_heading",
+        "label": "CTA text",
+        "default": "click the icons to learn more"
+      }
+    ],
+    "blocks" : [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "image",
+            "label": "Image URL"
+          },
+          {
+            "type": "header",
+            "content": "Text"
+          },
+          {
+            "type": "text",
+            "id": "icon_text_heading",
+            "label": "Heading text",
+            "default": "anti-inflammatory"
+          },
+          {
+            "type": "header",
+            "content": "Popup Content"
+          },
+          {
+            "type": "text",
+            "id": "popup_image",
+            "label": "Popup Icon URL"
+          },
+          {
+            "type": "html",
+            "id": "popup_text",
+            "label": "Popup Text",
+            "default": "anti-inflammatory"
+          },
+          {
+            "type": "html",
+            "id": "popup_subtext",
+            "label": "Popup Subtext",
+            "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Icons with text",
+        "category": "Icons"
+      }
+    ]
+  }
+{% endschema %}

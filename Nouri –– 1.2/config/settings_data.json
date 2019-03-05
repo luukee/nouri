@@ -130,7 +130,7 @@
         "settings": {
           "middle_link_list": "footer",
           "right_link_list": "right-menu",
-          "right_text": "<p><\/p>\n<p>801 Blacklawn Rd STE N<br>Conyers, GA 30012<\/p>\n<p>hi@dailynouri.com<\/p>"
+          "right_text": "<p><\/p>\n<p>801 Blacklawn Rd STE N<br>Conyers, GA 30012<\/p>\n<p>hello@dailynouri.com<\/p>"
         }
       },
       "password-header": {
@@ -273,7 +273,7 @@
         "type": "featured-content-with-image",
         "settings": {
           "bg_image": "shopify:\/\/shop_images\/probiotic-omega-3-capsules_2.png",
-          "bg_mobile_image": "shopify:\/\/shop_images\/anatomy_mobile_a2b922f2-5522-4c45-95c0-9889adeb4d65.png",
+          "bg_mobile_image": "shopify:\/\/shop_images\/probiotic-omega-3-capsules_2.png",
           "layout": "left",
           "title": "brain + gut health essentials",
           "text": "",
@@ -441,7 +441,7 @@
           "title": "PROBIOTIC",
           "subtitle": "& OMEGA - 3,6,9",
           "text": "<p>A harmonizing probiotic blend of 5 diverse strains of bacteria floating in plant-based Ahiflower&reg; oil to promote gut and brain health.*&nbsp;<\/p>",
-          "guarantee": "<p>Free Shipping<\/p>\n<p>100% Lifetime Guarantee<\/p>",
+          "guarantee": "<p>Free Shipping<\/p>",
           "donation": "Interested in supporting Nouri with another amount?",
           "donation_embed": "<form action=\"https:\/\/www.paypal.com\/cgi-bin\/webscr\" method=\"post\" target=\"_blank\">\n            <input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">\n            <input type=\"hidden\" name=\"hosted_button_id\" value=\"6Y4EVCPTJRPAS\">\n            <input type=\"image\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/paypal.png\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\">\n            <img alt=\"\" border=\"0\" src=\"https:\/\/www.paypalobjects.com\/en_US\/i\/scr\/pixel.gif\" width=\"1\" height=\"1\">\n          <\/form>"
         }

@@ -1,6 +1,12 @@
 <style>
   #AddToCartForm--product-template { display:none;}
   .bold-ro__prepaid-container {color:#000;}
+  .featured-variants-section {
+    background: url({{ section.settings.image_background | img_url: 'master' }});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 </style>
 <!-- /templates/product.liquid -->
 
@@ -135,6 +141,11 @@
     "name": "Variations",
     "max_blocks": 3,
     "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_background",
+        "label": "Background Image"
+      },
       {
         "type": "text",
         "id": "call_to_actioin",

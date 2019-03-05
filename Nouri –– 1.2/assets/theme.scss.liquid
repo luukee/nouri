@@ -4658,23 +4658,18 @@ span.container-label {
   letter-spacing: 0.6px;
   font-weight: 700;
 }
-/*.inte-main-content h3::after {
-  color:#ee4523;
-  content: "+";
-  font-size: 26px;
-  margin-left: 5px;
-  margin-top: -5px;
-  position: absolute;
-}*/
+
 .inte-main-content h3 a {
   vertical-align: middle;
 }
+
 .inte-main-content h3 a.plus-icon{
   color:$colorSecondary;
   font-size: 26px;
   margin-left: 27px;
   vertical-align: middle;
 }
+
 .inte-main-content a.plus-icon{
   color:$colorSecondary;
   font-size: 26px;
@@ -5319,7 +5314,7 @@ p, h1, h2, h3, h4, h5, h6 {
         }
     }
     .bg-img-section {
-      
+
       h1 {
         font-weight: 600;
         font-size: 25px;
@@ -5417,6 +5412,15 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 // END section: slideshow-half.liquid
 
+// slideshow full
+.slideshow-full {
+  .hero__image img {
+    width: 65%;
+    margin: 0 auto;
+  }
+}
+
+
 // bg-img-section
 .section-wrapper .bg-img-section.shopify-section {
   @include desktop {
@@ -5428,13 +5432,16 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 // bg-img-section
 
+// ingredients section
+.ingredients-cross {
+  font-size: 20px;
+}
 
 
 // 04 seal section
 .product-single-seal-section {
   display: block;
   margin: 0;
-  padding: 80px 0;
 
   @include at-query ($max, $medium) {
     padding: 40px 0;
@@ -5543,13 +5550,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
 
 /* product page */
-
+.template-product {
+  .shopify-section:not(#shopify-section-footer):not(#shopify-section-seal-text) {
+    margin-bottom: calc(100vw * 0.09);
+  }
+}
 .featured-variants-section {
   color: #000;
-  background-image: url("https://cdn.shopify.com/s/files/1/2911/8128/files/nouri-girl-holding-capsules.png?9812356265761577558");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   margin: 0 15px;
   padding: 80px 0 40px 0;
 

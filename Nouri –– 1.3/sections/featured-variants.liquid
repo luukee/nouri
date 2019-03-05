@@ -1,0 +1,269 @@
+<style>
+  #AddToCartForm--product-template { display:none;}
+  .bold-ro__prepaid-container {color:#000;}
+  .featured-variants-section {
+    background: url({{ section.settings.image_background | img_url: 'master' }});
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    margin-bottom: 5rem;
+  }
+</style>
+<!-- /templates/product.liquid -->
+
+{% capture image_layout %}
+<div class="section-content text-left feat-image-with-text">
+  {% if section.settings.call_to_actioin != blank %}
+    <h1 class="call-to-action">{{ section.settings.call_to_actioin}}</h1>
+  {% endif %}
+
+  {% if section.settings.title != blank %}
+    <h1>{{ section.settings.title}}</h1>
+  {% endif %}
+
+  {% if section.settings.subtitle != blank %}
+    <h2>{{ section.settings.subtitle}}</h2>
+  {% endif %}
+
+  {% if section.settings.text != blank %}
+  {{ section.settings.text}}
+  {% endif %}
+
+  {% if section.settings.subtext != blank %}
+  <div class="subtext">
+    {{ section.settings.subtext}}
+  </div>
+  {% endif %}
+
+  {% if section.settings.button_text != blank %}
+    <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
+  {% endif %}
+
+</div>
+{% endcapture %}
+
+<div class="section-wrapper featured-variants-section" id="featured-variants-section" data-section-id="{{ section.id }}" data-section-type="bg-img-section">
+  <div class="shopify-section bg-img-section bg-img-section-{{ section.id }}">
+    <div class="wrapper">
+      <div class="grid page-width variant-header">
+
+        <div class="grid__item large--one-third push--large--two-thirds medium--one-half">
+
+          {{ image_layout }}
+
+          </div>
+
+
+
+      </div>
+
+      <div class="grid variants" id="products">
+
+        {% if section.blocks.size > 0 %}
+        <!-- product starter -->
+        {% for block in section.blocks %}
+        <div class="grid__item large--one-third medium--one-whole text-center variant--{{ block.id }}">
+
+          {% if block.settings.bottle_name %}
+          <span class="bottle-title">{{ block.settings.bottle_name }}</span>
+          {% endif %}
+
+          {% if block.settings.number_bottles != empty %}
+          <span class="save-amount">{{ block.settings.number_bottles | escape  }}</span>
+          {% endif %}
+
+          {% if block.settings.price_amount != empty %}
+          <span class="price-amount">{{ block.settings.price_amount | escape  }}</span>
+          {% endif %}
+
+          {% if block.settings.save_amount != empty %}
+          <span class="save-amount">{{ block.settings.save_amount | escape  }}</span>
+          {% endif %}
+
+          {% if block.settings.variation_id != empty %}
+          <a href="https://dailynouri.com/cart/add?id[]={{ block.settings.variation_id | escape  }}" class="btn pre-order-btn button-on-click-sub">add to cart</a>
+          {% endif %}
+
+          {% if block.settings.price_per_day != empty %}
+          <span class="price-amount-per-day">{{ block.settings.price_per_day | escape  }}</span>
+          {% endif %}
+
+          {% if block.settings.recurring_text != empty %}
+          <span class="recurring-text">{{ block.settings.recurring_text | escape  }}</span>
+          {% endif %}
+
+          {% if section.blocks > 1 and section.blocks < 3 %}
+          <h1>this please</h1>
+          {% endif %}
+
+        </div>
+        {% endfor %}
+
+        {% endif %}
+
+
+        <!-- product support us -->
+        {% if section.settings.donation != blank %}
+        <div class="grid__item large--one-whole medium--one-whole text-center">
+
+            <button class="learn-more-btn" id="learn-more-btn">learn more</button>
+            {% include 'button-modal' %}
+
+            <div class="pre-order-other-section">
+              {{ section.settings.donation}}
+            </div>
+          <a class="pre-order-btn button-on-click-paypal btn">enter amount</a>
+          <div class="nouri-donate-button">
+              {{ section.settings.donation_embed}}
+          </div>
+
+          <script>
+
+            $(document).ready(function(){
+              $(".pre-order-btn.button-on-click-paypal").click(function(){
+                  $('.nouri-donate-button input[type="image"]').trigger('click');
+              });
+              $('#zoom_01').elevateZoom({
+                zoomType : "lens",
+                lensShape : "square",
+                lensSize : 200
+              });
+            });
+
+          </script>
+
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- snippets/product-form.liquid -->
+{% include 'product-form' %}
+<!-- end products -->
+
+
+{% schema %}
+  {
+    "name": "Variations",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_background",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "call_to_actioin",
+        "label": "Call to action"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "subtitle content"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+      	"default": "<p>Unlike other omega oils, Ahiflower is plant-based omega blend and contains GLA, an omega 6 associated with skin health, hormonal balance and reducing inflammation.</p>"
+      },
+      {
+        "type": "richtext",
+        "id": "subtext",
+        "label": "subtext",
+        "default": "<p>Free shipping</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "textarea",
+        "id": "donation",
+        "label": "Bottom Donation",
+        "default": "Interested in supporting Nouri with another amount?"
+      },
+      {
+        "type": "html",
+        "id": "donation_embed",
+        "label": "Embed Code",
+        "default": "<form></form>"
+      }
+    ],
+    "blocks" : [
+      {
+        "type": "default",
+        "name": "Variant",
+        "settings": [
+          {
+            "type": "text",
+            "id": "bottle_name",
+            "label": "Bottle Name"
+          },
+          {
+            "type": "text",
+            "id": "number_bottles",
+            "label": "Number of bottles"
+          },
+          {
+            "type": "text",
+            "id": "price_amount",
+            "label": "Price"
+          },
+          {
+            "type": "text",
+            "id": "save_amount",
+            "label": "Amount Saved"
+          },
+          {
+            "type": "text",
+            "id": "price_per_day",
+            "label": "Price per day"
+          },
+          {
+            "type": "text",
+            "id": "variation_id",
+            "label": "Variation ID"
+          },
+          {
+            "type": "textarea",
+            "id": "recurring_text",
+            "label": "Notes"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Variations",
+        "category": "Variations"
+      }
+    ]
+  }
+{% endschema %}
