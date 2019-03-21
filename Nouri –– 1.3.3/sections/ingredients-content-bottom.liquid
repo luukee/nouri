@@ -1,0 +1,92 @@
+
+  <div class="grid__item large--one-quarter inte-side-content">
+
+      <h3>{{ section.settings.section_02_title }}</h3>
+
+      <div class="bottom-text">
+        <p class="side-inte">
+          {{ section.settings.section_02_text }}
+        </p>
+      </div>
+
+      <div class="ingre-image" style="text-align: center;">
+        <img alt="" src="{{ section.settings.section_02_img | img_url: 'large' }}" />
+      </div>
+
+  </div>
+  <div class="grid__item large--three-quarters inte-main-content">
+    <hr />
+    {% for block in section.blocks %}
+      {% case block.type %}
+
+        {% when 'text' %}
+
+          <div class="grid__item large--two-quarters">
+
+            <p class="p-block">
+
+              {{ block.settings.pinpoint_02_text }}
+
+            </p>
+
+          </div>
+
+      {% endcase %}
+    {% endfor %}
+    <h3>
+      <a target="_blank" class="plus-icon" href="{{ section.settings.cross_link }}" rel="noopener noreferrer">+</a>
+    </h3>
+  </div>
+</div>
+{% schema %}
+
+  {
+    "name": "Ingredients",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "section_02_img",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "section_02_title",
+        "label": "Title",
+        "default": "Section one Title"
+      },
+      {
+        "type": "html",
+        "id": "section_02_text",
+        "label": "Text",
+        "default": "<p>Section one Text</p>"
+      },
+      {
+        "type": "text",
+        "id": "cross_link",
+        "label": "Cross Link",
+        "default": "https://www.ncbi.nlm.nih.gov/"
+      }
+    ],
+    "name": "Points",
+    "blocks" : [
+      {
+        "type": "text",
+        "name": "Pinpoint",
+        "settings": [
+          {
+            "type": "text",
+            "id": "pinpoint_02_title",
+            "label": "Pinpoint Title",
+            "default": "Pinpoint Title"
+          },
+          {
+            "type": "html",
+            "id": "pinpoint_02_text",
+            "label": "Text",
+            "default": "Pinpoint Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
