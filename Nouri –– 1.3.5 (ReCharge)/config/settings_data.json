@@ -1,0 +1,1477 @@
+{
+  "current": {
+    "color_body_bg": "#ffffff",
+    "color_headings": "#ffffff",
+    "color_body_text": "#000000",
+    "color_borders": "#797c7c",
+    "color_button_text": "#ffffff",
+    "color_primary": "#000000",
+    "color_secondary": "#ef4523",
+    "color_product_background": "#f7f7f7",
+    "color_sale_tag": "#ee4523",
+    "color_input": "#ffffff",
+    "color_newsletter": "#f5f5f5",
+    "color_drawer_background": "#ffffff",
+    "color_drawer_text": "#ee4523",
+    "color_drawer_border": "#ee4523",
+    "color_drawer_button": "#ee4523",
+    "color_drawer_button_text": "#ffffff",
+    "type_header_family": "'BentonSansRegular'",
+    "type_header_base_size": "32px",
+    "type_header_border_thickness": "1px",
+    "type_accent_family": "'BentonSansRegular'",
+    "type_accent_transform": false,
+    "type_accent_spacing": true,
+    "type_accent_subheadings": true,
+    "type_base_family": "'BentonSansRegular'",
+    "type_base_size": "14px",
+    "type_base_italize_titles": true,
+    "cart_type": "page",
+    "cart_notes_enable": false,
+    "share_image": "",
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_snapchat_link": "",
+    "social_google_plus_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_fancy_link": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "favicon": "shopify:\/\/shop_images\/nouri-official-favicon.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo_mobile_29ede666-3c23-4aaa-bbfb-90fb2678b03e.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "rgba(0,0,0,0)",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#a26b25",
+    "checkout_button_color": "#000000",
+    "checkout_error_color": "#e32c2b",
+    "checkout_banner_background_color": "#fff",
+    "checkout_call_to_action_color": "#a26b25",
+    "checkout_use_header_image": false,
+    "collection_products_grid": "collage",
+    "customer_layout": "customer_area",
+    "favicon_enable": false,
+    "product_vendor_enable": false,
+    "social_sharing_style": "clean",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "main_menu_link_list": "main-menu",
+          "logo": "shopify:\/\/shop_images\/nouri-official-logo-LG.png",
+          "logo-inverted": "shopify:\/\/shop_images\/nouri-official-logo-LG.png",
+          "logo_mobile": "shopify:\/\/shop_images\/nouri-official-logo-LG.png",
+          "logo-inverted_mobile": "shopify:\/\/shop_images\/nouri-official-logo-LG.png",
+          "logo_max_width": "135",
+          "search": "none",
+          "show_announcement": true,
+          "home_page_only": false,
+          "text": "<p>Get 20% OFF + free shipping!<\/p>",
+          "link": "shopify:\/\/products\/probiotic-omega-3-6-9",
+          "color_bg": "#000000",
+          "color_text": "#ffffff"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "slideshow-0": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-hero-image-md-lgpills_6f0d1e18-51e0-4654-9b2c-d45d6f670ee7.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 0,
+              "slide_subheading": "When your gut isn’t healthy, it can trigger mood changes, inhibit memory, weaken immune response, and lower energy.",
+              "slide_subheading2": "You can give your gut the blend of probiotics and omegas it needs with the Nouri Gut Reset.",
+              "slide_heading": "90% of how you feel starts in your gut.",
+              "slide_cta": "buy now",
+              "slide_link": "shopify:\/\/products\/probiotic-omega-3-6-9"
+            }
+          }
+        },
+        "block_order": [
+          "slideshow-0"
+        ],
+        "settings": {
+          "hero_home_auto": false,
+          "home_hero_auto_speed": "5000",
+          "slide_text_color": "rgba(0,0,0,0)",
+          "slide_button_label_color": "#ee4523",
+          "slide_button_background_color": "#fcfbff",
+          "image_mobile": "shopify:\/\/shop_images\/mobile_slide.jpg",
+          "m_hero_heading": "90% of how you feel starts in your gut.",
+          "m_hero_subheading": "When your gut isn’t healthy, it can trigger mood changes, inhibit memory, weaken immune response, and lower energy.  You can give your gut the blend of probiotics and omegas it needs with the Nouri Gut Reset.",
+          "m_hero_cta": "buy now",
+          "m_hero_link": "shopify:\/\/products\/probiotic-omega-3-6-9"
+        }
+      },
+      "drawer-menu": {
+        "type": "drawer-menu",
+        "settings": {
+          "drawer_top_link_list": "main-menu",
+          "drawer_bottom_link_list": "footer",
+          "drawer_search_enable": false
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "middle_link_list": "footer",
+          "right_link_list": "right-menu",
+          "right_text": "<p><\/p>\n<p>801 Blacklawn Rd STE N<br>Conyers, GA 30012<\/p>\n<p>hello@dailynouri.com<\/p>"
+        }
+      },
+      "password-header": {
+        "type": "password-header",
+        "settings": {
+          "logo": "",
+          "logo_max_width": "200"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/nouri-official-logo-LG.png",
+          "logo_max_width": "200",
+          "title": "",
+          "newsletter_enable": false,
+          "newsletter_form_heading": "",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "Submit",
+          "show_share_buttons": true,
+          "social_message": "Spread the word"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "collection_products_grid": "collage",
+          "collection_sort_enable": false,
+          "collection_tags_enable": false,
+          "product_vendor_enable": false
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical"
+        }
+      },
+      "1533990836290": {
+        "type": "featured-content-with-image",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/probiotic-capsules.png",
+          "bg_mobile_image": "shopify:\/\/shop_images\/probiotic-mobile_1.png",
+          "layout": "left",
+          "title": "",
+          "text": "",
+          "button_text": "",
+          "button_link": ""
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "zoom_enable": false,
+          "social_sharing_products": false,
+          "product_vendor_enable": false,
+          "image_layout": "thumbnails",
+          "quantity_enabled": false,
+          "product_selector": "select",
+          "enable_payment_button": true,
+          "add_to_cart_button_size": "small",
+          "autopay": "click the icons to learn more"
+        }
+      },
+      "slideshow-faq": {
+        "type": "slideshow-faq",
+        "settings": {
+          "hero_home_auto": false,
+          "home_hero_auto_speed": "5000",
+          "slide_text_color": "#ffffff",
+          "slide_button_label_color": "#000000",
+          "slide_button_background_color": "#ffffff",
+          "image_mobile": "",
+          "m_hero_heading": "",
+          "m_hero_subheading": "",
+          "m_hero_cta": "",
+          "m_hero_link": ""
+        }
+      },
+      "slideshow-half": {
+        "type": "slideshow-half",
+        "blocks": {
+          "1550007676590": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-slider-image-06.png",
+              "color_image_overlay": "#3d4246",
+              "image_overlay_opacity": 25
+            }
+          }
+        },
+        "block_order": [
+          "1550007676590"
+        ],
+        "settings": {
+          "hero_home_auto": false,
+          "home_hero_auto_speed": "5000",
+          "slide_text_color": "#ffffff",
+          "slide_button_label_color": "#000000",
+          "slide_button_background_color": "#ffffff",
+          "image_mobile": "shopify:\/\/shop_images\/nouri-capsule-bottle.png",
+          "m_hero_heading": "Feed your brain. Nourish your thoughts.",
+          "m_hero_subheading": "We’re proud to introduce our first uniquely better probiotic solution, combining 5 unique strains of clinically proven bacteria, transported in omega-3,6,9 oil to boost your brain health.",
+          "m_hero_cta": "Shop",
+          "m_hero_link": "shopify:\/\/products\/probiotic-omega-3-6-9"
+        }
+      },
+      "featured-content-with-image": {
+        "type": "featured-content-with-image",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/nouri-slider-image-01.png",
+          "bg_mobile_image": "shopify:\/\/shop_images\/nouri-slider-image-01.png",
+          "layout": "right",
+          "title": "PROBIOTIC & OMEGA - 3,6,9",
+          "text": "<p>A harmonizing probiotic blend of 5 diverse strains of bacteria floating in plant-based Ahiflower&reg; oil to promote gut and brain health.*<\/p>",
+          "button_text": "get started",
+          "button_link": "shopify:\/\/products\/probiotic-omega-3-6-9"
+        }
+      },
+      "featured-variants": {
+        "type": "featured-variants",
+        "blocks": {
+          "1550067165685": {
+            "type": "default",
+            "settings": {
+              "bottle_name": "starter",
+              "number_bottles": "1 bottle",
+              "price_amount": "$45",
+              "save_amount": "SAVE 10%",
+              "price_per_day": "",
+              "variation_id": "14651894005803",
+              "recurring_text": "Bottle will be delivered upon product launch March 2019."
+            }
+          },
+          "1550068871694": {
+            "type": "default",
+            "settings": {
+              "bottle_name": "gut reset",
+              "number_bottles": "3 bottles",
+              "price_amount": "$120",
+              "save_amount": "SAVE 20%",
+              "price_per_day": "",
+              "variation_id": "14651887976491",
+              "recurring_text": "Bottles will be delivered monthly for 3 months, starting March 2019."
+            }
+          },
+          "1550069231046": {
+            "type": "default",
+            "settings": {
+              "bottle_name": "active",
+              "number_bottles": "12 bottles",
+              "price_amount": "$420",
+              "save_amount": "SAVE 30%",
+              "price_per_day": "",
+              "variation_id": "14650846478379",
+              "recurring_text": "Bottles will be delivered monthly for 12 months, starting March 2019."
+            }
+          }
+        },
+        "block_order": [
+          "1550067165685",
+          "1550068871694",
+          "1550069231046"
+        ],
+        "settings": {
+          "image_background": "shopify:\/\/shop_images\/nouri-girl-holding-capsules.png",
+          "call_to_actioin": "Pre-order Nouri",
+          "title": "PROBIOTIC",
+          "subtitle": "& OMEGA - 3,6,9",
+          "text": "<p>A harmonizing probiotic blend of<br>5 diverse strains of bacteria floating in plant-based Ahiflower&reg; oil to promote gut and brain health.*<\/p>",
+          "subtext": "<p>30% OFF + Free Shipping<br>while supplies last<\/p>",
+          "button_text": "get started",
+          "button_link": "#products",
+          "donation": "Interested in supporting Nouri with another amount?",
+          "donation_embed": "<form action=\"https:\/\/www.paypal.com\/cgi-bin\/webscr\" method=\"post\" target=\"_blank\">\n            <input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">\n            <input type=\"hidden\" name=\"hosted_button_id\" value=\"6Y4EVCPTJRPAS\">\n            <input type=\"image\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/paypal.png\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\">\n            <img alt=\"\" border=\"0\" src=\"https:\/\/www.paypalobjects.com\/en_US\/i\/scr\/pixel.gif\" width=\"1\" height=\"1\">\n          <\/form>"
+        }
+      },
+      "ingredients": {
+        "type": "ingredients",
+        "blocks": {
+          "1550095415997": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/nouri-ingredients-omega-3-6-9_f08a03de-15fd-4d72-8da2-9cd45d3733b9.png?12107986197270578916",
+              "title": "omega - 3,6,9",
+              "textContent": "<p>Our omega oil comes from Ahiflower, a plant-based omega blend that contains GLA, an omega 6 associated with skin health, hormonal balance and reducing inflammation.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1550095684487": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/nouri-proprietary-probiotic_b6878068-f1b9-473a-9b5f-e663fede30db.png?12107986197270578916",
+              "title": "probiotic blend",
+              "textContent": "<p>Our proprietary probiotic is plant-based and contains unparalleled power, 5 diverse strains, 30BN CFU of strength guaranteed.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1550095415997",
+          "1550095684487"
+        ],
+        "settings": {
+          "bg": "#ffffff",
+          "text": "#000000"
+        }
+      },
+      "basic-icons": {
+        "type": "basic-icons",
+        "settings": {
+        }
+      },
+      "ingredients-alt": {
+        "type": "ingredients-alt",
+        "settings": {
+        }
+      },
+      "seal-text": {
+        "type": "seal-text",
+        "settings": {
+          "seal_bg": "#ee4523",
+          "seal_text": "#000000",
+          "image": "",
+          "award_text": "<p>The Nouri Proprietary seal signifies a standard of quality. Each of our products follows a simple innovation funnel: Unique. Better. Impact. We promise every product is created to be uniquely better and offers more global impact than any other product on the market.<\/p>"
+        }
+      },
+      "basic-info": {
+        "type": "basic-info",
+        "blocks": {
+          "1550092866428": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/brain-gut-health-nouri-icon.svg?13341185737081553512",
+              "icon_text_heading": "brain & gut health*",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/brain-gut-health-nouri-icon.svg?13341185737081553512",
+              "popup_text": "Omega fatty acids such as those found in Nouri’s blend play important roles in brain development and daily function. Each Nouri capsule contains a plant-based source of Omegas 3, 6, and 9. Our first-ever combination of omegas and powerful probiotics allows your brain and gut to say “hello” to one another like never before.",
+              "popup_subtext": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+            }
+          },
+          "1550092955688": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/healthy-inflammatory-response-nouri-icon.svg?13341185737081553512",
+              "icon_text_heading": "healthy inflammatory response*",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/healthy-inflammatory-response-nouri-icon.svg?13341185737081553512",
+              "popup_text": "Nouri combines researched strains of probiotics and Ahiflower oil (containing omega 3, 6 and 9 properties) to deliver the world's first unique combination targeted to reduce inflammation in your mind and body.",
+              "popup_subtext": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+            }
+          },
+          "1550093049673": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/super-immunity-nouri-icon.svg?13341185737081553512",
+              "icon_text_heading": "super immunity*",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/super-immunity-nouri-icon.svg?13341185737081553512",
+              "popup_text": "80% of your immune activity takes place in your gut, that means that the bacteria living in your intestines are largely responsible for your immunity. To stay in tip top health requires that you feed your immune system with good, living bacteria such as the blend Nouri has created. And even better yet, the addition of Ahiflower oil provides the immune enhancing properties of EPA and DHA derived from this omega-powerhouse.",
+              "popup_subtext": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+            }
+          },
+          "1550093099632": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/advanced-digestion-nouri-icon.svg?13341185737081553512",
+              "icon_text_heading": "advanced digestion*",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/advanced-digestion-nouri-icon.svg?13341185737081553512",
+              "popup_text": "Nouri's blend of probiotics combined with omega oils supports your digestive system to process and absorb nutrients. By supporting the health of your digestive system everyday, your body can more easily utilize the nutrients it craves.\n\nProbiotics are the bacteria that line your digestive track. Nouri's blend of five diverse strains of probiotics, protected and delivered to your gut by Ahiflower oil.",
+              "popup_subtext": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+            }
+          },
+          "1550093074234": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/increased-energy-nouri-icon.svg?13341185737081553512",
+              "icon_text_heading": "increased energy*",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/increased-energy-nouri-icon.svg?13341185737081553512",
+              "popup_text": "The level of energy you have on the outside all begins on the inside. The good guy bacteria living in your gut communicates with the ever-important nervous system, a main player in daily mood and energy.",
+              "popup_subtext": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+            }
+          },
+          "1550093109888": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/plant-based-omega-oil-nouri-icon.svg?13341185737081553512",
+              "icon_text_heading": "plant based omega oil*",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/plant-based-omega-oil-nouri-icon.svg?13341185737081553512",
+              "popup_text": "Nouri's super star omega oil, Ahiflower, is 100% plant based combining the nutritional punch of evening primrose, flaxseed, and fish oil. Ahifower is your best omega value from a single, sustainable and traceable plant.",
+              "popup_subtext": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+            }
+          },
+          "1550093086582": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/gluten-and-allergen-free-nouri-icon.svg?13341185737081553512",
+              "icon_text_heading": "gluten & allergen free*",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/gluten-and-allergen-free-nouri-icon.svg?13341185737081553512",
+              "popup_text": "Each ingredient researched, sourced and used in the creation of Nouri is free from all allergens including gluten, dairy, GMOs, soy.",
+              "popup_subtext": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease"
+            }
+          }
+        },
+        "block_order": [
+          "1550092866428",
+          "1550092955688",
+          "1550093049673",
+          "1550093099632",
+          "1550093074234",
+          "1550093109888",
+          "1550093086582"
+        ],
+        "settings": {
+          "icon_bg": "#ffffff",
+          "icon_text": "#000000",
+          "cta_text_heading": "click the icons to learn more",
+          "narrow_icons": true
+        }
+      },
+      "ingredients-header": {
+        "type": "ingredients-header",
+        "settings": {
+          "left_image": "shopify:\/\/shop_images\/nouri-ingredients-banner.png"
+        }
+      },
+      "ingredients-content-01": {
+        "type": "ingredients-content-01",
+        "blocks": {
+          "1550155324715": {
+            "type": "defalut",
+            "settings": {
+              "bullet_title": "",
+              "bullet_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "1550155324715"
+        ],
+        "settings": {
+          "section_01_img": "",
+          "section_01_title": "",
+          "section_01_text": ""
+        }
+      },
+      "ingredients-content-top": {
+        "type": "ingredients-content-top",
+        "blocks": {
+          "1550165945282": {
+            "type": "text",
+            "settings": {
+              "pinpoint_title": "Bifidobacterium longum",
+              "pinpoint_title_link": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/?term=Bifidobacterium+longum",
+              "pinpoint_text": "<p>One of the most common bacteria species in a healthy intestine.<\/p>",
+              "pinpoint_bullets": "<p>+ immunity<\/p>\n<p>+ anti-inflammatory<\/p>\n<p>+ combats infections<\/p>"
+            }
+          },
+          "1550167247403": {
+            "type": "text",
+            "settings": {
+              "pinpoint_title": "Lactobacillus plantarum",
+              "pinpoint_title_link": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/?term=lactobacillus+plantarum",
+              "pinpoint_text": "<p>A survivor strain, it’s strength produces it’s own antibiotics to target bad bacteria.<\/p>",
+              "pinpoint_bullets": "<p>+ reduces inflammation<\/p>\n<p>+ fights pathogens<\/p>\n<p>+ increases immunity<\/p>"
+            }
+          },
+          "1550168119751": {
+            "type": "text",
+            "settings": {
+              "pinpoint_title": "Bifidobacterium lactis",
+              "pinpoint_title_link": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/?term=Bifidobacterium+lactis",
+              "pinpoint_text": "<p>Breaks down waste and aids in absorption of vitamins &amp; minerals.<\/p>",
+              "pinpoint_bullets": "<p>+ immunity<\/p>\n<p>+ digestion<\/p>\n<p>+ reduces inflammation<\/p>"
+            }
+          },
+          "1550168228885": {
+            "type": "text",
+            "settings": {
+              "pinpoint_title": "Lactobacillus brevis",
+              "pinpoint_title_link": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/?term=lactobacillus+brevis",
+              "pinpoint_text": "<p>This strain has helps to metabolize glucose and increases cellular immunity.<\/p>",
+              "pinpoint_bullets": "<p>+ immunity<\/p>\n<p>+ increases effectiveness of antibiotics<\/p>\n<p>+ increases BDNF<\/p>"
+            }
+          },
+          "1550168346769": {
+            "type": "text",
+            "settings": {
+              "pinpoint_title": "Lactobacillus acidophilus",
+              "pinpoint_title_link": "https:\/\/www.ncbi.nlm.nih.gov\/pubmed\/?term=lactobacillus+acidophilus",
+              "pinpoint_text": "<p>Most known and studied strain, proven to help overall digestion.<\/p>",
+              "pinpoint_bullets": "<p>+ digestion<\/p>\n<p>+ nutrient absorption<\/p>\n<p>+ repairs leaky gut<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1550165945282",
+          "1550167247403",
+          "1550168119751",
+          "1550168228885",
+          "1550168346769"
+        ],
+        "settings": {
+          "section_top_img": "shopify:\/\/shop_images\/nouri-proprietary-probiotic.png",
+          "section_top_title": "proprietary probiotic",
+          "section_top_text": "<p>plant-based<\/p>\n<p>unparalleled power<\/p>",
+          "section_top_bullets": "<p>+ 5 diverse strains<\/p>\n<p>+ 3OBN CFU of strength<\/p>"
+        }
+      },
+      "ingredients-content-bottom": {
+        "type": "ingredients-content-bottom",
+        "blocks": {
+          "1550170128747": {
+            "type": "text",
+            "settings": {
+              "pinpoint_02_title": "Pinpoint Title",
+              "pinpoint_02_text": "Ahiflower oil is a pure vegan omega powerhouse with the combined nutritional punch of evening primrose, flaxseed, and fish oils! Your best omega value from a single, sustainable and traceable plant."
+            }
+          },
+          "1550170172724": {
+            "type": "text",
+            "settings": {
+              "pinpoint_02_title": "",
+              "pinpoint_02_text": "Unlike fish, flax, and other omega oils, Ahiflower contains GLA, an omega 6 associated with skin health, hormonal balance and reducing inflammation."
+            }
+          }
+        },
+        "block_order": [
+          "1550170128747",
+          "1550170172724"
+        ],
+        "settings": {
+          "section_02_img": "shopify:\/\/shop_images\/nouri-ingredients-omega-3-6-9.png",
+          "section_02_title": "omega - 3,6,9",
+          "section_02_text": "<p>plant-based<\/p>\n<p>unparalleled power<\/p>",
+          "cross_link": "https:\/\/www.ncbi.nlm.nih.gov\/"
+        }
+      },
+      "about-content": {
+        "type": "about-content",
+        "settings": {
+          "video_embed": "https:\/\/www.youtube.com\/embed\/T5zLzRH_rnM",
+          "banner_image": "shopify:\/\/shop_images\/nouri-institute-header.png",
+          "heading": "Nouri’s story started with a change of mind, literally.",
+          "about_image": "shopify:\/\/shop_images\/about_0cb9e8a3-d663-4aab-b39a-fc142108a2ec.png",
+          "about_heading": "Coming soon."
+        }
+      },
+      "featured-content-with-image-faq": {
+        "type": "featured-content-with-image-faq",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/nouri-faq-header.png",
+          "bg_mobile_image": "shopify:\/\/shop_images\/nouri-faq-header.png",
+          "layout": "left",
+          "title": "",
+          "text": "",
+          "button_text": "",
+          "button_link": ""
+        }
+      },
+      "faq-product-content": {
+        "type": "faq-product-content",
+        "blocks": {
+          "1550192319422": {
+            "type": "text",
+            "settings": {
+              "question": "How can I track my order?",
+              "answer": "In your order confirmation email you will receive a tracking number. You can track your order by clicking on the unique tracking code link. And as always, you can reach out 24\/7 to hello@dailynouri.com to connect with the Nouri team."
+            }
+          },
+          "1550192361716": {
+            "type": "text",
+            "settings": {
+              "question": "Is this product FDA approved?",
+              "answer": "By law, the FDA does not approve any dietary supplements. However, the FDA does regulate dietary ingredients and supplements. All of Nouri's facilities follow Good Manufacturing Practices (GMPs) to ensure that Nouri's ingredients are tested and free from any yucky additives, heavy metals, microbes, or unwanted contamination."
+            }
+          }
+        },
+        "block_order": [
+          "1550192319422",
+          "1550192361716"
+        ],
+        "settings": {
+          "title": "FAQs",
+          "product_image": "shopify:\/\/shop_images\/nouri-product-faqs.png",
+          "brand_image": "shopify:\/\/shop_images\/nouri-brand-faqs-not.png"
+        }
+      },
+      "faq-brand-content": {
+        "type": "faq-brand-content",
+        "settings": {
+          "title": "FAQs",
+          "product_image": "shopify:\/\/shop_images\/nouri-product-faqs-not.png",
+          "brand_image": "shopify:\/\/shop_images\/nouri-brand-faqs.png"
+        }
+      },
+      "institute-content": {
+        "type": "institute-content",
+        "settings": {
+          "banner_image": "shopify:\/\/shop_images\/nouri-institute-header.png",
+          "left_column_heading": "<p>Coming soon.<\/p>",
+          "left_column": "",
+          "right_column_heading": "<p><strong>NOURI<\/strong> INSTITUTE<\/p>\n<p><em>Lifestyle Education<\/em><\/p>",
+          "right_column_01": "The Nouri Institute aims to equip consumers globally in the foundation of health. We believe in a proactive, versus reactive, approach to life.",
+          "right_column_02": "Our conversations and courses are being designed to provide participants worldwide with increased mental and physical health through lifestyle education.",
+          "right_column_btn_text": "Get notified.",
+          "right_column_btn_link": "\/contact"
+        }
+      },
+      "featured-content-with-image-ingredients": {
+        "type": "featured-content-with-image-ingredients",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/nouri-ingredients-banner.png",
+          "bg_mobile_image": "shopify:\/\/shop_images\/nouri-ingredients-02.png",
+          "layout": "left",
+          "title": "",
+          "text": "",
+          "button_text": "",
+          "button_link": ""
+        }
+      },
+      "contact-content": {
+        "type": "contact-content",
+        "settings": {
+          "contact_bottom_content": "<p>801 Blacklawn Rd STE N<br>Conyers, GA 30012<\/p>\n<p>hi@dailynouri.com<\/p>"
+        }
+      },
+      "slideshow-full": {
+        "type": "slideshow-full",
+        "blocks": {
+          "1551472901905": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-bottle-probiotic-omega-3-6-9_1.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551284659147": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-capsule-info.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 0,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551387053523": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-nutrition-facts.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551283879480": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-happy-customer-with-capsule.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551284708274": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-pleased-customer-with-nouri.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551386982565": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-outdoor-bottle.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551387177545": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-bottle-in-packaging.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551283651476": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-capsuel-packaging.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551387158659": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-close-up-capsule.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          },
+          "1551387194133": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-wellness-bottle-in-bathroom-window.png",
+              "color_image_overlay": "rgba(0,0,0,0)",
+              "image_overlay_opacity": 25,
+              "slide_subheading": "",
+              "slide_subheading2": "",
+              "slide_heading": "",
+              "slide_cta": "",
+              "slide_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1551472901905",
+          "1551284659147",
+          "1551387053523",
+          "1551283879480",
+          "1551284708274",
+          "1551386982565",
+          "1551387177545",
+          "1551283651476",
+          "1551387158659",
+          "1551387194133"
+        ],
+        "settings": {
+          "hero_home_auto": true,
+          "home_hero_auto_speed": "5000",
+          "slide_text_color": "#ffffff",
+          "slide_button_label_color": "#000000",
+          "slide_button_background_color": "#ffffff",
+          "image_mobile": "shopify:\/\/shop_images\/nouri-bottle-probiotic-omega-3-6-9_1.png",
+          "m_hero_heading": "Hello",
+          "m_hero_subheading": "",
+          "m_hero_cta": "",
+          "m_hero_link": ""
+        }
+      },
+      "1551731534185": {
+        "type": "featured-row",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/nouri-probiotic-omega-3-6-9-blend.png",
+          "layout": "right",
+          "pretitle": "WHY PROBIOTICS?",
+          "title": "90% of how you feel starts in your gut.",
+          "text": "<p>When your gut isn&rsquo;t healthy, it can trigger mood changes, inhibit memory, weaken immune response, and lower energy.<\/p>\n<p><\/p>\n<p>With Nouri&rsquo;s Probiotic &amp; Omega - 3,6,9 you can give your body the nourishment it needs to support brain &amp; gut health.<\/p>",
+          "button_label": "shop",
+          "button_link": "shopify:\/\/products\/probiotic-omega-3-6-9"
+        }
+      },
+      "feat-image-with-text": {
+        "type": "feat-image-with-text",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/nouri-slider-image-01.png",
+          "bg_mobile_image": "shopify:\/\/shop_images\/nouri-homepage-probiotic-mobile_1.jpg",
+          "layout": "right",
+          "title": "PROBIOTIC",
+          "subtitle": "& OMEGA - 3,6,9",
+          "subtitle_padding_right": "120",
+          "text": "<p>A harmonizing probiotic blend of 5 diverse strains of bacteria floating in plant-based Ahiflower&reg; oil to promote gut and brain health.*&nbsp;<\/p>",
+          "text_padding_right": "60",
+          "subtext": "<p>20% OFF + free shipping<\/p>",
+          "button_text": "get started",
+          "button_link": "shopify:\/\/products\/probiotic-omega-3-6-9"
+        }
+      },
+      "1551738734046": {
+        "type": "ingredients",
+        "blocks": {
+          "1551738760232": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "Ingredients:",
+              "textContent": "<p>Proprietary Probiotic blend<br>floating in flower based Omegas<\/p>",
+              "subtitle": "+ ingredient details",
+              "subtitle-link": "shopify:\/\/pages\/ingredients"
+            }
+          },
+          "1551738814035": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "How to use:",
+              "textContent": "<p>Each day, either morning or evening, take one Nouri capsule with a glass of water.&nbsp;Consistency is key.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1551740304106": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "title": "Benefits:",
+              "textContent": "<p>Supports brain &amp; gut health<br>Exclusive proprietary blend<br>5 strains of probiotic<br>30 billion CFU of strength guaranteed<br>Plant-based omega oil*<br>Gluten &amp; allergen free*<br>No refrigeration necessary<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1551738760232",
+          "1551738814035",
+          "1551740304106"
+        ],
+        "settings": {
+          "bg": "rgba(0,0,0,0)",
+          "text": "#000000"
+        }
+      },
+      "1551748508461": {
+        "type": "ingredients-list",
+        "blocks": {
+          "1551749682667": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/brain-gut-health-nouri-icon.svg?542384189599270778",
+              "title": "",
+              "textContent": "<p><strong>brain &amp; gut health*<\/strong><br>Omega fatty acids such as those found in Nouri&rsquo;s blend play important roles in brain development and daily function. Each Nouri capsule contains a plant-based source of Omegas 3, 6, and 9. Our first-ever combination of omegas and powerful probiotics allows your brain and gut to say &ldquo;hello&rdquo; to one another like never before.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1551748619690": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/super-immunity-nouri-icon.svg?542384189599270778",
+              "title": "",
+              "textContent": "<p><strong>super immunity*<\/strong><\/p>\n<p>80% of our immune activity takes place in the gut, that means that the bacteria living in our intestines are largely responsible for our immunity. To stay in tip top health requires that we feed your immune system with good, living bacteria such as the blend Nouri has created. And even better yet, the addition of Ahiflower oil provides the immune enhancing properties of EPA and DHA derived from this omega-powerhouse.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1551748547082": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/increased-energy-nouri-icon.svg?542384189599270778",
+              "title": "",
+              "textContent": "<p><strong>increased energy*<\/strong><br>Nouri's super star omega oil, Ahiflower, is 100% plant based combining the nutritional punch of evening primrose, flaxseed, and fish oil. Ahifower is your best omega value from a single, sustainable and traceable plant.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1551748584755": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/healthy-inflammatory-response-nouri-icon.svg?542384189599270778",
+              "title": "",
+              "textContent": "<p><strong>healthy inflammatory response*<\/strong><br>Nouri combines researched strains of probiotics and Ahiflower oil (containing omega 3, 6 and 9 properties) to deliver the world's first unique combination targeted to reduce inflammation in your mind and body.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1551749721328": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/advanced-digestion-nouri-icon.svg?542384189599270778",
+              "title": "",
+              "textContent": "<p><strong>advanced digestion*<\/strong><\/p>\n<p>The level of energy you have on the outside all begins on the inside. The good guy bacteria living in your gut communicates with the ever-important nervous system, a main player in daily mood and energy.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1551749648326": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/plant-based-omega-oil-nouri-icon.svg?542384189599270778",
+              "title": "",
+              "textContent": "<p><strong>plant-based omega*<\/strong><\/p>\n<p>Nouri combines researched strains of probiotics and Ahiflower oil (containing omega 3, 6 and 9 properties) to deliver the world's first unique combination targeted to reduce inflammation in your mind and body.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          },
+          "1551748651622": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/gluten-and-allergen-free-nouri-icon.svg?542384189599270778",
+              "title": "",
+              "textContent": "<p><strong>gluten &amp; allergen free*<\/strong><\/p>\n<p>Each ingredient researched, sourced and used in the creation of Nouri is free from all allergens including gluten, dairy, GMOs, soy.<\/p>",
+              "subtitle": "",
+              "subtitle-link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1551749682667",
+          "1551748619690",
+          "1551748547082",
+          "1551748584755",
+          "1551749721328",
+          "1551749648326",
+          "1551748651622"
+        ],
+        "settings": {
+          "bg": "#ffffff",
+          "text": "#000000",
+          "sectionSubtitle": "HOW NOURI SUPPORTS YOU"
+        }
+      },
+      "1551822953716": {
+        "type": "basic-info",
+        "blocks": {
+          "1551822990080": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/1.svg?11914830460196341854",
+              "icon_text_heading": "",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/1.svg?2290",
+              "popup_text": "Nouri is GMP certified by NSF. Choosing a product certified by NSF lets you know the company complies with strict standards and procedures imposed by NSF. From extensive product testing and material analyses to unannounced plant inspections, every aspect of a product’s development is thoroughly evaluated before it can earn our certification.",
+              "popup_subtext": ""
+            }
+          },
+          "1551823065988": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2.svg?1661800046379996695",
+              "icon_text_heading": "",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2.svg?2290",
+              "popup_text": "Kosher certification confirms that a product meets the requirements and restrictions of kosher law. It is a process by which the kosher status of a product or establishment is warranted and guaranteed.",
+              "popup_subtext": ""
+            }
+          },
+          "1551823108706": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2_copy.svg?14319860730700371850",
+              "icon_text_heading": "",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2_copy.svg?2290",
+              "popup_text": "Nouri's proprietary blend is the first in the world to encapsulate and ensure the delivery of five diverse strains of probiotics in Ahiflower® oil, a plant-based oil rich in omega - 3,6,9 designed to protect your body and brain.",
+              "popup_subtext": ""
+            }
+          }
+        },
+        "block_order": [
+          "1551822990080",
+          "1551823065988",
+          "1551823108706"
+        ],
+        "settings": {
+          "icon_bg": "rgba(0,0,0,0)",
+          "icon_text": "#ffffff",
+          "cta_text_heading": "",
+          "narrow_icons": true
+        }
+      },
+      "ingredients-vertical": {
+        "type": "ingredients-vertical",
+        "blocks": {
+          "1551882411001": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-ingredients-omega-3-6-9_f08a03de-15fd-4d72-8da2-9cd45d3733b9.png",
+              "text": "<h4>omega - 3,6,9<\/h4>\n<p>Our <strong>omega oil<\/strong> comes from <strong>Ahiflower<\/strong>, a plant-based omega blend that contains GLA, an omega 6 associated with skin health, hormonal balance and reducing inflammation.<\/p>"
+            }
+          },
+          "1551882533990": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/nouri-proprietary-probiotic_b6878068-f1b9-473a-9b5f-e663fede30db.png",
+              "text": "<h4>probiotic blend<\/h4>\n<p>Our <strong>proprietary probiotic<\/strong> is plant-based and contains unparalleled power, 5\ndiverse strains, 30BN CFU of strength guaranteed.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1551882411001",
+          "1551882533990"
+        ],
+        "settings": {
+          "bg": "#ffffff",
+          "text": "#000000",
+          "title": ""
+        }
+      },
+      "reviews": {
+        "type": "reviews",
+        "blocks": {
+          "1553562369098": {
+            "type": "default",
+            "settings": {
+              "text": "yo"
+            }
+          }
+        },
+        "block_order": [
+          "1553562369098"
+        ],
+        "settings": {
+        }
+      },
+      "featured-content-with-image-reviews": {
+        "type": "featured-content-with-image-reviews",
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/nouri-wellness-outdoor-bottle.png",
+          "bg_mobile_image": "shopify:\/\/shop_images\/nouri-wellness-outdoor-bottle.png",
+          "layout": "center",
+          "title": "Reviews",
+          "text": "",
+          "button_text": "",
+          "button_link": ""
+        }
+      },
+      "basic-info-product": {
+        "type": "basic-info-product",
+        "blocks": {
+          "1554129166513": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/1.svg?5735",
+              "icon_text_heading": "",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/1.svg?5735",
+              "popup_text": "Nouri is GMP certified by NSF. Choosing a product certified by NSF lets you know the company complies with strict standards and procedures imposed by NSF. From extensive product testing and material analyses to unannounced plant inspections, every aspect of a product’s development is thoroughly evaluated before it can earn our certification.",
+              "popup_subtext": ""
+            }
+          },
+          "1554129195662": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2.svg?5735",
+              "icon_text_heading": "",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2.svg?5735",
+              "popup_text": "Kosher certification confirms that a product meets the requirements and restrictions of kosher law. It is a process by which the kosher status of a product or establishment is warranted and guaranteed.",
+              "popup_subtext": ""
+            }
+          },
+          "1554129370502": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/clinically_1.svg?6167",
+              "icon_text_heading": "anti-inflammatory",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/clinically_1.svg?6167",
+              "popup_text": "Science matters. Nouri is proud to offer products to our consumers that are all backed by clinical science and proven to perform. Learn more on our website by clicking “Nouri Institute”.",
+              "popup_subtext": ""
+            }
+          },
+          "1554129212784": {
+            "type": "image",
+            "settings": {
+              "image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2_copy.svg?5735",
+              "icon_text_heading": "",
+              "popup_image": "https:\/\/cdn.shopify.com\/s\/files\/1\/2911\/8128\/files\/Artboard_2_copy.svg?5735",
+              "popup_text": "Nouri's proprietary blend is the first in the world to encapsulate and ensure the delivery of five diverse strains of probiotics in Ahiflower® oil, a plant-based oil rich in omega - 3,6,9 designed to protect your body and brain.",
+              "popup_subtext": ""
+            }
+          }
+        },
+        "block_order": [
+          "1554129166513",
+          "1554129195662",
+          "1554129370502",
+          "1554129212784"
+        ],
+        "settings": {
+          "icon_bg": "rgba(0,0,0,0)",
+          "icon_text": "#ffffff",
+          "cta_text_heading": "",
+          "narrow_icons": true
+        }
+      },
+      "featured-video": {
+        "type": "featured-video",
+        "settings": {
+          "heading": "",
+          "video_url": "https:\/\/youtu.be\/K5SCw8_pU34",
+          "button_text": "CART",
+          "button_link": "\/cart",
+          "subheading": "<p>The communication between our gut and brain depends on the health of the bacteria in our bodies.<\/p>"
+        }
+      }
+    },
+    "content_for_index": [
+      "1551731534185",
+      "1551738734046",
+      "1533990836290",
+      "1551748508461",
+      "1551822953716"
+    ]
+  },
+  "presets": {
+    "Classic": {
+      "cart_type": "page",
+      "cart_notes_enable": false,
+      "checkout_accent_color": "#a26b25",
+      "checkout_banner_background_color": "#fff",
+      "checkout_button_color": "#000000",
+      "checkout_call_to_action_color": "#a26b25",
+      "checkout_use_header_image": false,
+      "collection_products_grid": "collage",
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#222323",
+      "color_borders": "#1c1d1d",
+      "color_button_text": "#ffffff",
+      "color_drawer_background": "#1c1d1d",
+      "color_drawer_border": "#343535",
+      "color_drawer_button": "#a26b25",
+      "color_drawer_button_text": "#ffffff",
+      "color_drawer_text": "#ffffff",
+      "color_headings": "#222323",
+      "color_input": "#f6f6f6",
+      "color_newsletter": "#f6f6f6",
+      "color_primary": "#1c1d1d",
+      "color_product_background": "#f7f7f7",
+      "color_sale_tag": "#990000",
+      "color_secondary": "#a26b25",
+      "customer_layout": "customer_area",
+      "favicon_enable": false,
+      "product_vendor_enable": false,
+      "share_facebook": true,
+      "share_pinterest": true,
+      "share_twitter": true,
+      "social_sharing_style": "clean",
+      "type_accent_family": "Google_Montserrat_400_sans",
+      "type_accent_spacing": true,
+      "type_accent_transform": true,
+      "type_accent_subheadings": true,
+      "type_base_family": "Google_Arapey_400_serif",
+      "type_base_italize_titles": true,
+      "type_base_size": "16px",
+      "type_header_base_size": "30px",
+      "type_header_border_thickness": "1px",
+      "type_header_family": "Google_Old+Standard+TT_400_serif",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "show_announcement": true,
+            "color_bg": "#1c1d1d",
+            "color_text": "#ffffff"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "slide",
+              "settings": {
+              }
+            },
+            "slideshow-1": {
+              "type": "slide",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {
+          }
+        },
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_featured_products": "frontpage"
+          }
+        },
+        "featured-content": {
+          "type": "featured-content",
+          "settings": {
+          }
+        },
+        "featured-collections": {
+          "type": "featured-collections",
+          "blocks": {
+            "featured-collections-0": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "featured-collections-1": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "featured-collections-2": {
+              "type": "collection",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "featured-collections-0",
+            "featured-collections-1",
+            "featured-collections-2"
+          ],
+          "settings": {
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+          }
+        }
+      },
+      "content_for_index": [
+        "featured-content",
+        "featured-collections",
+        "featured-products",
+        "newsletter"
+      ]
+    },
+    "Playful": {
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#565656",
+      "color_borders": "#5dd2b4",
+      "color_button_text": "#003b34",
+      "color_primary": "#5dd2b4",
+      "color_secondary": "#058677",
+      "color_product_background": "#fff4f6",
+      "color_sale_tag": "#e80970",
+      "color_input": "#f6f6f6",
+      "color_newsletter": "#bde9f2",
+      "color_drawer_background": "#360f5f",
+      "color_drawer_text": "#ffffff",
+      "color_drawer_border": "#50297a",
+      "color_drawer_button": "#5dd2b4",
+      "color_drawer_button_text": "#360f5f",
+      "color_headings": "#321863",
+      "type_header_family": "Google_Quicksand_700_sans",
+      "type_header_base_size": "38px",
+      "type_header_border_thickness": "1px",
+      "type_accent_family": "Google_Roboto_700_sans",
+      "type_accent_transform": true,
+      "type_accent_spacing": true,
+      "type_accent_subheadings": false,
+      "type_base_family": "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "type_base_size": "17px",
+      "type_base_italize_titles": false,
+      "cart_type": "page",
+      "cart_notes_enable": true,
+      "social_facebook_link": "",
+      "social_twitter_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_snapchat_link": "",
+      "social_google_plus_link": "",
+      "social_tumblr_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "social_fancy_link": "",
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fff4f6",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Roboto",
+      "checkout_accent_color": "#0d8d7e",
+      "checkout_button_color": "#5dd2b4",
+      "checkout_error_color": "#f01130",
+      "checkout_banner_background_color": "#fff",
+      "checkout_call_to_action_color": "#a26b25",
+      "checkout_use_header_image": false,
+      "collection_products_grid": "collage",
+      "customer_layout": "customer_area",
+      "favicon_enable": false,
+      "product_vendor_enable": false,
+      "social_sharing_style": "clean",
+      "sections": {
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "1495823280244": {
+              "type": "slide",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "1495823280244"
+          ],
+          "settings": {
+            "hero_home_auto": false,
+            "home_hero_auto_speed": "5000"
+          }
+        },
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_featured_products": "frontpage",
+            "collection_products_grid": "collage"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+          }
+        },
+        "drawer-menu": {
+          "type": "drawer-menu",
+          "settings": {
+            "drawer_top_link_list": "main-menu",
+            "drawer_bottom_link_list": "footer",
+            "drawer_search_enable": false
+          }
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "main_menu_link_list": "main-menu",
+            "logo_max_width": "260",
+            "search": "modal",
+            "show_announcement": false,
+            "color_bg": "#290c49",
+            "color_text": "#ffffff"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "collection_products_grid": "grid",
+            "collection_tags_enable": false,
+            "product_vendor_enable": false
+          }
+        },
+        "1494860348200": {
+          "type": "featured-row",
+          "settings": {
+            "layout": "right"
+          }
+        },
+        "1494894035034": {
+          "type": "featured-row",
+          "settings": {
+            "layout": "left"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "zoom_enable": false,
+            "social_sharing_products": true,
+            "product_vendor_enable": false
+          }
+        },
+        "1496078102297": {
+          "type": "advanced-content",
+          "blocks": {
+            "1496078102297-0": {
+              "type": "html",
+              "settings": {
+                "code": "<div style=\"text-align:center;\">\n<h1 class=\"h1\">Use HTML to format your text so it can be easily read.<\/h1>This text can be used to share information about your brand with customers.<\/div>",
+                "width": "100%",
+                "alignment": "top-middle"
+              }
+            }
+          },
+          "block_order": [
+            "1496078102297-0"
+          ],
+          "settings": {
+          }
+        },
+        "1496177901425": {
+          "type": "advanced-content",
+          "blocks": {
+            "1496177901425-0": {
+              "type": "html",
+              "settings": {
+                "code": "<div style=\"width:745px;text-align: center; margin: 0 auto;\">This text can be used to share information about your brand with customers.<\/div>",
+                "width": "100%",
+                "alignment": "top-middle"
+              }
+            }
+          },
+          "block_order": [
+            "1496177901425-0"
+          ],
+          "settings": {
+          }
+        }
+      },
+      "content_for_index": [
+        "1496177901425",
+        "featured-products",
+        "newsletter",
+        "1496078102297",
+        "1494860348200",
+        "1494894035034"
+      ]
+    }
+  }
+}
