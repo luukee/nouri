@@ -1,0 +1,20 @@
+<!-- /templates/faq-brand.liquid -->
+<header class="banner">
+    {% section 'featured-content-with-image-faq' %}
+</header>
+{% section 'faq-brand-content' %}
+
+<script type="text/javascript">
+  $("ul.questions-list li").click(function(){
+    if($(this).hasClass('q-active')){
+      $(this).removeClass('q-active');
+      $(this).find('.q-ans').removeClass('q-ans-active');
+    } else {
+      $("ul.questions-list li").removeClass('q-active');
+      $("ul.questions-list li").find('.q-ans').removeClass('q-ans-active');
+
+      $(this).addClass('q-active');
+      $(this).find('.q-ans').addClass('q-ans-active');
+    }
+  });
+</script>

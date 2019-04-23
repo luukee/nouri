@@ -33,8 +33,7 @@
                 {% include 'image-style' with image: featured_image, width: 575, height: 850, small_style: true, wrapper_id: wrapper_id, img_id_class: img_id_class %}
                 <div id="{{ wrapper_id }}" class="product-single__photo--container">
                   <div class="product-single__photo-wrapper" style="padding-top:{{ 1 | divided_by: featured_image.aspect_ratio | times: 100}}%;">
-                    <!-- {% assign img_url = featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %} -->
-                    {{ product.featured_image | img_url: '450x450’, crop: ‘center’ }}
+                    {% assign img_url = featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
 
                     <img class="product-single__photo lazyload {{ img_id_class }}"
                       src="{{ featured_image | img_url: '300x300' }}"
