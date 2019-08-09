@@ -1,0 +1,103 @@
+<style>
+    .top-heading {
+        max-width: {{ section.settings.top_heading_width }}%;
+    }
+    /* @media only screen and (max-width: 768px) and (min-width: 591px) {
+        .top-heading {
+            max-width: calc({{ section.settings.top_heading_width }}% - 15vw);
+        }
+    } */
+    @media only screen and (min-width: 769px) {
+        .top-heading {
+            max-width: calc({{ section.settings.top_heading_width }}% - 15vw);
+        }
+    }
+    /* @media only screen and (min-width: 1100px) {
+        .top-heading {
+            max-width: calc({{ section.settings.top_heading_width }}% + 5vw);
+        }
+    } */
+</style>
+
+<section class="banner">
+    <div class="grid-uniform">
+      <div class="grid__item large--whole about-page">
+        <div class="grid-uniform">
+          <div class="grid__item medium--one-whole large--four-fifths push--large--one-tenth">
+
+                <style>.codegena{position:relative;width:100%;height:0;padding-bottom:56.27198%;}.codegena iframe{position:absolute;top:0;left:0;width:100%;height:100%;}</style>
+                <div class="codegena">
+
+                    <iframe width='978' height='575' src="https://www.youtube.com/embed/T5zLzRH_rnM?&theme=dark&color=white&autohide=1&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3"frameborder="0"></iframe>
+
+                </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+      <div class="wrapper">
+          <div class="grid">
+            <div class="grid__item pt-4 medium--two-thirds push--medium--one-third large--two-thirds push--large--one-third">
+              <h1 class="top-heading">{{ section.settings.heading }}</h1>
+            </div>
+          </div>
+      </div>
+
+      <div class="wrapper">
+          <div class="grid pt-4">
+
+            <div class="grid__item medium--one-third large--one-third">
+                <img src="{{ section.settings.about_image | img_url: 'large' }}" alt="" />
+            </div>
+
+            <div class="grid__item medium--two-thirds large--two-thirds">
+              {{ page.content }}
+            </div>
+          </div>
+      </div>
+</section>
+
+{% schema %}
+  {
+    "name": "About Content",
+    "settings": [
+      {
+        "type": "text",
+        "id": "video_embed",
+        "label": "Video Embed",
+        "info": "either the video link or a banner image, one or the other"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "top_heading_width",
+        "label": "Top Heading Width",
+        "default": "40"
+      },
+      {
+        "type": "image_picker",
+        "id": "about_image",
+        "label": "About Image",
+        "info": "either the video link or a banner image, one or the other"
+      },
+      {
+        "type": "text",
+        "id": "about_heading",
+        "label": "About Heading"
+      }
+    ]
+  }
+{% endschema %}

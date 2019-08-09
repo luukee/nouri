@@ -1,0 +1,302 @@
+<style>
+  #QuotesSection-{{ section.id }} .quotes-slider {
+    background-color: {{ section.settings.color_bg }};
+  }
+  #QuotesSection-{{ section.id }} .quote,
+  #QuotesSection-{{ section.id }} .quote__author,
+  #QuotesSection-{{ section.id }} .quote__heading {
+    color: {{ section.settings.color_text }};
+  }
+</style>
+
+{% if section.blocks.size > 0 %}
+  <div id="QuotesSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="quotes-section">
+    <div class="quotes-slider text-center" data-count="{{ section.blocks.size }}" data-speed="{{ section.settings.autoplay_speed }}">
+      {% for block in section.blocks %}
+        <div class="quotes-slide quotes-slide--{{ forloop.index0 }} quotes-slide--{{ block.id }}{% if forloop.first == true %} quotes-slide--visible{% endif %}" {{ block.shopify_attributes }}>
+          {% if block.settings.heading != blank %}
+            <h2 class="quote__heading">{{ block.settings.heading | escape }}</h2>
+          {% endif %}
+          {% if block.settings.quote != blank %}
+            <div class="h4 quote rte-setting">{{ block.settings.quote }}</div>
+          {% endif %}
+          {% if block.settings.author != blank %}
+            <span class="quote__author">{{ block.settings.author | escape }}</span>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  {% include 'no-blocks' %}
+{% endif %}
+
+{% schema %}
+{
+  "name": {
+    "de": "Testimonials",
+    "en": "Testimonials",
+    "es": "Testimonios",
+    "fr": "Témoignages",
+    "it": "Testimonial",
+    "ja": "お客様の声",
+    "nl": "Getuigenissen",
+    "pt-BR": "Depoimentos",
+    "zh-CN": "感言",
+    "zh-TW": "推薦文"
+  },
+  "class": "index-section index-section--quotes",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": {
+        "de": "Hintergrundfarbe",
+        "en": "Background color",
+        "es": "Color del fondo",
+        "fr": "Couleur de fond",
+        "it": "Colore sfondo",
+        "ja": "背景の色",
+        "nl": "Achtergrondkleur",
+        "pt-BR": "Cor do fundo",
+        "zh-CN": "背景色",
+        "zh-TW": "背景顏色"
+      },
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": {
+        "de": "Textfarbe",
+        "en": "Text color",
+        "es": "Color del texto",
+        "fr": "Couleur du texte",
+        "it": "Colore del testo",
+        "ja": "文字の色",
+        "nl": "Tekstkleur",
+        "pt-BR": "Cor do texto",
+        "zh-CN": "文本颜色",
+        "zh-TW": "文字顏色"
+      },
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "autoplay_speed",
+      "label": {
+        "de": "Slides überall ändern",
+        "en": "Change slides every",
+        "es": "Cambiar diapositivas cada",
+        "fr": "Changer de diapositive toutes les",
+        "it": "Cambia slide ogni",
+        "ja": "スライドを変更する間隔",
+        "nl": "Wijzig dia's elke",
+        "pt-BR": "Mude os slides a cada",
+        "zh-CN": "幻灯片更改时间间隔",
+        "zh-TW": "每過以下時間即變更投影片"
+      },
+      "options": [
+        {
+          "value": "3000",
+          "label": {
+            "de": "3 Sekunden",
+            "en": "3 seconds",
+            "es": "3 segundos",
+            "fr": "3 secondes",
+            "it": "3 secondi",
+            "ja": "3秒",
+            "nl": "3 seconden",
+            "pt-BR": "3 segundos",
+            "zh-CN": "3 秒",
+            "zh-TW": "3 秒"
+          }
+        },
+        {
+          "value": "4000",
+          "label": {
+            "de": "4 Sekunden",
+            "en": "4 seconds",
+            "es": "4 segundos",
+            "fr": "4 secondes",
+            "it": "4 secondi",
+            "ja": "4秒",
+            "nl": "4 seconden",
+            "pt-BR": "4 segundos",
+            "zh-CN": "4 秒",
+            "zh-TW": "4 秒"
+          }
+        },
+        {
+          "value": "5000",
+          "label": {
+            "de": "5 Sekunden",
+            "en": "5 seconds",
+            "es": "5 segundos",
+            "fr": "5 secondes",
+            "it": "5 secondi",
+            "ja": "5秒",
+            "nl": "5 seconden",
+            "pt-BR": "5 segundos",
+            "zh-CN": "5 秒",
+            "zh-TW": "5 秒"
+          }
+        },
+        {
+          "value": "6000",
+          "label": {
+            "de": "6 Sekunden",
+            "en": "6 seconds",
+            "es": "6 segundos",
+            "fr": "6 secondes",
+            "it": "6 secondi",
+            "ja": "6秒",
+            "nl": "6 seconden",
+            "pt-BR": "6 segundos",
+            "zh-CN": "6 秒",
+            "zh-TW": "6 秒"
+          }
+        }
+      ],
+      "default": "4000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": {
+        "de": "Testimonial",
+        "en": "Testimonial",
+        "es": "Testimonio",
+        "fr": "Témoignages",
+        "it": "Testimonial",
+        "ja": "お客様の声",
+        "nl": "Testimonial",
+        "pt-BR": "Depoimento",
+        "zh-CN": "感言",
+        "zh-TW": "推薦文"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": {
+            "de": "Titel",
+            "en": "Heading",
+            "es": "Título",
+            "fr": "Titre",
+            "it": "Heading",
+            "ja": "見出し",
+            "nl": "Kop",
+            "pt-BR": "Título",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          }
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": {
+            "de": "Text",
+            "en": "Text",
+            "es": "Texto",
+            "fr": "Texte",
+            "it": "Testo",
+            "ja": "テキスト",
+            "nl": "Tekst",
+            "pt-BR": "Texto",
+            "zh-CN": "文本",
+            "zh-TW": "文字"
+          },
+          "info": {
+            "de": "Beste Ergebnisse, wenn der Text 400 Zeichen nicht überschreitet",
+            "en": "Best results if text does not exceed 400 characters",
+            "es": "Se obtienen mejores resultados si el texto no supera los 400 caracteres.",
+            "fr": "Vous obtiendrez de meilleurs résultats si le texte ne dépasse pas 400 caractères",
+            "it": "Ottieni i migliori risultati se il testo non supera i 400 caratteri",
+            "ja": "テキストが400文字を超えないようにするのが最適です。",
+            "nl": "U krijgt de beste resultaten met een tekst van minder dan 400 tekens",
+            "pt-BR": "Resultados melhores quando o texto não excede 400 caracteres",
+            "zh-CN": "文本不超过 400 个字符时效果最佳",
+            "zh-TW": "字數少於 400 字元效果最佳"
+          },
+          "default": {
+            "de": "<p>Kunden-Reviews und Testimonials, die Kundenzufriedenheit beweisen.</p>",
+            "en": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "es": "<p>Agrega las reseñas y los testimonios de los clientes para mostrar los clientes satisfechos de tu tienda.</p>",
+            "fr": "<p>Ajoutez des avis et témoignages pour mettre en avant les clients satisfaits de votre boutique.</p>",
+            "it": "<p>Aggiungi recensioni e testimonianze sul tuo negozio per dimostrare che i clienti sono soddisfatti.</p>",
+            "ja": "<p>あなたのストアの幸せなお客様を紹介するために、カスタマーレビューとお客様の声を追加してください。</p>",
+            "nl": "<p>Voeg beoordelingen van klanten en testimonials toe om te laten zien dat uw klanten tevreden zijn.</p>",
+            "pt-BR": "<p>Adicione avaliações e depoimentos de clientes para mostrar os clientes felizes da sua loja.</p>",
+            "zh-CN": "<p>添加客户评论和感言，以展示对您的商店满意的客户。</p>",
+            "zh-TW": "<p>加上客戶評論及推薦文，以便展示您商店的滿意客戶。</p>"
+          }
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": {
+            "de": "Autor",
+            "en": "Author",
+            "es": "Autor",
+            "fr": "Auteur",
+            "it": "Autore",
+            "ja": "執筆者",
+            "nl": "Auteur",
+            "pt-BR": "Autoria",
+            "zh-CN": "作者",
+            "zh-TW": "作者"
+          },
+          "default": {
+            "de": "Name des Autors",
+            "en": "Author's name",
+            "es": "Nombre del autor",
+            "fr": "Nom de l'auteur",
+            "it": "Nome dell'autore",
+            "ja": "筆者の名前",
+            "nl": "Naam auteur",
+            "pt-BR": "Nome do autor",
+            "zh-CN": "作者姓名",
+            "zh-TW": "作者名稱"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "de": "Testimonials",
+        "en": "Testimonials",
+        "es": "Testimonios",
+        "fr": "Témoignages",
+        "it": "Testimonial",
+        "ja": "お客様の声",
+        "nl": "Getuigenissen",
+        "pt-BR": "Depoimentos",
+        "zh-CN": "感言",
+        "zh-TW": "推薦文"
+      },
+      "category": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "nl": "Tekst",
+        "pt-BR": "Texto",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "blocks": [
+        {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

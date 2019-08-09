@@ -1,0 +1,20 @@
+{% capture captured_page %}
+<div class="page-width page-container">
+  <header>
+    {%- include 'page-title' -%}
+  </header>
+  <div class="grid">
+    <div class="grid__item data-animate separator" data-animate>
+      <div class="rte">
+
+          {% section 'custom-content' %}
+
+        {{ page.content }}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endcapture %}
+{% include 'password-protect' %}

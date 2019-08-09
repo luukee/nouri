@@ -1,0 +1,141 @@
+{% if section.settings.narrow_icons == true %}
+  {% assign justifyIcons = "center" %}
+{% else %}
+  {% assign justifyIcons = 'space-around' %}
+{% endif %}
+
+{% if section.settings.icon_size == 'large' %}
+  {% assign iconSize = "100px" %}
+{%- elsif section.settings.icon_size == 'small' -%}
+    {% assign iconSize = "50px" %}
+{% else %}
+    {% assign iconSize = "75px" %}
+{% endif %}
+
+<style type="text/css">
+  .icons-section {
+  	background: {{ section.settings.icon_bg }};
+  }
+  .icons-{{ section.id }} * {
+    color: {{ section.settings.icon_text }};
+  }
+
+    .icons-{{ section.id }}.icons-main {
+      justify-content: {{ justifyIcons }};
+    }
+
+    .icons-{{ section.id }} .icon__image {
+        width: {{ iconSize }};
+        height: {{ iconSize }};
+        min-width: {{ iconSize }};
+    }
+</style>
+
+{% if section.settings.cta_text_heading != blank %}
+  <div class="grid icons-{{ section.id }}">
+    <div class="grid__item text-center icons-cta-text" data-animate>
+    <h6>{{ section.settings.cta_text_heading | escape }}</h6>
+    </div>
+  </div>
+{% endif %}
+
+<!-- toggle content -->
+
+<ul class="grid icons-{{ section.id }} icons__toggle-main">
+
+    {% for block in section.blocks %}
+
+        <li class="icon-title icon-container--{{ block.id }}" onclick="openIcon(event, '{{ block.id }}')" data-animate>
+            <!-- ICONS -->
+            {% if block.settings.popup_text != empty %}
+
+                <img src="{{ block.settings.image }}" class="icon__image" />
+
+                <div class="icon__text">
+
+                    {{ block.settings.icon_text_heading | escape }}
+
+                </div>
+
+                <div class="active-line">
+                    <svg width="2" height="124" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.0547.5v122.80469" stroke="{{ section.settings.icon_text }}" fill="none" fill-rule="evenodd" stroke-linecap="square"/>
+                    </svg>
+                </div>
+
+            {% endif %}
+
+        </li>
+
+
+    {% endfor %}
+
+</ul>
+
+<div class="page-width icons-{{ section.id }} grid toggle-elements">
+
+    <div class="grid__item toggle-elements__container medium-up--eight-tenths medium-up--push-one-tenth">
+        {% for block in section.blocks %}
+
+        <!-- ICON TOGGLE TEXT -->
+        <div id="{{ block.id }}" class="toggle-text icon__toggle-text--{{ block.id }}">
+
+            <p>{{- block.settings.popup_text -}}</p>
+
+        </div>
+
+        <script>
+        /*
+         * Icon toggles, see file sections/faq-section.liquid
+         * https://www.w3schools.com/howto/howto_js_vertical_tabs.asp
+         */
+
+        function openIcon(evt, iconTitle) {
+          // Declare all variables
+          var i, iconcontent, icontitles;
+
+          // Get all elements with class="faq-section" and hide them
+          iconcontent = document.getElementsByClassName("toggle-text");
+
+          for (i = 0; i < iconcontent.length; i++) {
+              iconcontent[i].setAttribute(
+               "style", "opacity: 0; visibility: collapse; max-height: 0; min-height: 0; padding: 0; transition: all .5s ease-in-out 0s;");
+          }
+
+          // Get all elements with class="faqtitles" and remove the class "active"
+          icontitles = document.getElementsByClassName("icon-title");
+          for (i = 0; i < icontitles.length; i++) {
+            icontitles[i].className = icontitles[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the link that opened the tab
+          document.getElementById(iconTitle).setAttribute(
+           "style", "opacity: 1; visibility: visible; max-height: 10em; min-height: 11em; transition: all .5s ease-in-out 0s;");
+          evt.currentTarget.className += " active";
+        }
+
+
+        window.onscroll = function() {myFunction()};
+
+        function myFunction() {
+
+          if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+                  iconcontent = document.getElementsByClassName("toggle-text");
+
+                  for (i = 0; i < iconcontent.length; i++) {
+                      iconcontent[i].setAttribute(
+                       "style", "opacity: 0; visibility: collapse; max-height: 0; min-height: 0; padding: 0; transition: all .5s ease-in-out 0s;");
+                  }
+                  // Get all elements with class="faqtitles" and remove the class "active"
+                  icontitles = document.getElementsByClassName("icon-title");
+                  for (i = 0; i < icontitles.length; i++) {
+                    icontitles[i].className = icontitles[i].className.replace(" active", "");
+                  }
+          }
+        }
+
+        </script>
+
+        {% endfor %}
+    </div>
+</div>

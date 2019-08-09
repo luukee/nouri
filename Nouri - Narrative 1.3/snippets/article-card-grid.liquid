@@ -1,0 +1,44 @@
+
+{%- assign desktopColumns = section.settings.articles -%}
+{%- assign mobileColumns = '1' -%}
+
+{%- capture gridClasses -%}
+  {% if desktopColumns == '3' %}medium-up--one-third {% else %}medium-up--one-half {% endif %}
+  {% if mobileColumns == '2' %}small--one-half {% endif %}
+{%- endcapture -%}
+
+<div class="journal-entry grid__item {{ gridClasses }}" >
+
+    {% include 'bookmarks-tags' %}
+
+      <a href="{{ article.url }}" class="card card__wrapper card--article" data-animate>
+
+        {% if article.image %}
+          {% assign article_image = article.image %}
+        {% endif %}
+
+        {% if article_image != blank %}
+          {% include 'card-image', type: article_image, grid_style: grid_style %}
+        {% endif %}
+
+        <div class="card__info">
+          {% if section.settings.blog_show_date %}
+            <span class="card__date text-small--uppercase">
+              {{ article.published_at | time_tag: format: 'date' }}
+            </span>
+          {% endif %}
+          <h3 class="card__name">{{ article.title }}</h3>
+          <div class="card__excerpt rte">
+            {% if article.excerpt.size > 0 %}
+              {{ article.excerpt }}
+            {% else %}
+              {{ article.content | strip_html | truncatewords: 30 }}
+            {% endif %}
+          </div>
+          <span class="card__read-more">
+            {{ 'blogs.article.read_more' | t }}
+            {% include 'icon-arrow-right' %}
+          </span>
+        </div>
+      </a>
+    </div>

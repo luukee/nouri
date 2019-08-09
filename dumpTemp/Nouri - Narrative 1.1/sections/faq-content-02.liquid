@@ -1,0 +1,61 @@
+
+<div class="grid__item medium-up--two-thirds">
+
+    <!-- FAQ section one -->
+    <div class="grid__item medium-up--two-thirds">
+        <div class="rte rte--nomargin rte--indented-images rte--content-faq">
+            <ul class="questions-list">
+
+                <!-- FAQ section one -->
+
+                {% for block in section.blocks %}
+
+                <li class="{% if forloop.first %}selected{% endif %}">
+                    <span>{{ block.settings.question_02 }}</span>
+                    <br />
+                    <div class="q-ans">
+                        <p>{{ block.settings.answer_02 }}</p>
+                    </div>
+                <li>
+
+                {% endfor %}
+                <!-- FAQ section one -->
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ Section Two",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_02",
+        "label": "Section Title"
+      }
+    ],
+    "name": "FAQs Section Two",
+    "blocks" : [
+      {
+        "type": "text",
+        "name": "FAQ's",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "question_02",
+            "label": "Question",
+            "default": "You have a question?"
+          },
+          {
+            "type": "textarea",
+            "id": "answer_02",
+            "label": "Answer",
+            "default": "Here's our answer!"
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}

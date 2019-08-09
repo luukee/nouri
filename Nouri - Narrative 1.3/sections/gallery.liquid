@@ -1,0 +1,1077 @@
+{% if section.settings.show_overlay %}
+  <style>
+    .image-bar--{{ section.id }} .image-bar__caption {
+      color: {{ section.settings.overlay_text }}
+    }
+
+    .image-bar--{{ section.id }} .image-bar__overlay::after {
+      background-color: {{ section.settings.overlay_color }};
+      opacity: {{ section.settings.overlay_opacity }};
+    }
+  </style>
+{% endif %}
+
+<div class="image-bar image-bar--{{ section.id }} image-bar--{{ section.settings.section_height }}" data-section-id="{{ section.id }}" data-section-type="gallery">
+  {% for block in section.blocks %}
+    <div class="image-bar__flex image-bar__{{ section.blocks.size }}-column">
+
+      {% if block.settings.image != blank %}
+
+        <style>
+          .image-bar__item--{{ block.id }} {
+            background-position: {{ block.settings.alignment }};
+          }
+        </style>
+
+        {% if block.settings.link != blank %}
+          <a href="{{ block.settings.link }}" class="image-bar__item image-bar__link" {{ block.shopify_attributes }}>
+            <div class="image-bar__item image-bar__item--{{ block.id }} lazyload" data-bgset="{% include 'bgset', image: block.settings.image %}">
+        {% else %}
+          <div class="image-bar__item image-bar__item--{{ block.id }} lazyload" {{ block.shopify_attributes }} data-bgset="{% include 'bgset', image: block.settings.image %}">
+        {% endif %}
+
+      {% else %}
+        <div class="image-bar__item" {{ block.shopify_attributes }}>
+      {% endif %}
+
+        <div class="image-bar__content{% if section.settings.show_overlay %} image-bar__overlay{% endif %}">
+          {% if block.settings.image == blank %}
+            <div class="image-bar__placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          {% endif %}
+        </div>
+
+      {% if block.settings.link != blank %}
+          </div>
+        </a>
+      {% else %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.cta_label != blank or block.settings.icon != 'none' %}
+        <div class="image-bar__text" data-animate>
+          {% if block.settings.icon != 'none' %}
+            {%- assign icon = 'icon-' | append: block.settings.icon -%}
+            {% include icon %}
+          {% endif %}
+          {% if block.settings.cta_label != blank %}
+            <h3 class="h2 text-title image-bar__caption">{{ block.settings.cta_label | escape }}</h2>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% if section.blocks.size == 0 %}
+  {% include 'no-blocks' %}
+{% endif %}
+
+{% schema %}
+{
+  "name": {
+    "de": "Galerie",
+    "en": "Gallery",
+    "es": "Galería",
+    "fr": "Galerie",
+    "it": "Galleria",
+    "ja": "ギャラリー",
+    "nl": "Galerie",
+    "pt-BR": "Galeria",
+    "zh-CN": "图库",
+    "zh-TW": "圖庫"
+  },
+  "class": "index-section index-section--gallery",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_height",
+      "label": {
+        "de": "Bereichs-Höhe",
+        "en": "Section height",
+        "es": "Altura de la sección",
+        "fr": "Hauteur de la section",
+        "it": "Altezza sezione",
+        "ja": "セクションの高さ",
+        "nl": "Sectiehoogte",
+        "pt-BR": "Altura da seção",
+        "zh-CN": "分区高度",
+        "zh-TW": "區塊高度"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "label": {
+            "de": "Extra klein",
+            "en": "Extra Small",
+            "es": "Extra pequeña",
+            "fr": "Très petite",
+            "it": "Molto piccola",
+            "ja": "極小",
+            "nl": "Extra klein",
+            "pt-BR": "Extrapequeno",
+            "zh-CN": "特小",
+            "zh-TW": "超小型"
+          },
+          "value": "x-small"
+        },
+        {
+          "label": {
+            "de": "Klein",
+            "en": "Small",
+            "es": "Pequeña",
+            "fr": "Petite",
+            "it": "Piccolo",
+            "ja": "小",
+            "nl": "Klein",
+            "pt-BR": "Pequeno",
+            "zh-CN": "小",
+            "zh-TW": "小型"
+          },
+          "value": "small"
+        },
+        {
+          "label": {
+            "de": "Mitte",
+            "en": "Medium",
+            "es": "Mediana",
+            "fr": "Moyenne",
+            "it": "Medio",
+            "ja": "中",
+            "nl": "Gemiddeld",
+            "pt-BR": "Médio",
+            "zh-CN": "中等",
+            "zh-TW": "中等"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fr": "Grande",
+            "it": "Grande",
+            "ja": "大",
+            "nl": "Groot",
+            "pt-BR": "Grande",
+            "zh-CN": "大",
+            "zh-TW": "大型"
+          },
+          "value": "large"
+        },
+        {
+          "label": {
+            "de": "Extra groß",
+            "en": "Extra Large",
+            "es": "Extra grande",
+            "fr": "Très grande",
+            "it": "Molto grande",
+            "ja": "特大",
+            "nl": "Extra groot",
+            "pt-BR": "Extragrande",
+            "zh-CN": "特大",
+            "zh-TW": "超大型"
+          },
+          "value": "x-large"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Overlay",
+        "en": "Overlay",
+        "es": "Superposición",
+        "fr": "Superposition",
+        "it": "Sovrapposizione",
+        "ja": "オーバーレイ",
+        "nl": "Overlay",
+        "pt-BR": "Sobreposição",
+        "zh-CN": "叠加",
+        "zh-TW": "疊加層"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": {
+        "de": "Überlagerung anzeigen",
+        "en": "Show overlay",
+        "es": "Mostrar superposición",
+        "fr": "Afficher la superposition",
+        "it": "Mostra sovrapposizione",
+        "ja": "オーバーレイを表示する",
+        "nl": "Overlay weergeven",
+        "pt-BR": "Exibir sobreposição",
+        "zh-CN": "显示叠加",
+        "zh-TW": "顯示疊加層"
+      },
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": {
+        "de": "Überlagerungsfarbe",
+        "en": "Overlay Color",
+        "es": "Color de superposición",
+        "fr": "Couleur de superposition",
+        "it": "Colore sovrapposizione",
+        "ja": "オーバーレイの色",
+        "nl": "Kleur van overlay",
+        "pt-BR": "Cor de sobreposição",
+        "zh-CN": "叠加颜色",
+        "zh-TW": "疊加層顏色"
+      },
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "overlay_text",
+      "label": {
+        "de": "Textfarbe",
+        "en": "Text color",
+        "es": "Color del texto",
+        "fr": "Couleur du texte",
+        "it": "Colore del testo",
+        "ja": "文字の色",
+        "nl": "Tekstkleur",
+        "pt-BR": "Cor do texto",
+        "zh-CN": "文本颜色",
+        "zh-TW": "文字顏色"
+      },
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "overlay_opacity",
+      "label": {
+        "de": "Opazität",
+        "en": "Opacity",
+        "es": "Opacidad",
+        "fr": "Opacité",
+        "it": "Opacità",
+        "ja": "不透過率",
+        "nl": "Doorschijnendheid",
+        "pt-BR": "Opacidade",
+        "zh-CN": "不透明度",
+        "zh-TW": "透明度"
+      },
+      "default": "0.3",
+      "options": [
+        {
+          "label": {
+            "de": "100%",
+            "en": "100%",
+            "es": "100%",
+            "fr": "100 %",
+            "it": "100%",
+            "ja": "100%",
+            "nl": "100%",
+            "pt-BR": "100%",
+            "zh-CN": "100%",
+            "zh-TW": "100%"
+          },
+          "value": "1"
+        },
+        {
+          "label": {
+            "de": "95 %",
+            "en": "95%",
+            "es": "95%",
+            "fr": "95 %",
+            "it": "95%",
+            "ja": "95%",
+            "nl": "95%",
+            "pt-BR": "95%",
+            "zh-CN": "95%",
+            "zh-TW": "95%"
+          },
+          "value": "0.95"
+        },
+        {
+          "label": {
+            "de": "90 %",
+            "en": "90%",
+            "es": "90%",
+            "fr": "90 %",
+            "it": "90%",
+            "ja": "90%",
+            "nl": "90%",
+            "pt-BR": "90%",
+            "zh-CN": "90%",
+            "zh-TW": "90%"
+          },
+          "value": "0.9"
+        },
+        {
+          "label": {
+            "de": "85 %",
+            "en": "85%",
+            "es": "85%",
+            "fr": "85 %",
+            "it": "85%",
+            "ja": "85%",
+            "nl": "85%",
+            "pt-BR": "85%",
+            "zh-CN": "85%",
+            "zh-TW": "85%"
+          },
+          "value": "0.85"
+        },
+        {
+          "label": {
+            "de": "80 %",
+            "en": "80%",
+            "es": "80%",
+            "fr": "80 %",
+            "it": "80%",
+            "ja": "80%",
+            "nl": "80%",
+            "pt-BR": "80%",
+            "zh-CN": "80%",
+            "zh-TW": "80%"
+          },
+          "value": "0.8"
+        },
+        {
+          "label": {
+            "de": "75%",
+            "en": "75%",
+            "es": "75%",
+            "fr": "75 %",
+            "it": "75%",
+            "ja": "75%",
+            "nl": "75%",
+            "pt-BR": "75%",
+            "zh-CN": "75%",
+            "zh-TW": "75%"
+          },
+          "value": "0.75"
+        },
+        {
+          "label": {
+            "de": "70 %",
+            "en": "70%",
+            "es": "70%",
+            "fr": "70 %",
+            "it": "70%",
+            "ja": "70%",
+            "nl": "70%",
+            "pt-BR": "70%",
+            "zh-CN": "70%",
+            "zh-TW": "70%"
+          },
+          "value": "0.7"
+        },
+        {
+          "label": {
+            "de": "65 %",
+            "en": "65%",
+            "es": "65%",
+            "fr": "65 %",
+            "it": "65%",
+            "ja": "65%",
+            "nl": "65%",
+            "pt-BR": "65%",
+            "zh-CN": "65%",
+            "zh-TW": "65%"
+          },
+          "value": "0.65"
+        },
+        {
+          "label": {
+            "de": "60 %",
+            "en": "60%",
+            "es": "60%",
+            "fr": "60 %",
+            "it": "60%",
+            "ja": "60%",
+            "nl": "60%",
+            "pt-BR": "60%",
+            "zh-CN": "60%",
+            "zh-TW": "60%"
+          },
+          "value": "0.6"
+        },
+        {
+          "label": {
+            "de": "55 %",
+            "en": "55%",
+            "es": "55%",
+            "fr": "55 %",
+            "it": "55%",
+            "ja": "55%",
+            "nl": "55%",
+            "pt-BR": "55%",
+            "zh-CN": "55%",
+            "zh-TW": "55%"
+          },
+          "value": "0.55"
+        },
+        {
+          "label": {
+            "de": "50%",
+            "en": "50%",
+            "es": "50%",
+            "fr": "50 %",
+            "it": "50%",
+            "ja": "50%",
+            "nl": "50%",
+            "pt-BR": "50%",
+            "zh-CN": "50%",
+            "zh-TW": "50%"
+          },
+          "value": "0.5"
+        },
+        {
+          "label": {
+            "de": "45 %",
+            "en": "45%",
+            "es": "45%",
+            "fr": "45 %",
+            "it": "45%",
+            "ja": "45%",
+            "nl": "45%",
+            "pt-BR": "45%",
+            "zh-CN": "45%",
+            "zh-TW": "45%"
+          },
+          "value": "0.45"
+        },
+        {
+          "label": {
+            "de": "40 %",
+            "en": "40%",
+            "es": "40%",
+            "fr": "40 %",
+            "it": "40%",
+            "ja": "40%",
+            "nl": "40%",
+            "pt-BR": "40%",
+            "zh-CN": "40%",
+            "zh-TW": "40%"
+          },
+          "value": "0.4"
+        },
+        {
+          "label": {
+            "de": "35 %",
+            "en": "35%",
+            "es": "35%",
+            "fr": "35 %",
+            "it": "35%",
+            "ja": "35%",
+            "nl": "35%",
+            "pt-BR": "35%",
+            "zh-CN": "35%",
+            "zh-TW": "35%"
+          },
+          "value": "0.35"
+        },
+        {
+          "label": {
+            "de": "30 %",
+            "en": "30%",
+            "es": "30%",
+            "fr": "30 %",
+            "it": "30%",
+            "ja": "30%",
+            "nl": "30%",
+            "pt-BR": "30%",
+            "zh-CN": "30%",
+            "zh-TW": "30%"
+          },
+          "value": "0.3"
+        },
+        {
+          "label": {
+            "de": "25%",
+            "en": "25%",
+            "es": "25%",
+            "fr": "25 %",
+            "it": "25%",
+            "ja": "25%",
+            "nl": "25%",
+            "pt-BR": "25%",
+            "zh-CN": "25％",
+            "zh-TW": "25%"
+          },
+          "value": "0.25"
+        },
+        {
+          "label": {
+            "de": "20 %",
+            "en": "20%",
+            "es": "20%",
+            "fr": "20 %",
+            "it": "20%",
+            "ja": "20%",
+            "nl": "20%",
+            "pt-BR": "20%",
+            "zh-CN": "20%",
+            "zh-TW": "20%"
+          },
+          "value": "0.2"
+        },
+        {
+          "label": {
+            "de": "0 %",
+            "en": "0%",
+            "es": "0%",
+            "fr": "0 %",
+            "it": "0%",
+            "ja": "0%",
+            "nl": "0%",
+            "pt-BR": "0%",
+            "zh-CN": "0%",
+            "zh-TW": "0%"
+          },
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "de": "Foto",
+            "en": "Image",
+            "es": "Imagen",
+            "fr": "Image",
+            "it": "Immagine",
+            "ja": "画像",
+            "nl": "Afbeelding",
+            "pt-BR": "Imagem",
+            "zh-CN": "图片",
+            "zh-TW": "圖片"
+          }
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "de": "Fotoausrichtung",
+            "en": "Image alignment",
+            "es": "Alineación de imagen",
+            "fr": "Alignement de l'image",
+            "it": "Allineamento immagine",
+            "ja": "画像アラインメント",
+            "nl": "Afbeelding uitlijnen",
+            "pt-BR": "Alinhamento da imagem",
+            "zh-CN": "图片对齐方式",
+            "zh-TW": "圖片對齊"
+          },
+          "info": {
+            "de": "Wird verwendet, wenn Bilder nicht abgeschnitten werden",
+            "en": "Used when images are not cropped",
+            "es": "Se utiliza cuando las imágenes no están recortadas.",
+            "fr": "S'utilise lorsque les images ne sont pas recadrées",
+            "it": "Usato quando le immagini non sono ritagliate",
+            "ja": "画像がトリミングされていないときに使用されます。",
+            "nl": "Wordt gebruikt wanneer afbeeldingen niet zijn bijgesneden",
+            "pt-BR": "Usado quando as imagens não são cortadas",
+            "zh-CN": "在未裁剪图片时使用",
+            "zh-TW": "當圖片未經裁剪時使用"
+          },
+          "default": "center center",
+          "options": [
+            {
+              "label": {
+                "de": "Oben links",
+                "en": "Top left",
+                "es": "Superior izquierda",
+                "fr": "En haut à gauche",
+                "it": "In alto a sinistra",
+                "ja": "左上",
+                "nl": "Linksboven",
+                "pt-BR": "Superior esquerdo",
+                "zh-CN": "左上方",
+                "zh-TW": "左上角"
+              },
+              "value": "top left"
+            },
+            {
+              "label": {
+                "de": "Oben Mitte",
+                "en": "Top center",
+                "es": "Superior al centro",
+                "fr": "En haut au centre",
+                "it": "In alto al centro",
+                "ja": "中央上",
+                "nl": "Midden boven",
+                "pt-BR": "Superior centro",
+                "zh-CN": "顶部居中",
+                "zh-TW": "中央上方"
+              },
+              "value": "top center"
+            },
+            {
+              "label": {
+                "de": "Oben rechts",
+                "en": "Top right",
+                "es": "Superior derecha",
+                "fr": "En haut à droite",
+                "it": "In alto a destra",
+                "ja": "右上",
+                "nl": "Rechtsboven",
+                "pt-BR": "Superior direito",
+                "zh-CN": "右上方",
+                "zh-TW": "右上角"
+              },
+              "value": "top right"
+            },
+            {
+              "label": {
+                "de": "Mitte links",
+                "en": "Middle left",
+                "es": "Al medio a la izquierda",
+                "fr": "Au milieu à gauche",
+                "it": "In mezzo a sinistra",
+                "ja": "中央左",
+                "nl": "Links midden",
+                "pt-BR": "Meio esquerdo",
+                "zh-CN": "中间居左",
+                "zh-TW": "中央左方"
+              },
+              "value": "center left"
+            },
+            {
+              "label": {
+                "de": "Mitte mittig",
+                "en": "Middle center",
+                "es": "Al medio al centro",
+                "fr": "Centrée au milieu",
+                "it": "In mezzo al centro",
+                "ja": "中央中",
+                "nl": "Centraal midden",
+                "pt-BR": "Meio centro",
+                "zh-CN": "中间居中",
+                "zh-TW": "正中央"
+              },
+              "value": "center center"
+            },
+            {
+              "label": {
+                "de": "Mitte rechts",
+                "en": "Middle right",
+                "es": "Al medio a la derecha",
+                "fr": "Au milieu à droite",
+                "it": "In centro a destra",
+                "ja": "中央右",
+                "nl": "Rechts midden",
+                "pt-BR": "Meio direito",
+                "zh-CN": "中间居右",
+                "zh-TW": "中央右方"
+              },
+              "value": "center right"
+            },
+            {
+              "label": {
+                "de": "Unten links",
+                "en": "Bottom left",
+                "es": "Inferior izquierda",
+                "fr": "En bas à gauche",
+                "it": "In basso a sinistra",
+                "ja": "左下",
+                "nl": "Linksonder",
+                "pt-BR": "Inferior esquerdo",
+                "zh-CN": "左下方",
+                "zh-TW": "左下角"
+              },
+              "value": "bottom left"
+            },
+            {
+              "label": {
+                "de": "Unten mittig",
+                "en": "Bottom center",
+                "es": "Inferior al centro",
+                "fr": "En bas au centre",
+                "it": "In basso al centro",
+                "ja": "中央下",
+                "nl": "Middenonder",
+                "pt-BR": "Inferior centro",
+                "zh-CN": "底部居中",
+                "zh-TW": "中央下方"
+              },
+              "value": "bottom center"
+            },
+            {
+              "label": {
+                "de": "Unten rechts",
+                "en": "Bottom right",
+                "es": "Inferior derecha",
+                "fr": "En bas à droite",
+                "it": "In basso a destra",
+                "ja": "右下",
+                "nl": "Rechtsonder",
+                "pt-BR": "Inferior direito",
+                "zh-CN": "右下方",
+                "zh-TW": "右下角"
+              },
+              "value": "bottom right"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": {
+            "de": "Symbol",
+            "en": "Icon",
+            "es": "Ícono",
+            "fr": "Icône",
+            "it": "Icona",
+            "ja": "アイコン",
+            "nl": "Pictogram",
+            "pt-BR": "Ícone",
+            "zh-CN": "图标",
+            "zh-TW": "圖示"
+          },
+          "default": "checkmark",
+          "options": [
+            {
+              "label": {
+                "de": "Keine",
+                "en": "None",
+                "es": "Ninguna",
+                "fr": "Aucun",
+                "it": "Nessuno",
+                "ja": "なし",
+                "nl": "Geen",
+                "pt-BR": "Nenhum",
+                "zh-CN": "无",
+                "zh-TW": "無"
+              },
+              "value": "none"
+            },
+            {
+              "label": {
+                "de": "Kiste",
+                "en": "Box",
+                "es": "Caja",
+                "fr": "Colis",
+                "it": "Scatola",
+                "ja": "箱",
+                "nl": "Doos",
+                "pt-BR": "Caixa",
+                "zh-CN": "包装箱",
+                "zh-TW": "裝運箱"
+              },
+              "value": "box"
+            },
+            {
+              "label": {
+                "de": "Karte",
+                "en": "Card",
+                "es": "Tarjeta",
+                "fr": "Carte",
+                "it": "Cartolina",
+                "ja": "カード",
+                "nl": "Kaart",
+                "pt-BR": "Cartão",
+                "zh-CN": "卡",
+                "zh-TW": "卡片"
+              },
+              "value": "card"
+            },
+            {
+              "label": {
+                "de": "Warenkorb",
+                "en": "Cart",
+                "es": "Carrito",
+                "fr": "Panier",
+                "it": "Carrello",
+                "ja": "カート",
+                "nl": "Winkelwagen",
+                "pt-BR": "Carrinho",
+                "zh-CN": "购物车",
+                "zh-TW": "購物車"
+              },
+              "value": "cart"
+            },
+            {
+              "label": {
+                "de": "Häkchen",
+                "en": "Checkmark",
+                "es": "Marca de verificación",
+                "fr": "Coche",
+                "it": "Segno di spunta",
+                "ja": "チェックマーク",
+                "nl": "Vinkje",
+                "pt-BR": "Marca de seleção",
+                "zh-CN": "复选标记",
+                "zh-TW": "勾號"
+              },
+              "value": "checkmark"
+            },
+            {
+              "label": {
+                "de": "Uhr",
+                "en": "Clock",
+                "es": "Reloj",
+                "fr": "Horloge",
+                "it": "Orologio",
+                "ja": "時計",
+                "nl": "Klok",
+                "pt-BR": "Relógio",
+                "zh-CN": "时钟",
+                "zh-TW": "時鐘"
+              },
+              "value": "clock"
+            },
+            {
+              "label": {
+                "de": "Briefumschlag",
+                "en": "Envelope",
+                "es": "Sobre",
+                "fr": "Enveloppe",
+                "it": "Busta",
+                "ja": "封筒",
+                "nl": "Enveloppe",
+                "pt-BR": "Envelope",
+                "zh-CN": "信封",
+                "zh-TW": "信封"
+              },
+              "value": "envelope"
+            },
+            {
+              "label": {
+                "de": "Globus",
+                "en": "Globe",
+                "es": "Globo",
+                "fr": "Globe",
+                "it": "Globo",
+                "ja": "地球",
+                "nl": "Wereldbol",
+                "pt-BR": "Globo",
+                "zh-CN": "地球",
+                "zh-TW": "地球"
+              },
+              "value": "globe"
+            },
+            {
+              "label": {
+                "de": "Leaf",
+                "en": "Leaf",
+                "es": "Hoja",
+                "fr": "Feuille",
+                "it": "Foglia",
+                "ja": "葉",
+                "nl": "Blad",
+                "pt-BR": "Folha",
+                "zh-CN": "树叶",
+                "zh-TW": "葉片"
+              },
+              "value": "leaf"
+            },
+            {
+              "label": {
+                "de": "Vorhängeschloss",
+                "en": "Padlock",
+                "es": "Candado",
+                "fr": "Cadenas",
+                "it": "Lucchetto",
+                "ja": "南京錠",
+                "nl": "Hangslot",
+                "pt-BR": "Cadeado",
+                "zh-CN": "挂锁",
+                "zh-TW": "掛鎖"
+              },
+              "value": "padlock"
+            },
+            {
+              "label": {
+                "de": "Preisschild",
+                "en": "Price Tag",
+                "es": "Etiqueta de precio",
+                "fr": "Balise de prix",
+                "it": "Cartellino del prezzo",
+                "ja": "値札",
+                "nl": "Prijskaartje",
+                "pt-BR": "Etiqueta de preço",
+                "zh-CN": "价格标签",
+                "zh-TW": "價格標籤"
+              },
+              "value": "pricetag"
+            },
+            {
+              "label": {
+                "de": "Silhouette",
+                "en": "Silhouette",
+                "es": "Silueta",
+                "fr": "Silhouette",
+                "it": "Silhouette",
+                "ja": "シルエット",
+                "nl": "Silhouet",
+                "pt-BR": "Silhueta",
+                "zh-CN": "剪影",
+                "zh-TW": "剪影"
+              },
+              "value": "silhouette"
+            },
+            {
+              "label": {
+                "de": "Trophäe",
+                "en": "Trophy",
+                "es": "Trofeo",
+                "fr": "Trophée",
+                "it": "Trofeo",
+                "ja": "トロフィー",
+                "nl": "Trofee",
+                "pt-BR": "Troféu",
+                "zh-CN": "奖杯",
+                "zh-TW": "獎盃"
+              },
+              "value": "trophy"
+            },
+            {
+              "label": {
+                "de": "Lieferwagen",
+                "en": "Truck",
+                "es": "Camión",
+                "fr": "Camion",
+                "it": "Camion",
+                "ja": "トラック",
+                "nl": "Vrachtwagen",
+                "pt-BR": "Caminhão",
+                "zh-CN": "卡车",
+                "zh-TW": "卡車"
+              },
+              "value": "truck"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": {
+            "de": "Text",
+            "en": "Text",
+            "es": "Texto",
+            "fr": "Texte",
+            "it": "Testo",
+            "ja": "テキスト",
+            "nl": "Tekst",
+            "pt-BR": "Texto",
+            "zh-CN": "文本",
+            "zh-TW": "文字"
+          }
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": {
+            "de": "Unterschrift",
+            "en": "Caption",
+            "es": "Leyenda",
+            "fr": "Légende",
+            "it": "Didascalia",
+            "ja": "キャプション",
+            "nl": "Bijschrift",
+            "pt-BR": "Legenda",
+            "zh-CN": "字幕",
+            "zh-TW": "說明"
+          },
+          "default": {
+            "de": "Über Ihre Marke sprechen",
+            "en": "Talk about your brand",
+            "es": "Habla de tu marca",
+            "fr": "Parlez de votre marque",
+            "it": "Parla del tuo brand",
+            "ja": "あなたのブランドについて語る",
+            "nl": "Vertel over uw merk",
+            "pt-BR": "Fale sobre a sua marca",
+            "zh-CN": "谈论您的品牌",
+            "zh-TW": "描述您的品牌"
+          }
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": {
+            "de": "Link",
+            "en": "Link",
+            "es": "Enlace",
+            "fr": "Lien",
+            "it": "Link",
+            "ja": "リンク",
+            "nl": "Link",
+            "pt-BR": "Link",
+            "zh-CN": "链接",
+            "zh-TW": "連結"
+          },
+          "info": {
+            "de": "Optional",
+            "en": "Optional",
+            "es": "Opcional",
+            "fr": "Facultatif",
+            "it": "Facoltativo",
+            "ja": "オプション",
+            "nl": "Optioneel",
+            "pt-BR": "Opcional",
+            "zh-CN": "可选",
+            "zh-TW": "(選填)"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "de": "Galerie",
+        "en": "Gallery",
+        "es": "Galería",
+        "fr": "Galerie",
+        "it": "Galleria",
+        "ja": "ギャラリー",
+        "nl": "Galerie",
+        "pt-BR": "Galeria",
+        "zh-CN": "图库",
+        "zh-TW": "圖庫"
+      },
+      "category": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

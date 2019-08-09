@@ -1,0 +1,214 @@
+<style>
+    #{{ section.id }} .info-block {
+        background-color: {{ section.settings.left_background_color }}
+    }
+</style>
+
+
+<div id="{{ section.id }}" class="why-nouri-section lazyload" data-section-id="{{ section.id }}" data-section-type="why-nouri">
+
+    <header class="section-header text-center">
+        <h1 class="section-header__title hidden">{{ page.title }}</h1>
+    </header>
+    <div class="grid">
+        <div class="grid__item medium-up--one-half">
+            <div class="grid">
+                <div class="grid__item medium-up--six-sixths medium-up--push-one-sixth">
+                    <div class="rte header" data-animate>
+                        <h2 class="h6">
+                            <b>{{ section.settings.intro_title }}</b>
+                        </h2>
+                        {{ section.settings.subheading }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid info-block">
+        <section class="grid__item faq-title-container why-nouri-titles medium-up--one-half">
+            <div class="grid vertically-center">
+                <div class="grid__item why-nouri-static-container medium-up--five-sixths medium-up--push-one-sixth">
+                    <div class="why-nouri-title-container">
+                        {%- for block in section.blocks -%}
+                            {%- case block.type -%}
+                                {%- when 'separator' -%}
+                                {% capture faq_section_name %}
+                                    {{- block.settings.separator | replace: " ", "-" -}}
+                                {% endcapture %}
+                                    <h3 {{ block.shopify_attributes }} class="faq-title h6" {% if forloop.first == true %}id="defaultOpen"{% endif %} onclick="openFaq(event, '{{ block.settings.separator | downcase | replace: " ", "-" }}')" data-animate>
+                                        <b>{{ block.settings.separator }}</b>
+                                    </h3>
+                            {%- endcase -%}
+                        {%- endfor -%}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="description-list why-nouri-answers grid__item medium-up--one-half">
+
+            <div class="grid vertically-center">
+                <div class="grid__item medium-up--six-eighths medium-up--push-one-eighth">
+                    <div class="why-nouri-answer-container" data-animate>
+                        <div class="faq-section first">
+                        {%- for block in section.blocks -%}
+                            {%- case block.type -%}
+                                {%- when 'text' -%}
+                                    <div class="plain">
+                                        <h5>
+                                            <b>{{ block.settings.question }}</b>
+                                        </h5>
+                                    </div>
+
+                                    <div {{ block.shopify_attributes }}>
+                                        {{ block.settings.answer }}
+                                    </div>
+
+                                    {% if block.settings.faq_slide_image != empty %}
+                                    <div class="featured-slider__slide-image-container why-nouri-info-image" style="padding-top: {{ 1 | divided_by: block.settings.faq_slide_image.aspect_ratio | times: 100}}%">
+                                      {% assign img_url = block.settings.faq_slide_image %}
+                                      <img class="featured-slider__slide-image lazyload"
+                                        data-src="{{ img_url }}"
+                                        data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                        data-aspectratio="{{ block.settings.faq_slide_image.aspect_ratio }}"
+                                        data-sizes="auto"
+                                        alt="{{ block.settings.faq_slide_image.alt | escape }}">
+                                    </div>
+                                    {% endif %}
+                                {%- when 'separator' -%}
+                            </div>
+                                <div id="{{ block.settings.separator | downcase | replace: " ", "-" }}" class="faq-section {% if forloop.first == true %}selected{% endif %}">
+                                {%- else -%}
+                            </div>
+                            {%- endcase -%}
+                        {%- endfor -%}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+
+
+<script>
+/*
+ * FAQ toggles, see file sections/faq-section.liquid
+ * https://www.w3schools.com/howto/howto_js_vertical_tabs.asp
+ */
+
+function openFaq(evt, faqTitle) {
+  // Declare all variables
+  var i, faqcontent, faqtitles;
+
+  // Get all elements with class="faq-section" and hide them
+  faqcontent = document.getElementsByClassName("faq-section");
+  for (i = 0; i < faqcontent.length; i++) {
+      faqcontent[i].setAttribute(
+       "style", "opacity: 0; visibility: collapse; max-height: 0; padding: 0; position: absolute; transition: all .5s ease-in-out 0s;");
+  }
+
+  // Get all elements with class="faqtitles" and remove the class "active"
+  faqtitles = document.getElementsByClassName("faq-title");
+  for (i = 0; i < faqtitles.length; i++) {
+    faqtitles[i].className = faqtitles[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the link that opened the tab
+  document.getElementById(faqTitle).setAttribute(
+   "style", "opacity: 1; visibility: visible; max-height: 7em; position: relative; transition: all .5s ease-in-out 0s;");
+  evt.currentTarget.className += " active";
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+
+{% schema %}
+{
+    "name": "Why Nouri",
+    "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "left_background_color",
+      "label": {
+        "de": "Hintergrundfarbe",
+        "en": "Left Background color",
+        "es": "Color del fondo",
+        "fr": "Couleur de fond",
+        "it": "Colore sfondo",
+        "ja": "背景の色",
+        "nl": "Achtergrondkleur",
+        "pt-BR": "Cor do fundo",
+        "zh-CN": "背景色",
+        "zh-TW": "背景顏色"
+      },
+      "default": "#3E6152"
+    },
+    {
+        "type": "text",
+        "id": "intro_title",
+        "label": "Heading",
+        "default": "Why Nouri? Glad you asked."
+    },
+    {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut consectetuer adipiscing elit.</p>"
+    }
+    ],
+    "name": "Info Block",
+    "blocks" : [
+        {
+            "type": "text",
+            "name": "Info",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Title",
+                    "default": "Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Text",
+                    "default": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut consectetuer adipiscing elit.</p>"
+                },
+                {
+                  "type": "text",
+                  "id": "faq_slide_image",
+                  "label": {
+                    "de": "Foto",
+                    "en": "Image",
+                    "es": "Imagen",
+                    "fr": "Image",
+                    "it": "Immagine",
+                    "ja": "画像",
+                    "nl": "Afbeelding",
+                    "pt-BR": "Imagem",
+                    "zh-CN": "图片",
+                    "zh-TW": "圖片"
+                  }
+                }
+            ]
+        },
+        {
+            "type": "separator",
+            "name": "Header",
+            "settings": [
+                {
+                  "type": "text",
+                  "id": "separator",
+                  "label": "Heading"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

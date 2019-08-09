@@ -1,0 +1,19 @@
+  <div class="grid display-flexbox header">
+    <div class="grid__item medium--one-whole large--one-whole">
+      <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="{{ section.settings.left_image.alt | default: shop.name }}">
+    </div>
+  </div>
+
+{% schema %}
+
+  {
+    "name": "Header Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "left_image",
+        "label": "Left Image"
+      }
+    ]
+  }
+{% endschema %}

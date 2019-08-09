@@ -1,0 +1,224 @@
+<div class="article" data-section-id="{{ section.id }}" data-section-type="article-template">
+
+    <div class="page-width">
+        <div class="article__wrapper grid">
+            <div class="article__content article__content--large grid__item">
+                <header class="article__header separator" data-animate>
+
+                    {%- include 'article-title' -%}
+
+                    <section class="grid article__header-content">
+
+                        <div class="article__header-container separator" data-animate>
+
+                            {% if article.image %}
+
+                            <div class="grid__item medium-up--one-half">
+
+                                <img class="section-header-image" src="{{ article.image | img_url: 'master' }}" alt="{{ type.alt | escape }}">
+
+                            </div>
+
+                            <div class="grid__item medium-up--one-third">
+
+                                <div class="card__excerpt rte">
+                                    {% if article.excerpt.size > 0 %}
+                                    {{ article.excerpt }}
+                                    {% else %}
+                                    <p>{{ article.content | strip_html | truncatewords: 30 }}</p>
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+                    </section>
+
+                </header>
+
+                <!-- actual article -->
+                <article class="grid">
+                    <div class="grid__item medium-up--one-whole">
+                        <div class="article__body rte" itemprop="articleBody">
+                            {{ article.content }}
+                        </div>
+                    </div>
+                </article>
+
+                <footer class="article__footer">
+
+                    <header class="article__header-container primary separator" data-animate>
+
+                        <h3>You may also like</h3>
+
+                    </header>
+                    <main class="page-width--no-gutter">
+
+                        <div class="grid">
+
+                            {% assign current = article.id %}
+                            {% for article in blog.articles %}
+                            {% unless article.id == current %}
+
+                            <div class="journal-entry grid__item medium-up--one-third" >
+
+                                {% include 'bookmarks-tags' %}
+
+                                <a href="{{ article.url }}" class="card__wrapper card--article" data-animate>
+
+                                    {% if article.image %}
+
+                                        <img class="card__image-wrapper card__image--align lazyload fade-in section-header-image" src="{{ article.image | img_url: 'master' }}" alt="{{ type.alt | escape }}">
+
+                                        <h3 class="card__name">{{ article.title }}</h3>
+
+                                    {% endif %}
+
+                                </a>
+
+                            </div>
+                            {% endunless %}
+                            {% endfor %}
+
+                        </div>
+
+                    </main>
+                </footer>
+
+            </div>
+
+
+
+            {% if section.settings.show_share_buttons %}
+            {% if settings.share_facebook or settings.share_twitter or settings.share_pinterest %}
+            <div class="article__share-desktop grid__item medium-up--two-twelfths">
+                <div class="article__share-desktop-wrapper">
+                    {% include 'social-sharing', type: 'article', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+                </div>
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% if section.settings.show_share_buttons %}
+    {% if settings.share_facebook or settings.share_twitter or settings.share_pinterest %}
+    <div class="article__share-mobile">
+        {% include 'social-sharing', type: 'mobile', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": {
+    "de": "Posts",
+    "en": "Posts",
+    "es": "Publicaciones",
+    "fr": "Articles",
+    "it": "Articoli",
+    "ja": "投稿",
+    "nl": "Berichten",
+    "pt-BR": "posts",
+    "zh-CN": "文章",
+    "zh-TW": "貼文"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "image_parallax",
+      "label": {
+        "de": "Parallax-Animation für Bild anzeigen",
+        "en": "Show image parallax animation",
+        "es": "Mostrar animación de paralaje de imagen",
+        "fr": "Afficher l'animation en parallaxe",
+        "it": "Mostra animazione parallasse immagine",
+        "ja": "画像のパララックスアニメーションを表示する",
+        "nl": "Parallax-animatie voor afbeelding weergeven",
+        "pt-BR": "Exibir animação de paralaxe da imagem",
+        "zh-CN": "显示图片视差动画",
+        "zh-TW": "顯示圖片的視差捲動動畫"
+      },
+      "info": {
+        "de": "Wird nur auf dem Desktop angezeigt",
+        "en": "Only shows on desktop",
+        "es": "Solo se muestra en el escritorio",
+        "fr": "Ne s'affiche que sur le bureau",
+        "it": "Appare solo su desktop",
+        "ja": "デスクトップにのみ表示する",
+        "nl": "Wordt alleen op desktop weergegeven",
+        "pt-BR": "Aparece apenas na área de trabalho",
+        "zh-CN": "仅在桌面上显示",
+        "zh-TW": "只顯示在桌面上"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": {
+        "de": "Datum anzeigen",
+        "en": "Show date",
+        "es": "Mostrar fecha",
+        "fr": "Afficher la date",
+        "it": "Mostra data",
+        "ja": "日付を表示する",
+        "nl": "Datum weergeven",
+        "pt-BR": "Exibir data",
+        "zh-CN": "显示日期",
+        "zh-TW": "顯示日期"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": {
+        "de": "Autor anzeigen",
+        "en": "Show author",
+        "es": "Mostrar autor",
+        "fr": "Afficher l'auteur",
+        "it": "Mostra autore",
+        "ja": "執筆者を表示する",
+        "nl": "Auteur weergeven",
+        "pt-BR": "Exibir autor(a)",
+        "zh-CN": "显示作者",
+        "zh-TW": "顯示作者"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": {
+        "de": "Teilen von Blog-Beiträgen aktivieren",
+        "en": "Enable sharing for blog articles",
+        "es": "Habilitar el uso compartido de artículos de blog",
+        "fr": "Activer le partage pour les articles de blog",
+        "it": "Abilita condivisione per gli articoli del blog",
+        "ja": "ブログ記事の共有を有効にする",
+        "nl": "Delen van blogartikelen toestaan",
+        "pt-BR": "Ativar compartilhamento para artigos de blog",
+        "zh-CN": "启用博客文章分享",
+        "zh-TW": "啟用部落格文章分享功能"
+      },
+      "info": {
+        "de": "Vergewissern Sie sich, dass Sie in den allgemeinen Einstellungen das Teilen in sozialen Netzwerken aktiviert haben",
+        "en": "Make sure you have enabled social sharing in general settings",
+        "es": "Asegúrate de haber habilitado la opción para compartir en redes sociales en la configuración general.",
+        "fr": "Assurez-vous d'avoir activé le partage social dans les paramètres généraux",
+        "it": "Assicurati di aver abilitato la condivisione sui social nelle impostazioni generali",
+        "ja": "一般設定でソーシャル共有を有効にしていることを確認してください。",
+        "nl": "Zorg ervoor dat u delen via social media hebt ingeschakeld in de algemene instellingen",
+        "pt-BR": "Verifique se você habilitou o compartilhamento em redes sociais nas configurações gerais",
+        "zh-CN": "确保您在“通用”设置中启用了社交分享",
+        "zh-TW": "請確定您已在一般設定內啟用社群分享功能"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}

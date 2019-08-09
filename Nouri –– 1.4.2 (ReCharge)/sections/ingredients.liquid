@@ -1,0 +1,106 @@
+<style type="text/css">
+
+  .ingredients-{{ section.id }} {
+    background: {{ section.settings.bg }};
+    color: {{ section.settings.text }};
+  }
+  .ingredients-{{ section.id }} .ingredients-title {
+    color: {{ section.settings.text }};
+  }
+
+</style>
+
+<div data-section-id="{{ section.id }}" data-section-type="ingredients-section">
+  {% if section.blocks.size > 0 %}
+    <div class="wrapper">
+          <div class="ingredients-{{ section.id }} ingredients push--large--one-tenth">
+
+                {% for block in section.blocks %}
+                  <div class="grid__item text-left large--three-eighths single__ingredient ingredients--{{ block.id }}">
+
+                    <h2 class="ingredients-title">
+                      {{ block.settings.title | escape }}
+                    </h2>
+
+                    {% if block.settings.image != blank %}
+                    <img src="{{ block.settings.image }}" class="ingredients__image" />
+                    {% endif %}
+
+                      {% if block.settings.textContent != blank %}
+                        {{ block.settings.textContent }}
+                      {% endif %}
+
+                    <div class="ingredients__subtitle">
+                      <a class="alt-color" href="{{ block.settings.subtitle-link }}">
+                        {{ block.settings.subtitle }}
+                      </a>
+                    </div>
+
+                  </div>
+
+                {% endfor %}
+
+          </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Ingredients",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg",
+        "label": "Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "text",
+        "label": "Text Color",
+        "default": "#000000"
+      }
+    ],
+    "blocks" : [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "textContent",
+            "label": "Text",
+            "default": "<p>Content Here</p>"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Sub Title"
+          },
+          {
+            "type": "url",
+            "id": "subtitle-link",
+            "label": "Sub Title Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Ingredients",
+        "category": "Ingredients"
+      }
+    ]
+  }
+{% endschema %}

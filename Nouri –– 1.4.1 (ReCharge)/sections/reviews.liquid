@@ -1,0 +1,35 @@
+<div class="reviews">
+
+  <div class="container-fluid p-0">
+
+    <div class="wrapper">
+
+      {% for block in section.blocks %}
+
+        {% include block.type %}
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+    {
+        "blocks":  [
+            {
+                "type": "default",
+                "name": "text",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "Text"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,130 @@
+<style type="text/css">
+
+  .bg-img-section-{{ section.id }} {
+    background: url({{ section.settings.bg_image | img_url: 'master' }});
+  }
+
+  @media all and (max-width: 767px) {
+    .bg-img-section-{{ section.id }} {
+      background: url({{ section.settings.bg_mobile_image | img_url: 'master' }});
+    }
+  }
+
+</style>
+
+{% capture image_layout %}
+<div class="section-content featured-content-with-image">
+  {% if section.settings.title != blank %}
+    <h1 "white-title">{{ section.settings.title | escape }}</h1>
+  {% endif %}
+
+  {% if section.settings.text != blank %}
+    {{ section.settings.text }}
+  {% endif %}
+
+  {% if section.settings.button_text != blank %}
+    <a href="{{ section.settings.button_link }}" class="btn medium-down--hide">{{ section.settings.button_text }}</a>
+  {% endif %}
+</div>
+{% endcapture %}
+
+<div class="section-wrapper" data-section-id="{{ section.id }}" data-section-type="bg-img-section">
+  <div class="shopify-section bg-img-section bg-img-section-{{ section.id }}">
+    <div class="wrapper">
+      <div class="grid page-width">
+
+            {% if section.settings.layout == 'left' %}
+            <div class="grid__item large--one-quarter pull--large--three-quarters medium--one-half">
+
+              {{ image_layout }}
+
+              </div>
+            {% endif %}
+
+
+            {% if section.settings.layout == 'center' %}
+
+            <div class="grid__item vertical-middle">
+
+                {{ image_layout }}
+
+            </div>
+
+            {% endif %}
+
+
+            {% if section.settings.layout == 'right' %}
+
+            <div class="grid__item large--one-quarter push--large--three-quarters medium--one-half">
+
+                {{ image_layout }}
+
+            </div>
+
+            {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Background Image",
+    "class": "index-section bg-img-section",
+    "settings": [
+	  {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background Image"
+      },
+ 	  {
+        "type": "image_picker",
+        "id": "bg_mobile_image",
+        "label": "Mobile Background Image"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Content Here</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }
+    ]
+  }
+{% endschema %}

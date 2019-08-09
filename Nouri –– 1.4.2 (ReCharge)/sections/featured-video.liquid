@@ -1,0 +1,99 @@
+<style type="text/css">
+  .video-wrapper-for-button {
+    text-align: center;
+  }
+  .video-wrapper-for-button a.btn {
+    background: transparent;
+    color: #ee4523;
+    border: 2px solid #ee4523;
+    padding: 20px 50px;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 75px;
+  }
+  .video-wrapper-for-button a.btn:hover, .video-wrapper-for-button a.btn:active {
+    background: #ee4523;
+    color: #fff;
+  }
+</style>
+<div class="wrapper">
+  {% if section.settings.heading != blank %}
+    <div class="section-header text-center">
+      <h2 class="h1 section-header__title">{{ section.settings.heading | escape }}</h2>
+      <hr class="hr--small">
+    </div>
+  {% endif %}
+  <div class="grid bottom gut">
+    <div class="grid__item large--two-thirds video-wrapper-for-button">
+      <div class="video-wrapper">
+        {% if section.settings.video_url == blank %}
+          <iframe src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" class="lazyload" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          {% if section.settings.video_url.type == "youtube" %}
+            <iframe src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" class="lazyload" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+          {% if section.settings.video_url.type == "vimeo" %}
+            <iframe src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?color={{ settings.color_secondary | remove: "#" }}&byline=0&portrait=0&badge=0" class="lazyload" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="grid__item large--one-third">
+
+      {% if section.settings.subheading != blank %}
+      <div class="subheading">
+        {{ section.settings.subheading }}
+      </div>
+      {% endif %}
+
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn cartbutton">
+            <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Video",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Video"
+      },
+      {
+        "type": "video_url",
+        "id": "video_url",
+        "label": "Video link",
+        "accept": ["youtube", "vimeo"]
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "<p>Subheading text</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Video",
+        "category": "Video"
+      }
+    ]
+  }
+{% endschema %}

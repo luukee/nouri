@@ -1427,10 +1427,9 @@ iframe {
   padding-bottom: 56.25%;
   height: 0;
   height: auto;
-/*   margin: 70px 0 70px 0; */
 
   @include at-query('', 320px, 768px) {
-    margin: 0 auto;
+    margin: 90px 0 0 0;
   }
 
   iframe {
@@ -2944,12 +2943,17 @@ $socialIconFontStack: "icons";
   .btn,
   .btn--secondary {
     margin-bottom: $gutter / 2;
+
+    &.update-cart,
+    &.cart__checkout {
+        margin-bottom: 7px;
+    }
   }
 }
 
 @include at-query($min, $postSmall) {
   .update-cart + .cart__checkout {
-    margin-left: $gutter / 2;
+    // margin-left: $gutter / 2;
   }
 }
 

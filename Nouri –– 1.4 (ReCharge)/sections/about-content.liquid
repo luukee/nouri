@@ -1,37 +1,50 @@
 <div class="grid-uniform">
   <div class="grid__item large--whole about-page">
     <div class="grid-uniform">
-      <div class="grid__item medium--one-whole large--three-quarters push--large--one-eighth">
+      <div class="grid__item medium--one-whole large--four-fifths push--large--one-tenth">
 
-        {% if section.settings.video_embed != empty %}
 
-          <iframe id="ytplayer" type="text/html" width="640" height="360"
-          src="{{ section.settings.video_embed }}"
-          frameborder="0"></iframe>
+              <!-- <iframe id="ytplayer" type="text/html" width="640" height="360"
+              src="{{ section.settings.video_embed }}"
+              frameborder="0"></iframe> -->
 
-        {% endif %}
+            <style>.codegena{position:relative;width:100%;height:0;padding-bottom:56.27198%;}.codegena iframe{position:absolute;top:0;left:0;width:100%;height:100%;}</style>
+            <div class="codegena">
+
+                <iframe width='978' height='575' src="https://www.youtube.com/embed/T5zLzRH_rnM?&theme=dark&color=white&autohide=1&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3"frameborder="0"></iframe>
+
+            </div>
+
+        </div>
+
 
       </div>
     </div>
-    <div class="grid pt-4">
-      <div class="grid__item medium--two-thirds push--medium--one-third large--two-thirds push--large--one-third">
-        <h1>{{ section.settings.heading }}</h1>
-      </div>
-    </div>
-    <div class="grid pt-4">
 
-      <div class="grid__item medium--one-third large--one-third">
-          <img src="{{ section.settings.about_image | img_url: 'large' }}" alt="" />
-      </div>
 
-      <div class="grid__item medium--two-thirds large--two-thirds">
-        {{ page.content }}
-      </div>
-    </div>
 
 
   </div>
-</div>
+  <div class="wrapper">
+      <div class="grid">
+        <div class="grid__item pt-4 medium--two-thirds push--medium--one-third large--two-thirds push--large--one-third">
+          <h1>{{ section.settings.heading }}</h1>
+        </div>
+      </div>
+  </div>
+
+  <div class="wrapper">
+      <div class="grid pt-4">
+
+        <div class="grid__item medium--one-third large--one-third">
+            <img src="{{ section.settings.about_image | img_url: 'large' }}" alt="" />
+        </div>
+
+        <div class="grid__item medium--two-thirds large--two-thirds">
+          {{ page.content }}
+        </div>
+      </div>
+  </div>
 
 {% schema %}
   {

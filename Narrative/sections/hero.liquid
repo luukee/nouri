@@ -1,0 +1,860 @@
+{% if section.settings.image != blank %}
+  <style>
+    .hero--{{ section.id }} {
+      background-position: {{ section.settings.alignment }};
+    }
+  </style>
+{% endif %}
+
+{% if section.settings.show_overlay %}
+  <style>
+    .hero--{{ section.id }}.hero__overlay::before {
+      background-color: {{ section.settings.overlay_color }};
+      opacity: {{ section.settings.overlay_opacity }};
+    }
+
+    .hero--{{ section.id }} .hero__overlay-title--overlay,
+    .hero--{{ section.id }} .mega-subtitle {
+      color: {{ section.settings.overlay_text }};
+    }
+  </style>
+{% endif %}
+
+<div class="hero hero--{{ section.id }} hero--{{ section.settings.hero_size }}{% if section.settings.show_overlay %} hero__overlay{% endif %} lazyload" data-bgset="{% include 'bgset', image: section.settings.image %}" data-section-id="{{ section.id }}" data-section-type="hero">
+  <div class="hero__inner">
+    <div class="page-width text-center">
+      {% if section.settings.title != blank %}
+        <h2 class="hero__overlay-title separator{% if section.settings.show_overlay %} hero__overlay-title--overlay{% endif %}{% if section.settings.text_size == 'large' %} h1{% endif %}" data-animate>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="rte-setting mega-subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">{{ section.settings.text }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn{% if section.settings.use_second_button %} btn--secondary{% endif %} hero__btn">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": {
+    "de": "Foto mit überlegtem Text",
+    "en": "Image with text overlay",
+    "es": "Imagen con texto",
+    "fr": "Image avec texte",
+    "it": "Immagine con testo",
+    "ja": "テキストオーバーレイ付き画像",
+    "nl": "Foto met tekstoverlay",
+    "pt-BR": "Imagem com texto",
+    "zh-CN": "带文本叠加的图片",
+    "zh-TW": "附文字疊加的圖片"
+  },
+  "class": "index-section index-section--image-with-text-overlay",
+  "settings": [
+    {
+      "type": "select",
+      "id": "hero_size",
+      "label": {
+        "de": "Abschnittsabstand",
+        "en": "Section spacing",
+        "es": "Espaciado de sección",
+        "fr": "Espacement des sections",
+        "it": "Spaziatura sezione",
+        "ja": "セクション間隔",
+        "nl": "Afstand tussen secties",
+        "pt-BR": "Espaçamento da seção",
+        "zh-CN": "分区间距",
+        "zh-TW": "區段間距"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "label": {
+            "de": "Klein",
+            "en": "Small",
+            "es": "Pequeña",
+            "fr": "Petite",
+            "it": "Piccolo",
+            "ja": "小",
+            "nl": "Klein",
+            "pt-BR": "Pequeno",
+            "zh-CN": "小",
+            "zh-TW": "小型"
+          },
+          "value": "small"
+        },
+        {
+          "label": {
+            "de": "Mitte",
+            "en": "Medium",
+            "es": "Mediano",
+            "fr": "Moyenne",
+            "it": "Medio",
+            "ja": "中",
+            "nl": "Gemiddeld",
+            "pt-BR": "Médio",
+            "zh-CN": "中等",
+            "zh-TW": "中等"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fr": "Grande",
+            "it": "Grande",
+            "ja": "大",
+            "nl": "Groot",
+            "pt-BR": "Grande",
+            "zh-CN": "大",
+            "zh-TW": "大型"
+          },
+          "value": "large"
+        },
+        {
+          "label": {
+            "de": "Extra groß",
+            "en": "Extra Large",
+            "es": "Extra grande",
+            "fr": "Très grande",
+            "it": "Molto grande",
+            "ja": "特大",
+            "nl": "Extra groot",
+            "pt-BR": "Extragrande",
+            "zh-CN": "特大",
+            "zh-TW": "超大型"
+          },
+          "value": "x-large"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": {
+        "de": "Fotoausrichtung",
+        "en": "Image alignment",
+        "es": "Alineación de imagen",
+        "fr": "Alignement de l'image",
+        "it": "Allineamento immagine",
+        "ja": "画像アラインメント",
+        "nl": "Afbeelding uitlijnen",
+        "pt-BR": "Alinhamento da imagem",
+        "zh-CN": "图片对齐方式",
+        "zh-TW": "圖片對齊"
+      },
+      "default": "center center",
+      "options": [
+        {
+          "label": {
+            "de": "Oben links",
+            "en": "Top left",
+            "es": "Superior izquierda",
+            "fr": "En haut à gauche",
+            "it": "In alto a sinistra",
+            "ja": "左上",
+            "nl": "Linksboven",
+            "pt-BR": "Superior esquerdo",
+            "zh-CN": "左上方",
+            "zh-TW": "左上角"
+          },
+          "value": "top left"
+        },
+        {
+          "label": {
+            "de": "Oben Mitte",
+            "en": "Top center",
+            "es": "Superior al centro",
+            "fr": "En haut au centre",
+            "it": "In alto al centro",
+            "ja": "中央上",
+            "nl": "Midden boven",
+            "pt-BR": "Superior centro",
+            "zh-CN": "顶部居中",
+            "zh-TW": "中央上方"
+          },
+          "value": "top center"
+        },
+        {
+          "label": {
+            "de": "Oben rechts",
+            "en": "Top right",
+            "es": "Superior derecha",
+            "fr": "En haut à droite",
+            "it": "In alto a destra",
+            "ja": "右上",
+            "nl": "Rechtsboven",
+            "pt-BR": "Superior direito",
+            "zh-CN": "右上方",
+            "zh-TW": "右上角"
+          },
+          "value": "top right"
+        },
+        {
+          "label": {
+            "de": "Mitte links",
+            "en": "Middle left",
+            "es": "Al medio a la izquierda",
+            "fr": "Au milieu à gauche",
+            "it": "In mezzo a sinistra",
+            "ja": "中央左",
+            "nl": "Links midden",
+            "pt-BR": "Meio esquerdo",
+            "zh-CN": "中间居左",
+            "zh-TW": "中央左方"
+          },
+          "value": "center left"
+        },
+        {
+          "label": {
+            "de": "Mitte mittig",
+            "en": "Middle center",
+            "es": "Al medio al centro",
+            "fr": "Centrée au milieu",
+            "it": "In mezzo al centro",
+            "ja": "中央中",
+            "nl": "Centraal midden",
+            "pt-BR": "Meio centro",
+            "zh-CN": "中间居中",
+            "zh-TW": "正中央"
+          },
+          "value": "center center"
+        },
+        {
+          "label": {
+            "de": "Mitte rechts",
+            "en": "Middle right",
+            "es": "Al medio a la derecha",
+            "fr": "Au milieu à droite",
+            "it": "In centro a destra",
+            "ja": "中央右",
+            "nl": "Rechts midden",
+            "pt-BR": "Meio direito",
+            "zh-CN": "中间居右",
+            "zh-TW": "中央右方"
+          },
+          "value": "center right"
+        },
+        {
+          "label": {
+            "de": "Unten links",
+            "en": "Bottom left",
+            "es": "Inferior izquierda",
+            "fr": "En bas à gauche",
+            "it": "In basso a sinistra",
+            "ja": "左下",
+            "nl": "Linksonder",
+            "pt-BR": "Inferior esquerdo",
+            "zh-CN": "左下方",
+            "zh-TW": "左下角"
+          },
+          "value": "bottom left"
+        },
+        {
+          "label": {
+            "de": "Unten mittig",
+            "en": "Bottom center",
+            "es": "Inferior al centro",
+            "fr": "En bas au centre",
+            "it": "In basso al centro",
+            "ja": "中央下",
+            "nl": "Middenonder",
+            "pt-BR": "Inferior centro",
+            "zh-CN": "底部居中",
+            "zh-TW": "中央下方"
+          },
+          "value": "bottom center"
+        },
+        {
+          "label": {
+            "de": "Unten rechts",
+            "en": "Bottom right",
+            "es": "Inferior derecha",
+            "fr": "En bas à droite",
+            "it": "In basso a destra",
+            "ja": "右下",
+            "nl": "Rechtsonder",
+            "pt-BR": "Inferior direito",
+            "zh-CN": "右下方",
+            "zh-TW": "右下角"
+          },
+          "value": "bottom right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "nl": "Tekst",
+        "pt-BR": "Texto",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fr": "Titre",
+        "it": "Heading",
+        "ja": "見出し",
+        "nl": "Kop",
+        "pt-BR": "Título",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "de": "Über Ihre Marke sprechen",
+        "en": "Talk about your brand",
+        "es": "Habla de tu marca",
+        "fr": "Parlez de votre marque",
+        "it": "Parla del tuo brand",
+        "ja": "あなたのブランドについて語る",
+        "nl": "Vertel over uw merk",
+        "pt-BR": "Fale sobre a sua marca",
+        "zh-CN": "谈论您的品牌",
+        "zh-TW": "描述您的品牌"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "nl": "Tekst",
+        "pt-BR": "Texto",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "default": {
+        "de": "<p>Nutzen Sie diesen Text, um Infos über Ihre Marke mitzuteilen. Beschreiben Sie ein Produkt, kündigen Sie etwas an oder heißen Sie Kunden willkommen.</p>",
+        "en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+        "es": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.</p>",
+        "fr": "<p>Utilisez ce texte pour partager des informations sur votre marque. Décrivez un produit, partagez des annonces, ou souhaitez la bienvenue à vos clients.</p>",
+        "it": "<p>Utilizza questo testo per condividere le informazioni sul tuo brand con i tuoi clienti. Descrivi un prodotto, condividi gli annunci o dai il benvenuto ai clienti nel tuo negozio.</p>",
+        "ja": "<p>このテキストを使用して、あなたのブランドに関する情報をお客様と共有します。商品を説明したり、告知の共有をしたり、あるいはストアのお客様を歓迎します。</p>",
+        "nl": "<p>Gebruik deze tekst om informatie over uw merk te delen met uw klanten. Beschrijf een product, deel aankondigingen of verwelkom klanten in uw winkel.</p>",
+        "pt-BR": "<p>Use este texto para compartilhar informações sobre sua marca com seus clientes. Descreva um produto, compartilhe anúncios ou receba os clientes em sua loja.</p>",
+        "zh-CN": "<p>使用此文本与您的客户分享有关您品牌的信息。描述产品、分享公告或欢迎客户访问您的商店。</p>",
+        "zh-TW": "<p>您可以用這段文字和客戶分享品牌資訊、描述產品、分享公告，或歡迎客戶光臨您的商店。</p>"
+      }
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": {
+        "de": "Textgröße",
+        "en": "Text size",
+        "es": "Tamaño del texto",
+        "fr": "Taille du texte",
+        "it": "Dimensione testo",
+        "ja": "文字サイズ",
+        "nl": "Tekengrootte",
+        "pt-BR": "Tamanho do texto",
+        "zh-CN": "文本大小",
+        "zh-TW": "文字尺寸"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "label": {
+            "de": "Mitte",
+            "en": "Medium",
+            "es": "Mediano",
+            "fr": "Moyenne",
+            "it": "Medio",
+            "ja": "中",
+            "nl": "Gemiddeld",
+            "pt-BR": "Médio",
+            "zh-CN": "中等",
+            "zh-TW": "中等"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fr": "Grande",
+            "it": "Grande",
+            "ja": "大",
+            "nl": "Groot",
+            "pt-BR": "Grande",
+            "zh-CN": "大",
+            "zh-TW": "大型"
+          },
+          "value": "large"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "use_second_button",
+      "label": {
+        "de": "Stil für sekundäre Schaltflächen verwenden",
+        "en": "Use secondary button style",
+        "es": "Utiliza el estilo de botón secundario",
+        "fr": "Utiliser le style de bouton secondaire",
+        "it": "Usa stile pulsante secondario",
+        "ja": "サブボタンのスタイルを使用する",
+        "nl": "Secundaire knopstijl gebruiken",
+        "pt-BR": "Usar o estilo de botão secundário",
+        "zh-CN": "使用辅助按钮样式",
+        "zh-TW": "使用次要按鈕樣式"
+      },
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": {
+        "de": "Button-Etikett",
+        "en": "Button label",
+        "es": "Etiqueta de botón",
+        "fr": "Texte du bouton",
+        "it": "Etichetta pulsante",
+        "ja": "ボタンラベル",
+        "nl": "Knoplabel",
+        "pt-BR": "Etiqueta do botão",
+        "zh-CN": "按钮标签",
+        "zh-TW": "按鈕標籤"
+      }
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": {
+        "de": "Button-Etikett",
+        "en": "Button link",
+        "es": "Enlace de botón",
+        "fr": "Lien du bouton",
+        "it": "Link pulsante",
+        "ja": "ボタンリンク",
+        "nl": "Knoplink",
+        "pt-BR": "Link do botão",
+        "zh-CN": "按钮链接",
+        "zh-TW": "按鈕連結"
+      }
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Overlay",
+        "en": "Overlay",
+        "es": "Superposición",
+        "fr": "Superposition",
+        "it": "Sovrapposizione",
+        "ja": "オーバーレイ",
+        "nl": "Overlay",
+        "pt-BR": "Sobreposição",
+        "zh-CN": "叠加",
+        "zh-TW": "疊加層"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay",
+      "label": {
+        "de": "Überlagerung anzeigen",
+        "en": "Show overlay",
+        "es": "Mostrar superposición",
+        "fr": "Afficher la superposition",
+        "it": "Mostra sovrapposizione",
+        "ja": "オーバーレイを表示する",
+        "nl": "Overlay weergeven",
+        "pt-BR": "Exibir sobreposição",
+        "zh-CN": "显示叠加",
+        "zh-TW": "顯示疊加層"
+      },
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": {
+        "de": "Überlagerungsfarbe",
+        "en": "Overlay Color",
+        "es": "Color de superposición",
+        "fr": "Couleur de superposition",
+        "it": "Colore sovrapposizione",
+        "ja": "オーバーレイの色",
+        "nl": "Kleur van overlay",
+        "pt-BR": "Cor de sobreposição",
+        "zh-CN": "叠加颜色",
+        "zh-TW": "疊加層顏色"
+      },
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "overlay_text",
+      "label": {
+        "de": "Textfarbe",
+        "en": "Text color",
+        "es": "Color del texto",
+        "fr": "Couleur du texte",
+        "it": "Colore del testo",
+        "ja": "文字の色",
+        "nl": "Tekstkleur",
+        "pt-BR": "Cor do texto",
+        "zh-CN": "文本颜色",
+        "zh-TW": "文字顏色"
+      },
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "overlay_opacity",
+      "label": {
+        "de": "Opazität",
+        "en": "Opacity",
+        "es": "Opacidad",
+        "fr": "Opacité",
+        "it": "Opacità",
+        "ja": "不透過率",
+        "nl": "Doorschijnendheid",
+        "pt-BR": "Opacidade",
+        "zh-CN": "不透明度",
+        "zh-TW": "透明度"
+      },
+      "default": "0.5",
+      "options": [
+        {
+          "label": {
+            "de": "100%",
+            "en": "100%",
+            "es": "100%",
+            "fr": "100 %",
+            "it": "100%",
+            "ja": "100%",
+            "nl": "100%",
+            "pt-BR": "100%",
+            "zh-CN": "100%",
+            "zh-TW": "100%"
+          },
+          "value": "1"
+        },
+        {
+          "label": {
+            "de": "95 %",
+            "en": "95%",
+            "es": "95%",
+            "fr": "95 %",
+            "it": "95%",
+            "ja": "95%",
+            "nl": "95%",
+            "pt-BR": "95%",
+            "zh-CN": "95%",
+            "zh-TW": "95%"
+          },
+          "value": "0.95"
+        },
+        {
+          "label": {
+            "de": "90 %",
+            "en": "90%",
+            "es": "90%",
+            "fr": "90 %",
+            "it": "90%",
+            "ja": "90%",
+            "nl": "90%",
+            "pt-BR": "90%",
+            "zh-CN": "90%",
+            "zh-TW": "90%"
+          },
+          "value": "0.9"
+        },
+        {
+          "label": {
+            "de": "85 %",
+            "en": "85%",
+            "es": "85%",
+            "fr": "85 %",
+            "it": "85%",
+            "ja": "85%",
+            "nl": "85%",
+            "pt-BR": "85%",
+            "zh-CN": "85%",
+            "zh-TW": "85%"
+          },
+          "value": "0.85"
+        },
+        {
+          "label": {
+            "de": "80 %",
+            "en": "80%",
+            "es": "80%",
+            "fr": "80 %",
+            "it": "80%",
+            "ja": "80%",
+            "nl": "80%",
+            "pt-BR": "80%",
+            "zh-CN": "80%",
+            "zh-TW": "80%"
+          },
+          "value": "0.8"
+        },
+        {
+          "label": {
+            "de": "75%",
+            "en": "75%",
+            "es": "75%",
+            "fr": "75 %",
+            "it": "75%",
+            "ja": "75%",
+            "nl": "75%",
+            "pt-BR": "75%",
+            "zh-CN": "75%",
+            "zh-TW": "75%"
+          },
+          "value": "0.75"
+        },
+        {
+          "label": {
+            "de": "70 %",
+            "en": "70%",
+            "es": "70%",
+            "fr": "70 %",
+            "it": "70%",
+            "ja": "70%",
+            "nl": "70%",
+            "pt-BR": "70%",
+            "zh-CN": "70%",
+            "zh-TW": "70%"
+          },
+          "value": "0.7"
+        },
+        {
+          "label": {
+            "de": "65 %",
+            "en": "65%",
+            "es": "65%",
+            "fr": "65 %",
+            "it": "65%",
+            "ja": "65%",
+            "nl": "65%",
+            "pt-BR": "65%",
+            "zh-CN": "65%",
+            "zh-TW": "65%"
+          },
+          "value": "0.65"
+        },
+        {
+          "label": {
+            "de": "60 %",
+            "en": "60%",
+            "es": "60%",
+            "fr": "60 %",
+            "it": "60%",
+            "ja": "60%",
+            "nl": "60%",
+            "pt-BR": "60%",
+            "zh-CN": "60%",
+            "zh-TW": "60%"
+          },
+          "value": "0.6"
+        },
+        {
+          "label": {
+            "de": "55 %",
+            "en": "55%",
+            "es": "55%",
+            "fr": "55 %",
+            "it": "55%",
+            "ja": "55%",
+            "nl": "55%",
+            "pt-BR": "55%",
+            "zh-CN": "55%",
+            "zh-TW": "55%"
+          },
+          "value": "0.55"
+        },
+        {
+          "label": {
+            "de": "50%",
+            "en": "50%",
+            "es": "50%",
+            "fr": "50 %",
+            "it": "50%",
+            "ja": "50%",
+            "nl": "50%",
+            "pt-BR": "50%",
+            "zh-CN": "50%",
+            "zh-TW": "50%"
+          },
+          "value": "0.5"
+        },
+        {
+          "label": {
+            "de": "45 %",
+            "en": "45%",
+            "es": "45%",
+            "fr": "45 %",
+            "it": "45%",
+            "ja": "45%",
+            "nl": "45%",
+            "pt-BR": "45%",
+            "zh-CN": "45%",
+            "zh-TW": "45%"
+          },
+          "value": "0.45"
+        },
+        {
+          "label": {
+            "de": "40 %",
+            "en": "40%",
+            "es": "40%",
+            "fr": "40 %",
+            "it": "40%",
+            "ja": "40%",
+            "nl": "40%",
+            "pt-BR": "40%",
+            "zh-CN": "40%",
+            "zh-TW": "40%"
+          },
+          "value": "0.4"
+        },
+        {
+          "label": {
+            "de": "35 %",
+            "en": "35%",
+            "es": "35%",
+            "fr": "35 %",
+            "it": "35%",
+            "ja": "35%",
+            "nl": "35%",
+            "pt-BR": "35%",
+            "zh-CN": "35%",
+            "zh-TW": "35%"
+          },
+          "value": "0.35"
+        },
+        {
+          "label": {
+            "de": "30 %",
+            "en": "30%",
+            "es": "30%",
+            "fr": "30 %",
+            "it": "30%",
+            "ja": "30%",
+            "nl": "30%",
+            "pt-BR": "30%",
+            "zh-CN": "30%",
+            "zh-TW": "30%"
+          },
+          "value": "0.3"
+        },
+        {
+          "label": {
+            "de": "25%",
+            "en": "25%",
+            "es": "25%",
+            "fr": "25 %",
+            "it": "25%",
+            "ja": "25%",
+            "nl": "25%",
+            "pt-BR": "25%",
+            "zh-CN": "25％",
+            "zh-TW": "25%"
+          },
+          "value": "0.25"
+        },
+        {
+          "label": {
+            "de": "20 %",
+            "en": "20%",
+            "es": "20%",
+            "fr": "20 %",
+            "it": "20%",
+            "ja": "20%",
+            "nl": "20%",
+            "pt-BR": "20%",
+            "zh-CN": "20%",
+            "zh-TW": "20%"
+          },
+          "value": "0.2"
+        },
+        {
+          "label": {
+            "de": "0 %",
+            "en": "0%",
+            "es": "0%",
+            "fr": "0 %",
+            "it": "0%",
+            "ja": "0%",
+            "nl": "0%",
+            "pt-BR": "0%",
+            "zh-CN": "0%",
+            "zh-TW": "0%"
+          },
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "de": "Foto mit überlegtem Text",
+        "en": "Image with text overlay",
+        "es": "Imagen con texto",
+        "fr": "Image avec superposition de texte",
+        "it": "Immagine con testo",
+        "ja": "テキストオーバーレイ付き画像",
+        "nl": "Foto met tekstoverlay",
+        "pt-BR": "Imagem com texto",
+        "zh-CN": "带文本叠加的图片",
+        "zh-TW": "附文字疊加的圖片"
+      },
+      "category": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    }
+  ]
+}
+{% endschema %}
