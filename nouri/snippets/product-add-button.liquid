@@ -1,0 +1,60 @@
+{% comment %}
+{% include 'product-form' %}
+------------------------------------------------------------------------------
+Product Form
+------------------------------------------------------------------------------
+{% endcomment %}
+
+{% form 'product', product, data-productid: product.id, class:'product-form' %}
+
+    {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+            <div class="product-form__item supports-js">
+            
+            </div>
+        {% endfor %}
+    {% endunless %}
+
+    <select name="id" data-productid="{{ product.id }}" class="product-form__master-select supports-no-js"
+        data-master-select>
+        {% for variant in product.variants %}
+            {% if variant.available %}
+                {% comment %}
+                Note: if you use option_selection.js, your select tag will be overwritten, meaning what you have inside <option>
+                will not reflect what you coded below.
+                {% endcomment %}
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                    data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} -
+                    {{ variant.price | money_with_currency }}</option>
+            
+            {% else %}
+                <option disabled="disabled">
+                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                </option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    
+    {% comment %}
+    add to cart button
+    {% endcomment %}
+    <button
+        class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
+        data-cart-submit type="submit" name="add" {% unless current_variant.available %} disabled="true"
+        {% endunless %} aria-label="{{ button_text }}">
+        <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
+            {{ button_text }}
+        </span>
+        <span class="secondary-text" aria-hidden=true
+            data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
+    </button>
+    {% comment %}
+    END add to cart button
+    {% endcomment %}
+
+{% endform %}
+{% comment %}
+------------------------------------------------------------------------------
+END Product Form
+------------------------------------------------------------------------------
+{% endcomment %}

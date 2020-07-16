@@ -305,10 +305,10 @@
                                             <input type="number" id="Qty" name="quantity" value="1" min="1" class="quantity-selector">
                                         </div>
 
-                                        {% comment %}
-                                        add to cart button
-                                        {% endcomment %}
-                                        <button class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
+                                    {% comment %}
+                                    add to cart button
+                                    {% endcomment %}
+                                    <button class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
                                         data-cart-submit
                                         type="submit" name="add"
                                         {% unless current_variant.available %} disabled="true"{% endunless %}

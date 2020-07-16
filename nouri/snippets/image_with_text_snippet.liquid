@@ -81,18 +81,15 @@
             {% elsif section.settings.content != empty %}
                 {{ section.settings.content }}
             {% endif %}
-            <form action="/cart" method="post" novalidate class="cart__form">
-                <button
-                    class="testing btn btn--to-secondary product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
-                    data-cart-submit type="submit" name="add" {% unless current_variant.available %} disabled="true" {% endunless %}
-                    aria-label="{{ button_text }}">
-                    <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
-                        {{ button_text }}
-                    </span>
-                    <span class="secondary-text" aria-hidden=true
-                        data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
-                </button>
-            </form>
+            
+            {% comment %}
+            add to cart button
+            {% endcomment %}
+            {% include 'product-add-button' %}
+            {% comment %}
+            END add to cart button
+            {% endcomment %}
+ 
         </div>
 
     </section>
