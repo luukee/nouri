@@ -1,0 +1,88 @@
+<div class="description-list">
+
+    <!-- dropdown 01 -->
+    {% if product.metafields.global.dropdown_01_title != blank %}
+    <dl class="description-item">
+        <dt class="dropdown_01_title">
+            <b>
+                {{ product.metafields.global.dropdown_01_title }}
+            </b>
+        </dtclass="dropdown_01_title">
+        <dd class="dropdown_01_definition">
+            <p>{{ product.description }}</p>
+            {% if product.metafields.global.dropdown_01_definition != blank %}
+            {{ product.metafields.global.dropdown_01_definition }}
+            {% endif %}
+
+            {% if product.metafields.global.dropdown_01_image != blank %}
+            <img src="{{ product.metafields.global.dropdown_01_image }}" alt="" class="dropdown-image">
+            {% endif %}
+        </dd>
+    </dl>
+    {% endif %}
+    <!-- END dropdown 01 -->
+
+    <!-- dropdown 02 -->
+    {% if product.metafields.global.dropdown_02_title != blank %}
+    <dl class="description-item">
+        <dt>
+            <b>
+                {{ product.metafields.global.dropdown_02_title }}
+            </b>
+        </dt>
+        <dd>
+            {% if product.metafields.global.dropdown_02_definition != blank %}
+            {{ product.metafields.global.dropdown_02_definition }}
+            {% endif %}
+
+            {% if product.metafields.global.dropdown_02_image != blank %}
+            <img src="{{ product.metafields.global.dropdown_02_image }}" alt="" class="dropdown-image">
+            {% endif %}
+        </dd>
+    </dl>
+    {% endif %}
+    <!-- END dropdown 02 -->
+
+    <!-- dropdown 03 -->
+    {% if product.metafields.global.dropdown_03_title != blank %}
+    <dl class="description-item">
+        <dt>
+            <b>
+                {{ product.metafields.global.dropdown_03_title }}
+            </b>
+        </dt>
+        <dd>
+            {% if product.metafields.global.dropdown_03_definition != blank %}
+            {{ product.metafields.global.dropdown_03_definition }}
+            {% endif %}
+
+            {% if product.metafields.global.dropdown_03_image != blank %}
+            <img src="{{ product.metafields.global.dropdown_03_image }}" alt="" class="dropdown-image">
+            {% endif %}
+        </dd>
+    </dl>
+    {% endif %}
+    <!-- END dropdown 03 -->
+
+    <!-- dropdown 04 -->
+    {% if product.metafields.global.dropdown_04_title != blank %}
+    <dl class="description-item">
+        <dt>
+            <b>
+                {{ product.metafields.global.dropdown_04_title }}
+            </b>
+        </dt>
+        <dd>
+            {% if product.metafields.global.dropdown_04_definition != blank %}
+            {{ product.metafields.global.dropdown_04_definition }}
+            {% endif %}
+
+            {% if product.metafields.global.dropdown_04_image != blank %}
+            <img src="{{ product.metafields.global.dropdown_04_image }}" alt="" class="dropdown-image">
+            {% endif %}
+        </dd>
+    </dl>
+    {% endif %}
+    <!-- END dropdown 04 -->
+
+</div>
