@@ -1,0 +1,296 @@
+<script>
+
+	$(document).ready(function () {
+		$('#address_search').val('90034');
+
+		setTimeout(
+			function () {
+				$('.search_bar button').click();
+			}, 1000);
+
+	});
+
+	// custom map icon
+	old_add_markers = add_markers;
+	add_markers = function () {
+		// this is the default Icon image displayed on the map
+		mainIcon = "https://cdn.shopify.com/s/files/1/2911/8128/files/map-marker.svg?36213";
+		// this is the icon used to display the users address
+		youIcon = "https://cdn.shopify.com/s/files/1/2911/8128/files/map-marker.svg?36213";
+		// this is a shadow used for both icons
+		// myshadow = "****";
+		add_markers = old_add_markers;
+		add_markers();
+	}
+</script>
+<style>
+	/* fix store locator search bar styling */
+	/* https://support.boldcommerce.com/hc/en-us/articles/201120713-Store-Locator-Styling */
+	.main_search_label {
+		float: left;
+		margin-top: 8px;
+	}
+
+	.search_limit_label {
+		float: left;
+		margin-top: 8px;
+		margin-right: 10px;
+		margin-left: -8px;
+	}
+
+	.distance_label {
+		float: left;
+		margin-right: 10px;
+		margin-top: 8px;
+	}
+
+	.search_bar button {
+		margin-top: 8px;
+	}
+
+	.search_bar #within_distance {
+		width: 105px;
+	}
+
+	.search_bar #limit {
+		width: 75px;
+	}
+
+	/* END fix store locator search bar styling */
+
+	/* make store locator responsive */
+	/* https://support.boldcommerce.com/hc/en-us/articles/204756655-Make-the-Store-Locator-Responsive-on-Mobile-Devices */
+	@media screen and (max-width: 641px) {
+		#col-main {
+			width: 96% !important;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+	}
+
+	/* END make store locator responsive */
+
+	/* show map, for some reason it is completely gone?? */
+	.addresses>ul {
+		display: block !important;
+	}
+
+	/* align map container */
+	.main {
+		height: calc(100vh - 4rem);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	@media screen and (min-width: 780px) {
+		.content-for-layout #col-main {
+			max-width: 82vw;
+			margin: 0 auto;
+		}
+
+		.main {
+			margin: 0 3em;
+		}
+	}
+
+	/* app header */
+	.header_html {
+		margin-bottom: 0;
+	}
+
+	label {
+		margin-bottom: 0;
+	}
+
+	/* title */
+	h2#store-locator-title {
+		line-height: 2rem;
+		font-size: 2rem;
+		text-transform: uppercase;
+		font-family: benton-sans, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		font-weight: 400;
+		text-align: center;
+	}
+
+	/* SEARCH BAR */
+	.search_bar {
+		background: transparent;
+		border: none;
+		padding: 20px 3em 10px 3em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.search_bar .main_search_bar {
+		width: 42%;
+	}
+
+	input#address_search {
+		background-color: transparent;
+		color: #000;
+		font-size: 15px;
+		padding: 7.5px;
+		border: solid white 1px;
+		border-radius: 0;
+	}
+
+	select {
+		background-color: transparent;
+		color: #000;
+		font-size: 15px;
+	}
+
+	.search_bar .search_limit {
+		min-width: auto;
+		padding-left: 1rem;
+	}
+
+	button#submitBtn {
+		border-radius: 50px;
+		border: 1px solid #000;
+		background-color: transparent;
+		box-shadow: none;
+		background: transparent;
+		color: #000;
+		transition: 0.2s all ease-in-out;
+		font-size: 15px;
+		font-family: benton-sans, sans-serif;
+		line-height: 1.8rem;
+		font-weight: 400;
+		padding: 3px 4rem;
+		text-shadow: none;
+	}
+
+	button#submitBtn:hover {
+ 		box-shadow:0 0 0px 2px #000
+	}
+	option {
+		color: #000;
+	}
+	/* END search bar */
+
+	/* all map text */
+	#store_map *,
+	.addresses *,
+	.search_bar * {
+		font-size: 1rem;
+		font-family: benton-sans, sans-serif;
+		line-height: 1.2rem;
+		font-weight: 400;
+	}
+
+	/* pop-up text */
+	#store_map * {
+		color: #000;
+	}
+
+	/* store address */
+	.addresses li a span {
+		font-size: 1.4rem;
+		line-height: 1.3;
+	}
+
+	/* new address icon */
+	#direction_destination,
+	.addresses li {
+		background: url("https://cdn.shopify.com/s/files/1/2911/8128/files/map-marker.svg?36213") no-repeat scroll 12px 17px transparent !important;
+	}
+
+	/* hide footer branding */
+	.footer_html {
+		display: none;
+	}
+
+	/* addresses container */
+	.addresses {
+		padding: 0;
+		overflow-x: hidden;
+	}
+
+	.distance {
+		margin-top: 45px;
+		font-size: 15px;
+	}
+
+	/* store info container */
+	.addresses li {
+		border-top: none;
+		border-bottom: 1px solid #656565;
+	}
+
+	@media (max-width: 650px) {
+
+		/* h2#store-locator-title {
+		padding-top: 100vw;
+		margin-top: 15vh;
+	} */
+		.search_bar .main_search_bar {
+			width: auto;
+		}
+
+		.main {
+			height: calc(100vh);
+		}
+
+		.search_bar {
+			display: block;
+			padding: 15px;
+		}
+
+		.search_bar button {
+			height: auto;
+		}
+
+		.search_bar .search_limit {
+			padding-left: 0;
+		}
+
+		#store_map * {
+			font-size: 12px;
+			line-height: 14px;
+		}
+
+		.addresses {
+			display: block;
+			height: 400px !important;
+			overflow: auto;
+			padding-right: 10px;
+			width: 100%;
+			position: relative;
+		}
+
+		.addresses ul {
+			max-height: 400px;
+			overflow: scroll;
+		}
+
+		h1.text-uppercase.mb-4.pt-5 {
+			margin-top: 18rem;
+		}
+
+		.distance {
+			width: 15%;
+			margin-top: 45px;
+		}
+
+		.distance+a {
+			float: left !important;
+			width: 85% !important;
+		}
+
+		.addresses .store_website {
+			margin-left: 0;
+		}
+
+		#submitBtn {
+			float: none;
+			padding: 7.5px;
+			margin-top: 2px;
+			width: 99%;
+		}
+	}
+
+</style>

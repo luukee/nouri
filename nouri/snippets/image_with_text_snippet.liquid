@@ -1,0 +1,100 @@
+{%- assign blockSizing = section.settings.block_sizing -%}
+{%- assign alignmentSetting = section.settings.alignment -%}
+
+{%- capture gridOneBlockSizing -%}
+    {%- if blockSizing == 'third' -%} medium-up--one-half{%- else -%} medium-up--one-half{%- endif -%}
+{%- endcapture -%}
+
+{%- capture gridTwoBlockSizing -%}
+    {%- if blockSizing == 'half' -%} medium-up--one-half medium-up--push-one-sixth{%- else -%} medium-up--one-third{%- endif -%}
+{%- endcapture -%}
+
+
+{%- if alignmentSetting == 'right' -%}
+
+    <section class="{{ section.id }}--image-with-text grid custom-content-wrapper--top-margin bottom-padding one">
+        <div class="grid__item {{ gridTwoBlockSizing }} ingredients-info">
+            <h2 class="title">{{ section.settings.title }}</h2>
+
+            <p>{{ section.settings.subheader }}</p>
+
+            <p><b>{{ section.settings.subheader_bold }}</b></p>
+
+            {{ section.settings.content }}
+        </div>
+
+        <div class="grid__item {{ gridOneBlockSizing }} ingredients-image">
+            {%- if section.settings.image == blank -%}
+            <div class="placeholder-background">
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            {% elsif product.metafields.global.image_url %}
+                <img src="{{ product.metafields.global.image_url }}" class="product_metafield_image" alt="{{ image.alt | escape }}">
+            {%- else -%}
+            <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+            {%- endif -%}
+        </div>
+    </section>
+
+{%- elsif alignmentSetting == 'left' -%}
+    
+    <section class="{{ section.id }}--image-with-text grid custom-content-wrapper--top-margin bottom-padding one">
+    
+        <div class="grid__item {{ gridOneBlockSizing }} ingredients-image">
+            {%- if section.settings.image == blank -%}
+            <div class="placeholder-background">
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            {% elsif product.metafields.global.image_url %}
+                <img src="{{ product.metafields.global.image_url }}" class="product_metafield_image" alt="{{ image.alt | escape }}">
+            {%- else -%}
+            <img src="{{ section.settings.image | img_url: 'master' }}" alt="{{ image.alt | escape }}">
+            {%- endif -%}
+        </div>
+
+        <div class="grid__item {{ gridTwoBlockSizing }} ingredients-info">
+            
+
+            {% if product.metafields.global.image_title %}
+                <h2 class="metafield title">{{ product.metafields.global.image_title }}</h2>
+            {% elsif section.settings.title != empty %}
+                <h2 class="title">{{ section.settings.title }}</h2>
+            {% endif %}
+        
+            {% if section.settings.subheader != empty %}
+                <p>{{ section.settings.subheader }}</p>
+            {% endif %}
+        
+            {% if section.settings.subheader_bold != empty %}
+                <p>
+                    <b>{{ section.settings.subheader_bold }}</b>
+                </p>
+            {% endif %}
+                
+            {% if product.metafields.global.image_content %}
+                <p class="image_content">{{ product.metafields.global.image_content }}</p>
+                {% if product.metafields.global.image_content_two %}
+                    <p class="image_content_two">{{ product.metafields.global.image_content_two }}</p>
+                {% endif %}
+            {% elsif section.settings.content != empty %}
+                {{ section.settings.content }}
+            {% endif %}
+            <form action="/cart" method="post" novalidate class="cart__form">
+                <button
+                    class="btn btn--to-secondary product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
+                    data-cart-submit type="submit" name="add" {% unless current_variant.available %} disabled="true" {% endunless %}
+                    aria-label="{{ button_text }}">
+                    <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
+                        {{ button_text }}
+                    </span>
+                    <span class="secondary-text" aria-hidden=true
+                        data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
+                </button>
+            </form>
+        </div>
+
+    </section>
+
+{%- endif -%}

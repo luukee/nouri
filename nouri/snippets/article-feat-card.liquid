@@ -1,0 +1,55 @@
+
+
+    <div class="grid journal__entry-feat">
+
+        <div class="grid__item image-container {{ gridClasses }}">
+
+            {% if article.image %}
+
+              {% assign article_image = article.image %}
+
+            {% endif %}
+
+            {% include 'bookmarks-tags' %}
+
+            <a href="{{ article.url }}">
+
+                {% if article_image != blank %}
+
+                  {% include 'card-image', type: article_image, grid_style: grid_style %}
+
+                {% endif %}
+
+            </a>
+
+        </div>
+
+        <div class="grid__item {{ gridClasses }}">
+
+            <div class="card__info--visible">
+              {% if section.settings.blog_show_date %}
+                <span class="card__date text-small--uppercase">
+                  {{ article.published_at | time_tag: format: 'date' }}
+                </span>
+              {% endif %}
+              <div class="card__excerpt rte">
+                {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt }}
+                  <a href="{{ article.url }}" class="plus-icon-nav">
+
+                      {% include 'icon-plus' %}
+
+                  </a>
+                {% else %}
+                  {{ article.content | strip_html | truncatewords: 30 }}
+                {% endif %}
+
+
+
+              </div>
+
+            </div>
+
+        </div>
+
+    </div>

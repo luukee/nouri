@@ -1,0 +1,287 @@
+<style>
+    .list-icons-section  .icon__text {
+        color: #{{ product.metafields.global.icons_text_color }};
+    }
+</style>
+{% if settings.section.show_modal == blank %}
+<style>
+.icons-main .icon__image,
+.icons-main .single__icon {
+    cursor: default;
+}
+</style>
+{% endif %}
+    <section class="grid__item small-up--one-whole list-icons-section custom-content-wrapper--top-margin custom-content-wrapper--bottom-margin">
+        <div class="page-width--narrow">
+            {%- comment -%}{% include 'list-icons-modal-snippet' %}{%- endcomment -%}
+
+        <!-- Icons Section -->
+        <div class="icons-{{ product.title | handleize }} icons-main grid">
+
+            <!-- icon 01 -->
+            {% if product.metafields.global.icon_01 %}
+            <div class="single__icon icon--{{ block.id }}" id="modalclick--{{ product.metafields.global.icon_01_title }}">
+
+                <!-- initial icon -->
+                <div class="icon">
+                    <img src="{{ product.metafields.global.icon_01 }}" class="icon__image" />
+                    <!-- initial icon text -->
+                    <div class="icon__text">
+                        {{ product.metafields.global.icon_01_title }}
+                    </div>
+                </div>
+                {% if settings.section.show_modal %}
+                <!-- modal content -->
+                <div id="modalicon--{{ product.metafields.global.icon_01_title }}" class="modal">
+                    <div class="modal-content ">
+                        <a class="close close--{{ block.id }}">&times;</a>
+                        <div class="icon-model">
+
+                            <div class="icon-model-img medium-up--one-quarter grid__item">
+                                    <img src="{{ product.metafields.global.icon_01 }}" class="icon_model__image lazyload" />
+                            </div>
+                            <div class="icon-model-content medium-up--six-eighths grid__item">
+                                <p>
+                                    {% if product.metafields.global.icon_01_text != blank %}
+                                        {{ product.metafields.global.icon_01_text }}
+                                    {% endif %}
+                                </p>
+                                <div class="conditions">
+                                    <p>
+                                        {% if product.metafields.global.icon_01_conditions != blank %}
+                                            {{ product.metafields.global.icon_01_conditions }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end "modalicon--" -->
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- icon 02 -->
+            {% if product.metafields.global.icon_02 %}
+            <div class="single__icon icon--{{ block.id }}" id="modalclick--{{ product.metafields.global.icon_02_title }}">
+            
+                <!-- initial icon -->
+                <div class="icon">
+                    <img src="{{ product.metafields.global.icon_02 }}" class="icon__image" />
+                    <!-- initial icon text -->
+                    <div class="icon__text">
+                        {{ product.metafields.global.icon_02_title }}
+                    </div>
+                </div>
+                {% if settings.section.show_modal %}
+                <!-- modal content -->
+                <div id="modalicon--{{ product.metafields.global.icon_02_title }}" class="modal">
+                    <div class="modal-content ">
+                        <a class="close close--{{ block.id }}">&times;</a>
+                        <div class="icon-model">
+            
+                            <div class="icon-model-img medium-up--one-quarter grid__item">
+                                <img src="{{ product.metafields.global.icon_02 }}" class="icon_model__image lazyload" />
+                            </div>
+                            <div class="icon-model-content medium-up--six-eighths grid__item">
+                                <p>
+                                    {% if product.metafields.global.icon_02_text != blank %}
+                                    {{ product.metafields.global.icon_02_text }}
+                                    {% endif %}
+                                </p>
+                                <div class="conditions">
+                                    <p>
+                                        {% if product.metafields.global.icon_02_conditions != blank %}
+                                        {{ product.metafields.global.icon_02_conditions }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- icon 03 -->
+            {% if product.metafields.global.icon_03 %}
+            <div class="single__icon icon--{{ block.id }}" id="modalclick--{{ product.metafields.global.icon_03_title }}">
+
+                <!-- initial icon -->
+                <div class="icon">
+                    <img src="{{ product.metafields.global.icon_03 }}" class="icon__image" />
+                    <!-- initial icon text -->
+                    <div class="icon__text">
+                        {{ product.metafields.global.icon_03_title }}
+                    </div>
+                </div>
+
+                {% if settings.section.show_modal %}
+                <!-- modal content -->
+                <div id="modalicon--{{ product.metafields.global.icon_03_title }}" class="modal">
+                    <div class="modal-content ">
+                        <a class="close close--{{ block.id }}">&times;</a>
+                        <div class="icon-model">
+
+                            <div class="icon-model-img medium-up--one-quarter grid__item">
+                                <img src="{{ product.metafields.global.icon_03 }}" class="icon_model__image lazyload" />
+                            </div>
+                            <div class="icon-model-content medium-up--six-eighths grid__item">
+                                <p>
+                                    {% if product.metafields.global.icon_03_text != blank %}
+                                    {{ product.metafields.global.icon_03_text }}
+                                    {% endif %}
+                                </p>
+                                <div class="conditions">
+                                    <p>
+                                        {% if product.metafields.global.icon_03_conditions != blank %}
+                                        {{ product.metafields.global.icon_03_conditions }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- icon 04 -->
+            {% if product.metafields.global.icon_04 %}
+            <div class="single__icon icon--{{ block.id }}" id="modalclick--{{ product.metafields.global.icon_04_title }}">
+
+                <!-- initial icon -->
+                <div class="icon">
+                    <img src="{{ product.metafields.global.icon_04 }}" class="icon__image" />
+                    <!-- initial icon text -->
+                    <div class="icon__text">
+                        {{ product.metafields.global.icon_04_title }}
+                    </div>
+                </div>
+
+                {% if settings.section.show_modal %}
+                <!-- modal content -->
+                <div id="modalicon--{{ product.metafields.global.icon_04_title }}" class="modal">
+                    <div class="modal-content ">
+                        <a class="close close--{{ block.id }}">&times;</a>
+                        <div class="icon-model">
+
+                            <div class="icon-model-img medium-up--one-quarter grid__item">
+                                <img src="{{ product.metafields.global.icon_04 }}" class="icon_model__image lazyload" />
+                            </div>
+                            <div class="icon-model-content medium-up--six-eighths grid__item">
+                                <p>
+                                    {% if product.metafields.global.icon_04_text != blank %}
+                                    {{ product.metafields.global.icon_04_text }}
+                                    {% endif %}
+                                </p>
+                                <div class="conditions">
+                                    <p>
+                                        {% if product.metafields.global.icon_04_conditions != blank %}
+                                        {{ product.metafields.global.icon_04_conditions }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- icon 05 -->
+            {% if product.metafields.global.icon_05 %}
+            <div class="single__icon icon--{{ block.id }}" id="modalclick--{{ product.metafields.global.icon_05_title }}">
+
+                <!-- initial icon -->
+                <div class="icon">
+                    <img src="{{ product.metafields.global.icon_05 }}" class="icon__image" />
+                    <!-- initial icon text -->
+                    <div class="icon__text">
+                        {{ product.metafields.global.icon_05_title }}
+                    </div>
+                </div>
+                
+                {% if settings.section.show_modal %}
+                <!-- modal content -->
+                <div id="modalicon--{{ product.metafields.global.icon_05_title }}" class="modal">
+                    <div class="modal-content ">
+                        <a class="close close--{{ block.id }}">&times;</a>
+                        <div class="icon-model">
+
+                            <div class="icon-model-img medium-up--one-quarter grid__item">
+                                <img src="{{ product.metafields.global.icon_05 }}" class="icon_model__image lazyload" />
+                            </div>
+                            <div class="icon-model-content medium-up--six-eighths grid__item">
+                                <p>
+                                    {% if product.metafields.global.icon_05_text != blank %}
+                                    {{ product.metafields.global.icon_05_text }}
+                                    {% endif %}
+                                </p>
+                                <div class="conditions">
+                                    <p>
+                                        {% if product.metafields.global.icon_05_conditions != blank %}
+                                        {{ product.metafields.global.icon_05_conditions }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- icon 06 -->
+            {% if product.metafields.global.icon_06 %}
+            <div class="single__icon icon--{{ block.id }}" id="modalclick--{{ product.metafields.global.icon_06_title }}">
+
+                <!-- initial icon -->
+                <div class="icon">
+                    <img src="{{ product.metafields.global.icon_06 }}" class="icon__image" />
+                    <!-- initial icon text -->
+                    <div class="icon__text">
+                        {{ product.metafields.global.icon_06_title }}
+                    </div>
+                </div>
+            
+                {% if settings.section.show_modal %}
+                <!-- modal content -->
+                <div id="modalicon--{{ product.metafields.global.icon_06_title }}" class="modal">
+                    <div class="modal-content ">
+                        <a class="close close--{{ block.id }}">&times;</a>
+                        <div class="icon-model">
+            
+                            <div class="icon-model-img medium-up--one-quarter grid__item">
+                                <img src="{{ product.metafields.global.icon_06 }}" class="icon_model__image lazyload" />
+                            </div>
+                            <div class="icon-model-content medium-up--six-eighths grid__item">
+                                <p>
+                                    {% if product.metafields.global.icon_06_text != blank %}
+                                    {{ product.metafields.global.icon_06_text }}
+                                    {% endif %}
+                                </p>
+                                <div class="conditions">
+                                    <p>
+                                        {% if product.metafields.global.icon_06_conditions != blank %}
+                                        {{ product.metafields.global.icon_06_conditions }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+</section>
+        

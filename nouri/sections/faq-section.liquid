@@ -1,0 +1,231 @@
+<div class="grid faq-intro">
+    <div class="grid__item medium-up--two-fifths">
+        <h1>{{ section.settings.title }}</h1>
+    </div>
+
+    <div class="grid__item medium-up--three-fifths">
+        <p>{{ section.settings.subtitle }}</p>
+    </div>
+</div>
+
+<div class="grid faqs">
+    <section class="grid__item faq-title-container medium-up--two-fifths">
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when 'separator' -%}
+                {% capture faq_section_name %}
+                    {{- block.settings.separator | replace: " ", "-" -}}
+                {% endcapture %}
+                    <p {{ block.shopify_attributes }} class="faq-title" {% if forloop.first == true %}id="defaultOpen"{% endif %} onclick="openFaq(event, '{{ block.settings.separator | downcase | replace: " ", "-" }}')">
+                        <b>
+                            {{ block.settings.separator }}
+                        </b>
+                    </p>
+            {%- endcase -%}
+        {%- endfor -%}
+    </section>
+
+    <section class="description-list faqs grid__item medium-up--three-fifths">
+        <dl class="faq-section first">
+        {%- for block in section.blocks -%}
+            {%- case block.type -%}
+                {%- when 'text' -%}
+                    <dt class="plain">
+                        <b>{{ block.settings.question }}</b>
+                    </dt>
+
+                    <dd {{ block.shopify_attributes }} class="faq-answer">
+                        {{ block.settings.answer }}
+                    </dd>
+                {%- when 'separator' -%}
+            </dl>
+                <dl id="{{ block.settings.separator | downcase | replace: " ", "-" }}" class="faq-section {% if forloop.first == true %}selected{% endif %}">
+                {%- else -%}
+            </dl>
+            {%- endcase -%}
+        {%- endfor -%}
+    </section>
+</div>
+
+<script>
+
+/*
+ * FAQ toggles, see file sections/faq-section.liquid
+ * https://www.w3schools.com/howto/howto_js_vertical_tabs.asp
+ */
+
+function openFaq(evt, faqTitle) {
+  // Declare all variables
+  var i, faqcontent, faqtitles, faqanswer;
+
+  // Get all elements with class="faq-section" and hide them
+  faqcontent = document.getElementsByClassName("faq-section");
+
+  for (i = 0; i < faqcontent.length; i++) {
+      faqcontent[i].setAttribute(
+       "style", "opacity: 0; visibility: collapse; max-height: 0; padding: 0; position: absolute; transition: all .5s ease-in-out 0s;");
+  }
+
+  // Get all elements with class="faqtitles" and remove the class "active"
+  faqtitles = document.getElementsByClassName("faq-title");
+  for (i = 0; i < faqtitles.length; i++) {
+    faqtitles[i].className = faqtitles[i].className.replace(" active", "");
+
+  }
+
+  // Show the current tab, and add an "active" class to the link that opened the tab
+  document.getElementById(faqTitle).setAttribute(
+   "style", "opacity: 1; visibility: visible; position: relative; transition: all .5s ease-in-out 0s;");
+  evt.currentTarget.className += " active";
+
+}
+
+document.getElementById("defaultOpen").click();
+
+// toggle individual questions
+// https://www.sitepoint.com/community/t/javascript-to-show-hide-dt-when-dd-clicked/8381
+document.getElementByClass = function (theClass) {
+        var elementArray = [];
+        if (typeof document.all != "undefined") {
+            elementArray = document.all;
+        } else {
+            elementArray = document.getElementsByTagName("*");
+        }
+        var matchedArray = [];
+        var pattern = new RegExp("(^| )" + theClass + "( |$)");
+        for (var i = 0; i < elementArray.length; i++) {
+            if (pattern.test(elementArray[i].className)) {
+                matchedArray[matchedArray.length] = elementArray[i];
+            }
+        }
+        return matchedArray;
+    };
+    // Toggle Functions
+    // Source modified from http://bonrouge.com/~togglit
+    function toggleNext(elm) {
+        var next = elm.nextSibling;
+        while (next.nodeType !== 1) {
+            next = next.nextSibling;
+        }
+        next.style.display = (
+            (next.style.display === "none")
+                ? "block"
+                : "none"
+        );
+    }
+
+    function toggleEl(elm) {
+        elm.className += ' ' + 'clicker';
+        elm.onclick = function () {
+            toggleNext(this);
+        }
+        toggleNext(elm);
+    }
+
+    var sheet = document.createElement('style');
+    sheet.innerHTML = ".clicker { cursor: pointer; color: blue; text-decoration: underline;}";
+    document.head.appendChild(sheet);
+    var toggle = document.getElementByClass("plain");
+    if (toggle != undefined) {
+        for (var i in toggle) {
+            toggleEl(toggle[i]);
+        }
+    }		
+</script>
+
+
+{% schema %}
+{
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": {
+          "de": "Titel",
+          "en": "Heading",
+          "es": "Título",
+          "fr": "Titre",
+          "it": "Heading",
+          "ja": "見出し",
+          "nl": "Kop",
+          "pt-BR": "Título",
+          "zh-CN": "标题",
+          "zh-TW": "標題"
+        },
+        "default": {
+          "de": "Kategorien-Liste",
+          "en": "Frequently Asked Questions",
+          "es": "Lista de colecciones",
+          "fr": "Page de liste des collections",
+          "it": "Elenco delle collezioni",
+          "ja": "コレクションリスト",
+          "nl": "Collectielijst",
+          "pt-BR": "Lista de coleções",
+          "zh-CN": "产品系列列表",
+          "zh-TW": "商品系列清單"
+        }
+      },
+      {
+        "type": "textarea",
+        "id": "subtitle",
+        "label": {
+          "de": "Titel",
+          "en": "Subtitle",
+          "es": "Título",
+          "fr": "Titre",
+          "it": "Heading",
+          "ja": "見出し",
+          "nl": "Kop",
+          "pt-BR": "Título",
+          "zh-CN": "标题",
+          "zh-TW": "標題"
+        },
+        "default": {
+          "de": "Kategorien-Liste",
+          "en": "Don’t see the answer to your question below? Feel free to reach out at hello@dailynouri.com",
+          "es": "Lista de colecciones",
+          "fr": "Page de liste des collections",
+          "it": "Elenco delle collezioni",
+          "ja": "コレクションリスト",
+          "nl": "Collectielijst",
+          "pt-BR": "Lista de coleções",
+          "zh-CN": "产品系列列表",
+          "zh-TW": "商品系列清單"
+        }
+      }
+    ],
+    "name": "FAQs",
+    "blocks" : [
+        {
+            "type": "text",
+            "name": "FAQ",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "question",
+                    "label": "Question",
+                    "default": "You have a question?"
+                },
+                {
+                    "type": "textarea",
+                    "id": "answer",
+                    "label": "Answer",
+                    "default": "Here's your answer!"
+                }
+            ]
+        },
+        {
+            "type": "separator",
+            "name": "FAQ Heading",
+            "settings": [
+                {
+                  "type": "text",
+                  "id": "separator",
+                  "label": "FAQ Heading"
+                }
+            ]
+        }
+    ]
+}
+
+{% endschema %}

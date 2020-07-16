@@ -1,0 +1,132 @@
+<script>
+
+	$(document).ready(function () {
+		$('#address_search').val('90034');
+
+		setTimeout(
+			function () {
+				$('.search_bar button').click();
+			}, 1000);
+
+	});
+
+	// custom map icon
+	old_add_markers = add_markers;
+	add_markers = function () {
+		// this is the default Icon image displayed on the map
+		mainIcon = "https://cdn.shopify.com/s/files/1/2911/8128/files/map-marker.svg?36213";
+		// this is the icon used to display the users address
+		youIcon = "https://cdn.shopify.com/s/files/1/2911/8128/files/map-marker.svg?36213";
+		// this is a shadow used for both icons
+		// myshadow = "****";
+		add_markers = old_add_markers;
+		add_markers();
+	}
+</script>
+<style>
+	/* align map container */
+	.main {
+		height: calc(100vh - 4rem);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	@media screen and (min-width: 780px) {
+		.content-for-layout #col-main {
+			max-width: 82vw;
+			margin: 0 auto;
+		}
+
+		.main {
+			margin: 0 3em;
+		}
+	}
+
+	/* title */
+	h2#store-locator-title {
+		text-transform: none;
+		font-family: benton-sans, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		text-align: center;
+		line-height: 1.22;
+		font-weight: 700;
+		font-size: 1.6rem;
+	}
+
+	/* button */
+	button#submitBtn {
+		border-radius: 50px;
+		border: 1px solid #000;
+		background-color: transparent;
+		box-shadow: none;
+		background: transparent;
+		color: #000;
+		transition: 0.2s all ease-in-out;
+		font-size: 1.25rem;
+		font-family: benton-sans, sans-serif;
+		line-height: 1.8rem;
+		font-weight: 700;
+		padding: 3px 4rem;
+		text-shadow: none;
+	}
+
+	button#submitBtn:hover {
+		box-shadow: 0 0 0px 2px #000
+	}
+	/* results icons */
+	.distance {
+		margin-top: 45px;
+		font-size: 15px;
+	}
+	/* SEARCH BAR */
+	.search_bar {
+		background: transparent;
+		border: none;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 5px;
+		padding: 0;
+	}
+	/* search bar inner elements */
+	.search_bar .main_search_bar, 
+	.search_bar .search_within_distance,
+	.search_bar .search_limit {
+		flex: 0 1 auto;
+		width: auto;
+		min-width: auto;
+		text-align: unset;
+		display: flex;
+    	align-items: baseline;
+	}
+	/* search bar search input & actual input */
+	.search_bar .main_search_bar, 
+	.search_bar .main_search_label, 
+	.search_bar .distance_label,
+	.search_bar .search_limit_label {
+		flex: 0 0 45%;
+	}
+	/* search bar actual input */
+	.search_bar .main_search_bar input {
+		padding: 0 13px;
+		font-size: 1.4rem;
+	}
+	/* search bar selectors */
+	.search_bar select {
+		padding: 10px 35px 0px 24px;
+		font-size: 1.4rem;
+	}
+	/* new address icon */
+	#direction_destination,
+	.addresses li {
+		background: url("https://cdn.shopify.com/s/files/1/2911/8128/files/map-marker.svg?36213") no-repeat scroll 12px 17px transparent !important;
+	}
+
+	/* nearest store message */
+	.search_bar+div {
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+</style>

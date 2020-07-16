@@ -1,0 +1,464 @@
+.whai {
+	& * {
+		font-family: benton-sans, sans-serif;
+	}
+}
+
+.whai.whai-slide.whai-recommendations-slide * {
+	color: #fff;
+}
+
+.whai-fullscreen-quiz .whai-slide .whai-options .whai-text-option {
+	border-radius: 50px;
+}
+
+p.whai.whai-font.main {
+	margin-top: 5px;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 120%;
+	text-align: center;
+}
+/* intro: hide button */
+.intro button.whai.whai-slide-button {
+	display: none;
+}
+// show results button
+.whai-fullscreen-quiz .whai-slide .whai-column-button .whai-slide-button {
+	border: 1px solid;
+	border-radius: 50px;
+	font-family: benton-sans, sans-serif;
+	text-transform: lowercase;
+	font-weight: 300;
+	font-size: 1rem;
+	line-height: 35px;
+	width: auto;
+	padding: 3px 4rem;
+}
+
+// intro button container
+.whai-fullscreen-quiz .whai-slide.intro .whai-column-button:last-child {
+	margin-bottom: 0;
+}
+
+// intro button container
+.whai-fullscreen-quiz .whai-slide .whai-column-button:last-child {
+	margin-bottom: 100px;
+}
+
+// start over button container
+.whai-fullscreen-quiz .whai-pagination-container.visible {
+	position: absolute;
+	bottom: 100px;
+	width: 100%;
+}
+// start over/back button
+.whai-fullscreen-quiz .whai-pagination-container .whai-pagination-actions {
+	display: block;
+	text-align: center;
+}
+// reccomended slide
+.whai-fullscreen-quiz .whai-slide.whai-recommendations-slide {
+	margin-bottom: 10rem;
+}
+// hide price
+.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing .price,
+.whai-fullscreen-quiz .whai-pagination-container .whai-pagination-actions h5 {
+	display: none;
+}
+// .whai-fullscreen-quiz .whai-slide .whai-products .whai-product.card h5 {
+// 	display: none;
+// }
+.whai-fullscreen-quiz .quiz-logo-container .quiz-logo {
+	height: 3vw;
+}
+
+.whai.inner-slider.enabled.animatable {
+	width: 100vw !important;
+	transform: none !important;
+	flex-direction: column !important;
+}
+
+// hide pagination top line
+.whai-fullscreen-quiz .whai-pagination-container .whai-pagination {
+	display: none;
+}
+
+.whai-fullscreen-quiz .whai-pagination-container .whai-pagination-actions button.visible {
+	background: transparent !important;
+	display: inline-block;
+	position: relative;
+	color: white !important;
+	width: auto;
+	border: 2px solid white;
+	border-radius: 50px;
+	font-size: 1rem;
+	font-family: benton-sans, sans-serif;
+	font-weight: 300;
+	padding: 3px 4rem;
+	text-transform: lowercase;
+	line-height: 1.8;
+	text-align: center;
+	max-width: fit-content;
+}
+
+// shop button
+.whai-fullscreen-quiz .whai-slide .whai-products .whai-product .shop-button {
+	background: transparent !important;
+	display: inline-block;
+	position: relative;
+	color: white !important;
+	width: auto;
+	border: 2px solid white;
+	border-radius: 50px;
+	font-size: 1rem;
+	font-family: benton-sans, sans-serif;
+	font-weight: 300;
+	padding: 3px 4rem;
+	text-transform: lowercase;
+	line-height: 1.8;
+	text-align: center;
+	letter-spacing: normal;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+	box-sizing: border-box;
+}
+
+// bottom NDA statement
+.whai-fullscreen-quiz .whai-slide .whai-products:after {
+	content: "* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.";
+	position: absolute;
+	bottom: 13px;
+	border: 1px solid white;
+	padding: 1em;
+	font-size: 10px;
+	letter-spacing: 1px;
+	max-width: 311px;
+	margin: 0 calc(25vw - 40px);
+}
+
+.whai-fullscreen-quiz .whai-slide .whai-products {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.whai-fullscreen-quiz .whai-slide .whai-products .whai-product {
+	align-items: center;
+	&.listing {
+		width: 100%;
+		border: none;
+		margin: 0;
+		padding: 2rem;
+		flex-direction: column-reverse;
+	}
+}
+.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing {
+	padding: 0;
+	.column {
+		width: 70%;
+		padding: 1rem 0;
+	}
+}
+.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing .img {
+	width: 100%;
+	height: auto;
+}
+.whai-fullscreen-quiz .whai-slide-skip {
+	color: #fff;
+	text-decoration: none;
+	font-style: normal;
+	font-weight: 300;
+	border: 1px solid white;
+	border-radius: 50px;
+	line-height: 1;
+	padding: 1rem 16px;
+	margin-top: 1rem;
+	font-size: 1rem;
+}
+
+// form inputs
+.whai-fullscreen-quiz input {
+    font-size: 16px;
+    width: 57%;
+}
+
+
+.whai-fullscreen-quiz .whai-slide .whai-column-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+// show my results button
+.whai-fullscreen-quiz .whai-slide .whai-column-button .whai-slide-button span {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+// promocode
+.whai.whai-promocode {
+    color: white !important;
+}
+
+.whai-fullscreen-quiz .whai-slide .extra-img-wrapper {
+	max-width: 70vw;
+	margin: 0 auto;
+	img {
+		min-width: 100%;
+	}
+}
+
+// ipad media query
+@media (min-width: 768px) {
+	.whai-fullscreen-quiz .whai-slide.whai-recommendations-slide {
+		margin-bottom: 2rem;
+	}
+	.whai-fullscreen-quiz .whai-slide .whai-products {
+		max-width: 80%;
+		border: 1px solid #fff;
+	}
+	.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing {
+		flex-direction: row-reverse;
+		padding: 1rem;
+	}
+	.whai-fullscreen-quiz .whai-slide .img-wrapper {
+		max-width: 50%;
+	}
+	.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing .img {
+		height: auto;
+		width: 100%;
+	}
+	.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing .column {
+		margin-left: 40px;
+	}
+	// bottom icons
+	.whai-fullscreen-quiz .whai-slide .extra-img-wrapper {
+		margin: 0 auto;
+		.img {
+			width: auto;
+			max-width: 100%;
+		}
+	}
+}
+
+@media (min-width: 1025px) {
+	/* intro */
+	.whai-fullscreen-quiz .intro h2,
+	.whai-fullscreen-quiz p.main,
+	h2.whai.whai-font.whai-question {
+		font-size: 1.75rem;
+		line-height: 1.225;
+		font-weight: 600;
+	}
+	// intro inner wrapper
+	.whai.whai-slide.intro .whai-column {
+		margin: 40px auto;
+	}
+	// intro wrapper & question rows
+	.whai.whai-slide.intro,
+	.whai.whai-slide {
+		max-width: 1024px;
+		margin: 0 auto;
+	}
+	// intro wrapper
+	.whai.whai-slide.intro {
+		border: 2px solid white;
+		margin-bottom: 3rem;
+		margin-top: 3rem;
+	}
+	// intro p
+	.whai-fullscreen-quiz p.main {
+		margin-top: 5px;
+		margin-bottom: 0;
+		font-weight: 600;
+	}
+	// intro button
+	.whai-fullscreen-quiz .whai-slide.intro .whai-column-button {
+		display: none;
+	}
+	/* numbers */
+	.whai.whai-slide:before {
+		position: absolute;
+		left: 0;
+		font-size: 2rem;
+		color: #fff;
+		line-height: 1;
+		top: 0;
+		font-weight: 500;
+	}
+
+	.whai.whai-slide:nth-child(2):before {
+		content: "01";
+	}
+
+	.whai.whai-slide:nth-child(3):before {
+		content: "02";
+	}
+
+	.whai.whai-slide:nth-child(4):before {
+		content: "03";
+	}
+
+	.whai.whai-slide:nth-child(5):before {
+		content: "04";
+	}
+
+	// question whole rows
+	.whai.whai-slide:not(.intro) {
+		margin: 3rem auto 0 auto;
+	}
+	/* question wrapper */
+	.whai.whai-slide:not(.whai-recommendations-slide) {
+		flex-direction: row;
+		justify-content: center;
+		position: relative;
+		padding: 0;
+		align-items: flex-start;
+	}
+	// question
+	.whai.whai-slide:not(.intro):not(.list):not(.whai-email-slide):not(.whai-column-button):not(.whai-recommendations-slide)
+		> .whai-column:not(.whai-options) {
+		flex: 0 1 20%;
+		margin-left: 4vw;
+	}
+	/* questions text */
+	h2.whai.whai-font.whai-question,
+	.whai-fullscreen-quiz p {
+		text-align: left;
+		margin-top: 0;
+	}
+	// answer options wrapper
+	.whai-fullscreen-quiz .whai-slide .whai-options {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		width: 100%;
+		flex: 0 0 70%;
+		justify-content: space-between;
+		margin: 0 0 0 32px;
+		// answer option
+		&.list .whai-text-option {
+			border: 2px solid #fff;
+			border-radius: 50%;
+			min-height: 170px;
+			min-width: 170px;
+			max-width: 170px;
+			max-height: 170px;
+			margin: 0 0 10px 10px;
+		}
+	}
+	// last question row
+	.whai.whai-slide:nth-last-child(2) {
+		padding-bottom: 25vh;
+	}
+	// show results button wrapper
+	.whai.whai-slide:not(.whai-email-slide) .whai-column.whai-column-button {
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+	}
+
+	// reccomendation slide wrapper
+	.whai.whai-slide.whai-recommendations-slide {
+		min-height: 72vh;
+		margin-bottom: 20vh;
+	}
+	.whai-fullscreen-quiz .whai-slide .whai-products .whai-product {
+		flex-direction: row;
+		width: 100%;
+		align-items: center;
+		position: relative;
+	}
+
+	.whai-fullscreen-quiz .whai-slide .whai-products .whai-product .img {
+		display: flex;
+		flex: 1 0 50%;
+		max-height: 100%;
+		height: auto;
+		width: 100%;
+		background-color: transparent;
+	}
+	// shop button
+	.whai-fullscreen-quiz .whai-slide .whai-products {
+		max-width: 100%;
+	}
+
+	.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing {
+		width: 100%;
+		border: none;
+		flex-direction: row-reverse;
+		padding: 2rem;
+	}
+
+	.whai-product .whai.whai-font {
+		margin-bottom: 1rem;
+	}
+
+	.whai-fullscreen-quiz .whai-slide .whai-products .whai-product.listing .img {
+		height: auto;
+		width: 100%;
+	}
+	// bottom icons
+	.whai-fullscreen-quiz .whai-slide .extra-img-wrapper {
+		margin: 0 auto;
+		.img {
+			width: auto;
+			max-width: 680px;
+		}
+	}
+
+	.whai-fullscreen-quiz h4 {
+		width: 100%;
+		display: flex;
+		align-self: center;
+		text-align: center;
+	}
+
+	// start over button
+	// .whai-fullscreen-quiz .whai-pagination-container .whai-pagination-actions {
+	// 	position: absolute;
+	// 	width: 100%;
+	// 	bottom: 13vh;
+	// 	left: 42vw;
+	// }
+	// reccomended slide
+	.whai-fullscreen-quiz .whai-slide.whai-recommendations-slide {
+		margin-bottom: 5vh;
+		position: relative;
+		margin-top: 40vh;
+	}
+
+	.whai-fullscreen-quiz .whai-slide .whai-products:before {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 220px;
+		height: 300px;
+		top: -271px;
+		background-image: url(https://cdn.shopify.com/s/files/1/2911/8128/files/quiz-red-dots.svg?36219);
+		background-repeat: no-repeat;
+		left: 41%;
+		background-size: 75%;
+	}
+
+	.whai.whai-slide.whai-email-slide {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.whai-fullscreen-quiz .whai-slide .whai-column-button .whai-slide-button:disabled span {
+		font-size: 1rem !important;
+		font-weight: 300 !important;
+	}
+	// bottom NDA statement
+	.whai-fullscreen-quiz .whai-slide .whai-products:after {
+		margin: 0 calc(30% + 40px);
+	}
+} /* END 1025px media-query */
+

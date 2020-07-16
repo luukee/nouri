@@ -1,0 +1,25 @@
+<hr>
+<!-- video section -->
+<section
+    class="page-width featured-video--container {% if section.settings.product_top_margin %}custom-content-wrapper--top-margin{% endif %} {% if section.settings.product_bottom_margin %}custom-content-wrapper--bottom-margin{% endif %}">
+    <div class="grid">
+        <div class="grid__item medium-up--two-thirds">
+            {% include 'featured-video' %}
+        </div>
+        <div class="grid__item medium-up--one-third featured-video--text">
+
+            {% if section.settings.subheading != blank %}
+            <div class="subheading">
+                <h5>{{ section.settings.subheading }}</h5>
+            </div>
+            {% endif %}
+
+            {% if section.settings.button_text != blank %}
+            <a href="{{ section.settings.button_link }}" class="btn cartbutton">
+                <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+            </a>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
