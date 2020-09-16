@@ -11,11 +11,11 @@
     <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
 
     <div class="page-width page-container">
-
+    
+    <section class="product-purchase page-width--no-gutter">
         <!-- MAIN GRID -->
         <div class="grid">
 
-            <section class="product-purchase page-width--no-gutter">
                 <!-- product images -->
                 <div class="grid__item medium-up--three-fifths">
 
@@ -102,14 +102,14 @@
                     {% endcomment %}
 
                     {% if section.settings.hide_variant_images %}
-                    {% assign totalImages = 0 %}
-                    {% for image in product.images %}
-                    {% unless image.attached_to_variant? %}
-                    {% assign totalImages = totalImages | plus: 1 %}
-                    {% endunless %}
-                    {% endfor %}
+                        {% assign totalImages = 0 %}
+                        {% for image in product.images %}
+                            {% unless image.attached_to_variant? %}
+                                {% assign totalImages = totalImages | plus: 1 %}
+                            {% endunless %}
+                        {% endfor %}
                     {% else %}
-                    {% assign totalImages = product.images.size %}
+                        {% assign totalImages = product.images.size %}
                     {% endif %}
 
                     {% comment %}
@@ -118,43 +118,43 @@
                     {% endcomment %}
                     {% assign totalModulus = totalImages | modulo:3 %}
 
-                    {% if totalImages == 1 %}<div class="page-width">{% endif %}
+                        {% if totalImages == 1 %}<div class="page-width">{% endif %}
 
-                    <div class="thumbs">
-                        <div id="container" class="product__subimage-list product__subimage-list--r{{ totalModulus }}{% if totalImages == 1 %} product__subimage-list--single{% endif %}">
+                            <div class="thumbs">
+                                <div id="container" class="product__subimage-list product__subimage-list--r{{ totalModulus }}{% if totalImages == 1 %} product__subimage-list--single{% endif %}">
 
-                            {% for image in product.images %}
+                                    {% for image in product.images %}
 
-                            {% unless image.attached_to_variant? and section.settings.hide_variant_images %}
+                                    {% unless image.attached_to_variant? and section.settings.hide_variant_images %}
 
-                            <div onclick="toSlide({{ forloop.index }})" class="product__subimage-list-item{% unless featured_image == image %} active{% endunless %}">
-                                <a class="product__subimage-container product-slideshow__open" aria-label="{{ 'sections.product_template.open_image_slideshow' | t }}" data-id="{{ image.id }}">
-                                    {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                                    <img class="product__subimage lazyload modal-preview"
-                                    data-src="{{ img_url }}"
-                                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                                    data-aspectratio="{{ image.aspect_ratio }}"
-                                    data-sizes="auto"
-                                    data-parent-fit="cover"
-                                    alt="{{ image.alt | escape }}">
+                                    <div onclick="toSlide({{ forloop.index }})" class="product__subimage-list-item{% unless featured_image == image %} active{% endunless %}">
+                                        <a class="product__subimage-container product-slideshow__open" aria-label="{{ 'sections.product_template.open_image_slideshow' | t }}" data-id="{{ image.id }}">
+                                            {% assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                                            <img class="product__subimage lazyload modal-preview"
+                                            data-src="{{ img_url }}"
+                                            data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                            data-aspectratio="{{ image.aspect_ratio }}"
+                                            data-sizes="auto"
+                                            data-parent-fit="cover"
+                                            alt="{{ image.alt | escape }}">
 
-                                    <noscript>
-                                        <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" class="product__subimage">
-                                    </noscript>
-                                </a>
+                                            <noscript>
+                                                <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt | escape }}" class="product__subimage">
+                                            </noscript>
+                                        </a>
+                                    </div>
+
+                                    {%  endunless %}
+                                    {% endfor %}
+                                </div>
+
+                                <!-- thumbnail arrows -->
+                                <!-- <a id="previous" class="previous">&#10094;</a>
+                                <a id="next" class="next">&#10095;</a> -->
+
                             </div>
 
-                            {%  endunless %}
-                            {% endfor %}
-                        </div>
-
-                        <!-- thumbnail arrows -->
-                        <!-- <a id="previous" class="previous">&#10094;</a>
-                        <a id="next" class="next">&#10095;</a> -->
-
-                    </div>
-
-                    {% if totalImages == 1 %}</div>{% endif %}
+                        {% if totalImages == 1 %}</div>{% endif %}
                     {% endif %}
                     {% comment %}
                     ------------------------------------------------------------------------------
@@ -166,218 +166,256 @@
                     </div> -->
                 </div>
 
+                <!-- product purchase data -->
+                <div class="grid__item medium-up--two-fifths">
 
-            <!-- product purchase data -->
-            <div class="grid__item medium-up--two-fifths">
+                    {% comment %}
+                    ------------------------------------------------------------------------------
+                    Product Form & Description
+                    ------------------------------------------------------------------------------
+                    {% endcomment %}
+                    <div class="product__content">
 
-                {% comment %}
-                ------------------------------------------------------------------------------
-                Product Form & Description
-                ------------------------------------------------------------------------------
-                {% endcomment %}
-                <div class="product__content">
+                        <div class="product__content-header grid">
+                            <div class="grid__item medium-up--three-quarters">
 
-                    <div class="product__content-header grid">
-                        <div class="grid__item medium-up--three-quarters">
+                                {% if section.settings.show_vendor %}
+                                <span class="product__vendor text-small text-center" itemprop="brand">{{ product.vendor }}</span>
+                                {% endif %}
 
-                            {% if section.settings.show_vendor %}
-                            <span class="product__vendor text-small text-center" itemprop="brand">{{ product.vendor }}</span>
-                            {% endif %}
+                                <h1 class="product__title" itemprop="name">{{ product.title }}</h1>
 
-                            <h1 class="product__title" itemprop="name">{{ product.title }}</h1>
+                                <h6 class="product__subtitle"><strong>{{ product.metafields.global.subtitle }}</strong></h6>
+                                <h6 class="product__subtitle light"><em>{{ product.metafields.global.subtitle_sub }}</em></h6>
 
-                            <h6 class="product__subtitle"><strong>{{ product.metafields.global.subtitle }}</strong></h6>
-
-                            {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-                            <div class="product__policies rte">
-                                {%- if shop.taxes_included -%}
-                                {{ 'products.product.include_taxes' | t }}
+                                {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+                                <div class="product__policies rte">
+                                    {%- if shop.taxes_included -%}
+                                    {{ 'products.product.include_taxes' | t }}
+                                    {%- endif -%}
+                                    {%- if shop.shipping_policy.body != blank -%}
+                                    {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                                    {%- endif -%}
+                                </div>
                                 {%- endif -%}
-                                {%- if shop.shipping_policy.body != blank -%}
-                                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                                {%- endif -%}
+
                             </div>
-                            {%- endif -%}
 
                         </div>
 
-                    </div>
+                        <div class="product__content-main">
+                            <div class="product__description" itemprop="description" class="rte">
+                                {% include 'product_bullets' %}
+                                <hr>
+                                {% include 'product_description_dropdowns' %}
+                            </div>
 
-                    <div class="product__content-main">
-                        <div class="product__description" itemprop="description" class="rte">
-                            {% include 'product_bullets' %}
-                            <hr>
-                            {% include 'product_description_dropdowns' %}
-                        </div>
-
-                        <!-- product form -->
-                        <div class="product__form-container" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                            <div class="product__form-wrapper">
-                                <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
-                                <meta itemprop="priceCurrency" content="{{ shop.currency }}">
-                                <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+                            <!-- product form -->
+                            <div class="product__form-container" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                <div class="product__form-wrapper">
+                                    <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                                    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                                    <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
 
-                                {% comment %}
-                                {% include 'product-form' %}
-                                ------------------------------------------------------------------------------
-                                Product Form
-                                ------------------------------------------------------------------------------
-                                {% endcomment %}
-                                {% unless current_variant.available %}
-                                {% assign button_text = 'products.product.sold_out' | t %}
-                                {% else %}
-                                {% assign button_text = 'products.product.add_to_cart' | t %}
-                                {% endunless %}
+                                    {% comment %}
+                                    {% include 'product-form' %}
+                                    ------------------------------------------------------------------------------
+                                    Product Form
+                                    ------------------------------------------------------------------------------
+                                    {% endcomment %}
+                                    {% unless current_variant.available %}
+                                    {% assign button_text = 'products.product.sold_out' | t %}
+                                    {% else %}
+                                    {% assign button_text = 'products.product.add_to_cart' | t %}
+                                    {% endunless %}
 
-                                {% form 'product', product, data-productid: product.id, class:'product-form' %}
+                                    {% form 'product', product, data-productid: product.id, class:'product-form' %}
 
-                                {% unless product.has_only_default_variant %}
-                                {% for option in product.options_with_values %}
-                                <div class="product-form__item supports-js">
+                                    {% unless product.has_only_default_variant %}
+                                    {% for option in product.options_with_values %}
+                                    <div class="product-form__item supports-js">
 
-                                    {% if option.name != 'default' %}
-                                    <label class="single-option-selector__label{% unless section.settings.show_variant_labels %} single-option-selector__label--hidden{% endunless %}" for="{{ option.name | escape }}">{{ option.name }}</label>
-                                    {% endif %}
 
-                                    <select id="{{ option.name | escape }}" name="{{ option.name | escape }}" class="single-option-selector" data-option-input>
-                                        {% for value in option.values %}
-                                        {% assign safeValue = value | replace: '"', '&quot;' %}
-                                        <option value="{{ safeValue }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+<!-- possible radio buttons fix for variants -->
+{%- comment -%}
+<div class="product-variants infiniteoptions">
+    <ul>{% for variant in product.variants %}
+        <li class="{% cycle 'odds': 'odd', 'even' %}">
+            {% if variant.available %}<input class="custom-radio" type="radio" name="id" value="{{ variant.id }}"
+                id="radio_{{ variant.id }}" {% if forloop.first %}checked="checked" {% endif %} />
+            <label for="radio_{{ variant.id }}" class="radio">
+                <strong>{{ variant.title | escape }}</strong> for <span
+                    class="bold-blue">{{ variant.price | money }}</span>
+                {% if variant.price < variant.compare_at_price %}<del>{{ variant.compare_at_price | money }}</del>{% endif %}
+            </label>
+            {% else %}
+            <input type="radio" name="id" value="{{ variant.id }}" id="radio_{{ variant.id }}" disabled="disabled" />
+            <label for="radio_{{ variant.id }}" class="radio">
+                <strong>{{ variant.title }}</strong> is temporarily unavailable
+            </label>
+            {% endif %}
+        </li>
+        {% endfor %}</ul>
+</div>
+{%- endcomment -%}
+
+                                        {% if option.name != 'default' %}
+                                        <label
+                                            class="single-option-selector__label{% unless section.settings.show_variant_labels %} single-option-selector__label--hidden{% endunless %}"
+                                            for="{{ option.name | escape }}">{{ option.name }}</label>
+                                        {% endif %}
+
+                                        <select id="{{ option.name | escape }}" name="{{ option.name | escape }}" class="single-option-selector"
+                                            data-option-input>
+                                            {% for value in option.values %}
+                                            {% assign safeValue = value | replace: '"', '&quot;' %}
+                                            <option value="{{ safeValue }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                                            {% endfor %}
+                                        </select>
+
+                                    </div>
+                                    {% endfor %}
+                                    {% endunless %}
+
+                                    <select name="id" data-productid="{{ product.id }}" class="product-form__master-select supports-no-js" data-master-select>
+                                        {% for variant in product.variants %}
+                                        {% if variant.available %}
+
+                                        {% comment %}
+                                        Note: if you use option_selection.js, your select tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                                        {% endcomment %}
+                                        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                                        {% else %}
+                                        <option disabled="disabled">
+                                            {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                                        </option>
+                                        {% endif %}
                                         {% endfor %}
                                     </select>
-                                </div>
-                                {% endfor %}
-                                {% endunless %}
 
-                                <select name="id" data-productid="{{ product.id }}" class="product-form__master-select supports-no-js" data-master-select>
-                                    {% for variant in product.variants %}
-                                    {% if variant.available %}
+                                    <div class="purchase-items">
 
-                                    {% comment %}
-                                    Note: if you use option_selection.js, your select tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
-                                    {% endcomment %}
-                                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                                        <div class="grid-flex">
+                                            {% comment %}
+                                            Product Price
+                                            {% endcomment %}
+                                            <p class="product__price {% if current_variant_sale %} product__price--sale{% endif %}" data-product-price aria-live="polite">
 
-                                    {% else %}
-                                    <option disabled="disabled">
-                                        {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                                    </option>
-                                    {% endif %}
-                                    {% endfor %}
-                                </select>
+                                                <span class="product__sale-price-label visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+                                                <span class="product__regular-price-label visually-hidden">{{ 'products.product.price' | t }}</span>
+                                                <span class="product__current-price" data-regular-price>{{ current_variant.price | money }}</span>
 
-                                <div class="purchase-items">
+                                                <span class="product__compare-price-label visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                                                <s class="product__compare-price" data-compare-price>{{ current_variant.compare_at_price | money }}</s>
+                                            </p>
+                                            {% comment %}
+                                            END Product Price
+                                            {% endcomment %}
 
-                                    <div class="grid-flex">
+                                            {% comment %}
+                                            Product Quantity Selector
+                                            {% endcomment %}
+                                            {% if section.settings.show_quantity_selector %}
+                                            <div class="product-form__item product-form__quantity-selector">
+                                                <label class="product-form__quantity-label{% unless section.settings.show_variant_labels %} product-form__quantity-label--hidden{% endunless %}" for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+                                                <input class="product-form__quantity-input" type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" pattern="[0-9]*">
+                                            </div>
+                                            {% endif %}
+                                            {% comment %}
+                                            END Product Quantity Selector
+                                            {% endcomment %}
+
+                                            <!-- input number custom style
+                                            https://codepen.io/komarovdesign/pen/PPRbgb -->
+                                            <div class="quantity">
+                                                <input type="number" id="Qty" name="quantity" value="1" min="1" class="quantity-selector">
+                                            </div>
+
                                         {% comment %}
-                                        Product Price
+                                        add to cart button
                                         {% endcomment %}
-                                        <p class="product__price text-center{% if current_variant_sale %} product__price--sale{% endif %}" data-product-price aria-live="polite">
-
-                                            <span class="product__sale-price-label visually-hidden">{{ 'products.product.sale_price' | t }}</span>
-                                            <span class="product__regular-price-label visually-hidden">{{ 'products.product.price' | t }}</span>
-                                            <span class="product__current-price" data-regular-price>{{ current_variant.price | money }}</span>
-
-                                            <span class="product__compare-price-label visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                                            <s class="product__compare-price" data-compare-price>{{ current_variant.compare_at_price | money }}</s>
-                                        </p>
+                                        <button class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
+                                            data-cart-submit
+                                            type="submit" name="add"
+                                            {% unless current_variant.available %} disabled="true"{% endunless %}
+                                            aria-label="{{ button_text }}"
+                                            >
+                                            <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
+                                                {{ button_text }}
+                                            </span>
+                                            <span class="secondary-text" aria-hidden=true data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
+                                        </button>
                                         {% comment %}
-                                        END Product Price
+                                        END add to cart button
                                         {% endcomment %}
 
-                                        {% comment %}
-                                        Product Quantity Selector
-                                        {% endcomment %}
-                                        {% if section.settings.show_quantity_selector %}
-                                        <div class="product-form__item product-form__quantity-selector">
-                                            <label class="product-form__quantity-label{% unless section.settings.show_variant_labels %} product-form__quantity-label--hidden{% endunless %}" for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
-                                            <input class="product-form__quantity-input" type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" pattern="[0-9]*">
-                                        </div>
+                                        <p class="product__notification text-small text-center" data-cart-notification></p>
+                                        {% if section.settings.enable_payment_button and current_variant.available %}
+                                        {{ form | payment_button }}
                                         {% endif %}
-                                        {% comment %}
-                                        END Product Quantity Selector
-                                        {% endcomment %}
 
-                                        <!-- input number custom style
-                                        https://codepen.io/komarovdesign/pen/PPRbgb -->
-                                        <div class="quantity">
-                                            <input type="number" id="Qty" name="quantity" value="1" min="1" class="quantity-selector">
-                                        </div>
+                                    </div>
 
-                                    {% comment %}
-                                    add to cart button
-                                    {% endcomment %}
-                                    <button class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
-                                        data-cart-submit
-                                        type="submit" name="add"
-                                        {% unless current_variant.available %} disabled="true"{% endunless %}
-                                        aria-label="{{ button_text }}"
-                                        >
-                                        <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
-                                            {{ button_text }}
-                                        </span>
-                                        <span class="secondary-text" aria-hidden=true data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
-                                    </button>
-                                    {% comment %}
-                                    END add to cart button
-                                    {% endcomment %}
 
-                                    <p class="product__notification text-small text-center" data-cart-notification></p>
-                                    {% if section.settings.enable_payment_button and current_variant.available %}
-                                    {{ form | payment_button }}
-                                    {% endif %}
+                                    <!-- Begin ReCharge code -->
+                                    {% if product.available %}{% include 'subscription-product' %}{% endif %}
+                                    <!-- End ReCharge code -->
+
 
                                 </div>
+                                <!-- END purchase items -->
 
+                                {% endform %}
+                                {% comment %}
+                                ------------------------------------------------------------------------------
+                                END Product Form
+                                ------------------------------------------------------------------------------
+                                {% endcomment %}
 
-                                <!-- Begin ReCharge code -->
-                                {% if product.available %}{% include 'subscription-product' %}{% endif %}
-                                <!-- End ReCharge code -->
-
-
-                            </div>
-                            <!-- END purchase items -->
-
-                            {% endform %}
-                            {% comment %}
-                            ------------------------------------------------------------------------------
-                            END Product Form
-                            ------------------------------------------------------------------------------
-                            {% endcomment %}
-
-                            {% if section.settings.show_share_buttons %}
-                            {% if settings.share_facebook or settings.share_twitter or settings.share_pinterest %}
-                            <div class="product__share-wrapper small--hide">
-                                <div class="product__share">
-                                    {% include 'social-sharing', type: "product", links: 'bottom' share_title: product.title, share_permalink: product.url, share_image: product %}
+                                {% if section.settings.show_share_buttons %}
+                                {% if settings.share_facebook or settings.share_twitter or settings.share_pinterest %}
+                                <div class="product__share-wrapper small--hide">
+                                    <div class="product__share">
+                                        {% include 'social-sharing', type: "product", links: 'bottom' share_title: product.title, share_permalink: product.url, share_image: product %}
+                                    </div>
                                 </div>
+                                {% endif %}
+                                {% endif %}
                             </div>
-                            {% endif %}
-                            {% endif %}
-                        </div>
 
-                        </div> <!-- END product form -->
+                            </div> <!-- END product form -->
 
-                    </div> <!-- END product__content-main -->
+                        </div> <!-- END product__content-main -->
 
-                </div> <!-- END product__content -->
+                    </div> <!-- END product__content -->
 
-            </div> <!-- END product purchase data -->
+                </div> <!-- END product purchase data -->
 
         </div> <!-- END MAIN GRID -->
 
     </section>
  
     {% include 'product_modal_icons_snippet' %}
-
-    <!-- video section -->
-    {%- comment -%}{% include 'product_video_snippet' %}{%- endcomment -%}
-
-    {% include 'image_with_text_snippet' %}
         
     </div>
+
 </div>
+
+    {% include 'product-carousel' %}
+    
+    {%- comment -%} video section
+    {% include 'product_video_snippet' %}
+    {%- endcomment -%}
+{% if section.settings.show_img_with_text %}
+        <div class="page-width page-container">
+        
+            {% include 'image_with_text_snippet' %}
+        
+        </div>
+{% endif %}
+
 
 
 <script>
@@ -617,7 +655,7 @@ Product Data
     },
     {
         "type": "paragraph",
-        "content": "[Edit Subtitle](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.subtitle%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
+        "content": "[Edit Subtitle](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.subtitle%2Cmetafields.global.subtitle_sub%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
     },
     {
         "type":"header",
@@ -697,23 +735,51 @@ Product Data
       "label": "Icons close together?",
       "default": true
   },
-  {
-    "type": "checkbox",
-    "id": "top_margin",
-    "label": {
-      "de": "Oberer Rand",
-      "en": "Top margin",
-      "es": "Margen superior",
-      "fr": "Marge supérieure",
-      "it": "Margine superiore",
-      "ja": "上マージン",
-      "nl": "Bovenmarge",
-      "pt-BR": "Margem superior",
-      "zh-CN": "上边距",
-      "zh-TW": "上方邊界"
-    },
-    "default": true
+    {
+      "type": "select",
+      "id": "icon_top_margin",
+      "label": "Top margin",
+      "default": "medium",
+      "options": [
+        {
+            "value": "xlarge",
+            "label": "XLarge"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
   },
+  {
+        "type": "checkbox",
+        "id": "top_line",
+        "label": {
+          "de": "Unterer Rand",
+          "en": "Top line",
+          "es": "Margen inferior",
+          "fr": "Marge inférieure",
+          "it": "Margine inferiore",
+          "ja": "下マージン",
+          "nl": "Ondermarge",
+          "pt-BR": "Margem inferior",
+          "zh-CN": "下边距",
+          "zh-TW": "下方邊界"
+        },
+        "default": true
+    },
   {
         "type": "checkbox",
         "id": "bottom_margin",
@@ -757,14 +823,38 @@ Product Data
             "label": "CTA text",
             "default": "click the icons to learn more"
         },
+{
+    "type": "header",
+    "content": "Carousel"
+},
+    {
+        "type":"paragraph",
+        "content": "[Add Carousel Images](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.carousel_image_urls%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
+    },
+    {
+        "type": "paragraph",
+        "content": "**Add image URLs as comma seperated ex. https://image.jpg, https://image.jpg for each product."
+    },
+    {
+        "type":"checkbox",
+        "id":"product_carousel_full_width",
+        "label": "Carousel full width",
+        "default":false
+    },
 
 {
     "type": "header",
     "content": "Image with Text"
 },
     {
+        "type":"checkbox",
+        "id":"show_img_with_text",
+        "label": "Show image with text",
+        "default":false
+    },
+    {
         "type":"paragraph",
-        "content": "[Add Image URL](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.image_url%2Cmetafields.global.image_title%2Cmetafields.global.image_content%2Cmetafields.global.image_content_two%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
+        "content": "[Edit image with text here](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.image_url%2Cmetafields.global.image_title%2Cmetafields.global.image_content%2Cmetafields.global.image_content_two%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
     },
     {
         "type": "image_picker",

@@ -1,18 +1,36 @@
-<style>
-    .list-icons-section  .icon__text {
-        color: #{{ product.metafields.global.icons_text_color }};
-    }
-</style>
-{% if settings.section.show_modal == blank %}
-<style>
-.icons-main .icon__image,
-.icons-main .single__icon {
-    cursor: default;
-}
-</style>
+{% if section.settings.icon_top_margin == 'xlarge' %}
+    {% assign marginSetting = 'mt-4' %}
+{% elsif section.settings.icon_top_margin == 'large' %}
+    {% assign marginSetting = 'mt-3' %}
+{% elsif section.settings.icon_top_margin == 'medium' %}
+    {% assign marginSetting = 'mt-2' %}
+{% elsif section.settings.icon_top_margin == 'small' %}
+    {% assign marginSetting = 'mt-1' %}
+{% elsif section.settings.icon_top_margin == 'none' %}
+    {% assign marginSetting = 'mt-0' %}
+{% else %}
 {% endif %}
-    <section class="grid__item small-up--one-whole list-icons-section custom-content-wrapper--top-margin custom-content-wrapper--bottom-margin">
-        <div class="page-width--narrow">
+
+{% if section.settings.top_line %}
+    <hr>
+{% endif %}
+
+<section class="grid__item page-width--no-gutter medium-up--one-whole list-icons-section {{ marginSetting }}">
+    <style>
+        .list-icons-section  .icon__text {
+            color: #{{ product.metafields.global.icons_text_color }};
+        }
+    </style>
+    {% if settings.section.show_modal == blank %}
+        <style>
+        .icons-main .icon__image,
+        .icons-main .single__icon {
+            cursor: default;
+        }
+        </style>
+    {% endif %}
+    
+    <div class="page-width--narrow">
             {%- comment -%}{% include 'list-icons-modal-snippet' %}{%- endcomment -%}
 
         <!-- Icons Section -->

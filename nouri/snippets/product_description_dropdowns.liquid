@@ -9,9 +9,10 @@
             </b>
         </dtclass="dropdown_01_title">
         <dd class="dropdown_01_definition">
-            <p>{{ product.description }}</p>
-            {% if product.metafields.global.dropdown_01_definition != blank %}
-            {{ product.metafields.global.dropdown_01_definition }}
+            {% if product.metafields.global.dropdown_01_definition %}
+                {{ product.metafields.global.dropdown_01_definition }}
+            {% else %}
+                {{ product.description }}
             {% endif %}
 
             {% if product.metafields.global.dropdown_01_image != blank %}

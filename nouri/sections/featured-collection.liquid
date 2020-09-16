@@ -4,8 +4,13 @@
 {%- assign dot01 = section.settings.dot_01 -%}
 {%- assign dot02 = section.settings.dot_02 -%}
 {%- assign dot03 = section.settings.dot_03 -%}
-
+{%- assign left_margin = section.settings.left_image_pull -%}
 <style>
+    @media only screen and (min-width: 990px) {
+    .card-list > div:nth-child(-n+3) .card__image-wrapper {
+      margin-left:{{ left_margin }};
+    }
+  }
   .card__info.price-hide .card__price {
     {% if section.settings.hide_product_price %}
       display: none;
@@ -80,7 +85,7 @@
       <div class="card-list__column{% if totalProducts == 1 %} card-list__column--center{% endif %} grid grid__item {{ gridClasses }}">
         {% unless featuredCollection == blank %}
           {% for product in featuredCollection.products limit: limit %}
-            {% include 'product-card', product: product, grid_style: section.settings.grid_style %}
+            {% include 'product-card-alt', product: product, grid_style: section.settings.grid_style %}
           {% endfor %}
         {% else %}
           {% for i in (1..limit) %}
@@ -120,6 +125,13 @@
         </a>
       </div>
     {% endif %}
+
+    {% if section.settings.block_bottom_text %}
+      <div class="text-center">
+        <p data-animate>{{ section.settings.block_bottom_text }}</p>
+      </div>
+    {% endif %}
+    
   </div>
 </div>
 
@@ -156,83 +168,6 @@
       }
     },
     {
-        "type": "header",
-        "content": "Custom Product Image"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_custom_product_image",
-      "label": "Show custom product image",
-      "default": true
-    },
-    {
-        "type": "paragraph",
-        "content": "[Add product image URL](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.custom_product_image_url%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_product_info",
-      "label": {
-        "de": "Produktverkäufer anzeigen",
-        "en": "Show product info",
-        "es": "Mostrar proveedor del producto",
-        "fr": "Afficher le distributeur du produit",
-        "it": "Mostra fornitore prodotto",
-        "ja": "商品の販売元を表示する",
-        "nl": "Productleverancier weergeven",
-        "pt-BR": "Exiba o fornecedor do produto",
-        "zh-CN": "显示产品厂商",
-        "zh-TW": "顯示產品廠商"
-        },
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_spacing",
-      "label": {
-        "de": "Bildabstand aktivieren",
-        "en": "Enable image spacing",
-        "es": "Habilitar espaciado de imagen",
-        "fr": "Activer l'espacement des images",
-        "it": "Abilita spaziatura immagini",
-        "ja": "画像の間隔を有効にする",
-        "nl": "Afstand tussen afbeeldingen inschakelen",
-        "pt-BR": "Ativar espaçamento de imagem",
-        "zh-CN": "启用图片间距",
-        "zh-TW": "啟用圖片間距"
-      }
-    },
-    {
-      "type": "text",
-      "id": "dot_01",
-      "label": "Product 01 Graphic"
-    },
-    {
-      "type": "text",
-      "id": "dot_02",
-      "label": "Product 02 Graphic"
-    },
-    {
-      "type": "text",
-      "id": "dot_03",
-      "label": "Product 03 Graphic"
-    },
-    {
-      "type": "header",
-      "content": {
-        "de": "Text",
-        "en": "Text",
-        "es": "Texto",
-        "fr": "Texte",
-        "it": "Testo",
-        "ja": "テキスト",
-        "nl": "Tekst",
-        "pt-BR": "Texto",
-        "zh-CN": "文本",
-        "zh-TW": "文字"
-      }
-    },
-    {
       "type": "text",
       "id": "title",
       "label": {
@@ -261,6 +196,48 @@
       }
     },
     {
+        "type": "header",
+        "content": "Add Custom Product Images"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_custom_product_image",
+      "label": "Show custom product image",
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "1) Downsize your images to be 2500px max width. And compress the images with [tinypng.com](https://tinypng.com/)"
+    },
+    {
+        "type": "paragraph",
+        "content": "2) [Upload your images here](https://nouri-wellness.myshopify.com/admin/settings/files)"
+    },
+    {
+        "type": "paragraph",
+        "content": "3) Copy and paste the image URLs for each product [here](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.custom_product_image_url%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_spacing",
+      "label": {
+        "de": "Bildabstand aktivieren",
+        "en": "Enable image spacing",
+        "es": "Habilitar espaciado de imagen",
+        "fr": "Activer l'espacement des images",
+        "it": "Abilita spaziatura immagini",
+        "ja": "画像の間隔を有効にする",
+        "nl": "Afstand tussen afbeeldingen inschakelen",
+        "pt-BR": "Ativar espaçamento de imagem",
+        "zh-CN": "启用图片间距",
+        "zh-TW": "啟用圖片間距"
+      }
+    },
+    {
+        "type": "header",
+        "content": "Product image styling"
+    },
+    {
       "type": "checkbox",
       "id": "show_vendor",
       "label": {
@@ -278,16 +255,84 @@
       "default": false
     },
     {
-    "type": "checkbox",
-    "id": "move_image_left",
-    "label": "Move images left",
-    "default": false
+      "type": "checkbox",
+      "id": "show_product_info",
+      "label": {
+        "de": "Produktverkäufer anzeigen",
+        "en": "Show product info",
+        "es": "Mostrar proveedor del producto",
+        "fr": "Afficher le distributeur du produit",
+        "it": "Mostra fornitore prodotto",
+        "ja": "商品の販売元を表示する",
+        "nl": "Productleverancier weergeven",
+        "pt-BR": "Exiba o fornecedor do produto",
+        "zh-CN": "显示产品厂商",
+        "zh-TW": "顯示產品廠商"
+        },
+      "default": true
     },
     {
       "type": "checkbox",
-      "id": "hide_product_price",
-      "label": "Hide product price",
+      "id": "show_product_subtext",
+      "label": {
+        "de": "Produktverkäufer anzeigen",
+        "en": "Show product subtext",
+        "es": "Mostrar proveedor del producto",
+        "fr": "Afficher le distributeur du produit",
+        "it": "Mostra fornitore prodotto",
+        "ja": "商品の販売元を表示する",
+        "nl": "Productleverancier weergeven",
+        "pt-BR": "Exiba o fornecedor do produto",
+        "zh-CN": "显示产品厂商",
+        "zh-TW": "顯示產品廠商"
+      },
+      "default": false
+    },
+    {
+      "type": "paragraph",
+      "content": "[Add product subtext](https://nouri-wellness.myshopify.com/admin/bulk?resource_name=Product&app_context=&edit=metafields.global.custom_product_subtext%3Astring&show=&return_to=%2Fadmin%2Fproducts&metafield_titles=&metafield_options=&query=&published_status=online_store%3Avisible&order=title+asc)"
+    },
+    {
+        "type": "header",
+        "content": "Product Buttons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_button",
+      "label": {
+        "de": "Bildabstand aktivieren",
+        "en": "Show product button",
+        "es": "Habilitar espaciado de imagen",
+        "fr": "Activer l'espacement des images",
+        "it": "Abilita spaziatura immagini",
+        "ja": "画像の間隔を有効にする",
+        "nl": "Afstand tussen afbeeldingen inschakelen",
+        "pt-BR": "Ativar espaçamento de imagem",
+        "zh-CN": "启用图片间距",
+        "zh-TW": "啟用圖片間距"
+      },
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "link_product_image",
+      "label": {
+        "de": "Bildabstand aktivieren",
+        "en": "Link product image",
+        "es": "Habilitar espaciado de imagen",
+        "fr": "Activer l'espacement des images",
+        "it": "Abilita spaziatura immagini",
+        "ja": "画像の間隔を有効にする",
+        "nl": "Afstand tussen afbeeldingen inschakelen",
+        "pt-BR": "Ativar espaçamento de imagem",
+        "zh-CN": "启用图片间距",
+        "zh-TW": "啟用圖片間距"
+      },
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Single button"
     },
     {
       "type": "checkbox",
@@ -328,6 +373,12 @@
         "zh-TW": "使用次要按鈕樣式"
       },
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "block_bottom_text",
+      "label": "Bottom text",
+      "default": "No refrigeration necessary for all products."
     },
     {
       "type": "header",

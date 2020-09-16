@@ -83,13 +83,15 @@
   </script>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+  
   <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
+  
   <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  
   <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
-
+  
   <!-- stamped.io -->
   <script async type="text/javascript" data-api-key="" id="stamped-script-widget" src="https://cdn-stamped-io.azureedge.net/files/widget.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 
 </head>
 
@@ -100,13 +102,19 @@
   {% section 'header' %}
 
   <div class="main-content{% if template.name == blank %} main-content--no-template{% endif %}" data-drawer-push>
+    
     <div class="main-content__wrapper">
+      
       <main class="content-for-layout" id="MainContent" role="main">
+        
         {{ content_for_layout }}
+      
       </main>
 
       {% section 'footer' %}
+    
     </div>
+  
   </div>
 
   {% include 'cart-drawer' %}
@@ -120,5 +128,33 @@
   <script async type="text/javascript" data-api-key="pubkey-uQe4u66vxpOket3U65R1JZQL7RTUp0" id="stamped-script-widget" src="https://cdn-stamped-io.azureedge.net/files/widget.min.js"></script>
  {% include 'smile-initializer' %}
 
-{% include 'globo.menu.action' %}</body>
+{% include 'globo.menu.action' %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script>
+
+      $(document).ready(function () {
+
+        $('.product-carousel').slick({
+          speed: 500,
+          fade: true,
+          autoplay: true,
+          mobileFirst: true,
+          cssEase: 'linear',
+          prevArrow: "<div style='left:5%;top:43%'><img src='https://cdn.shopify.com/s/files/1/2911/8128/files/left-arrow.svg?v=1599654888' /></div>",
+          nextArrow: "<div style='right:-6%;top:43%'><img src='https://cdn.shopify.com/s/files/1/2911/8128/files/right-arrow.svg?v=1599654888' /></div>"
+        });
+        $('.slick-slider--quotes').slick({
+          autoplay: true,
+          mobileFirst: true,
+          adaptiveHeight: false,
+          prevArrow: "<div style='width:200px'><img src='https://cdn.shopify.com/s/files/1/2911/8128/files/left-arrow.svg?v=1599654888' /></div>",
+          nextArrow: "<div style='width:200px'><img src='https://cdn.shopify.com/s/files/1/2911/8128/files/right-arrow.svg?v=1599654888' /></div>"
+        });
+      });
+
+  </script>
+  
+  </body>
 </html>

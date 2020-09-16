@@ -246,7 +246,7 @@
           "zh-CN": "辅助背景",
           "zh-TW": "次要背景"
         },
-        "default": "#f1eee6",
+        "default": "#E0E0E0",
         "info": {
           "de": "Social Sharing-Abschnitte, Warenkorbeinschub, Blog-Kommentare.",
           "en": "Social sharing sections, cart drawer, blog comments.",

@@ -19,7 +19,7 @@
     }
   </style>
 {% endif %}
-<div class="site-header{% if request.page_type == 'index' %} site-header--homepage{% if section.settings.enable_transparent %} site-header--transparent{% endif %}{% endif %}" data-section-id="{{ section.id }}" data-section-type="header-section" data-drawer-push {% if section.settings.enable_transparent and request.page_type == 'index' %} data-transparent-header="true"{% endif %}>
+<div class="site-header{% if section.settings.enable_transparent and request.page_type == 'index' %} site-header--transparent{% endif %}{% if request.page_type == 'index' %} site-header--homepage{% endif %}" data-section-id="{{ section.id }}" data-section-type="header-section" data-drawer-push>
   <header class="site-header__wrapper" role="banner">
     {% if section.settings.show_announcement %}
       {% if section.settings.home_page_only == false or request.page_type == 'index' %}
@@ -59,9 +59,8 @@
             {% endif %}
             {{ section.settings.announcement_text }}
           </p>
-          {%- comment -%}
-            <button class="announcement-bar__close btn btn--clear" aria-expanded="true">{% include 'icon-close' %}</button>
-          {%- endcomment -%}
+          <button class="announcement-bar__close btn btn--clear" aria-expanded="true">{% include 'icon-close' %}</button>
+
         {% if section.settings.announcement_link == blank %}
           </div>
         {% else %}
@@ -71,11 +70,11 @@
       {% endif %}
     {% endif %}
 
-    <div class="site-header-sections page-width">
-      <nav class="site-header__section site-header__section--button burger"
+    <div class="site-header-sections page-width extended">
+      <nav class="site-header__section site-header__section--button"
         data-site-navigation role="navigation"
       >
-        <button class="site-header__navigation btn btn--clear btn--square"
+        <button class="site-header__navigation btn btn--clear btn--square no-desktop"
           aria-expanded="false"
           data-navigation-button
         >
@@ -131,7 +130,35 @@
               {% endfor %}
             </ul>
 
-
+            <ul class="navigation__links">
+              {% if shop.customer_accounts_enabled %}
+                {% if customer %}
+                  <li class="navigation__link navigation__link--secondary navigation__entrance-animation">
+                    {% if customer.first_name != blank %}
+                      {% capture first_name %}{{ customer.first_name }}{% endcapture %}
+                      <a href="{{ routes.account_url }}">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a>
+                    {% else %}
+                      <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+                    {% endif %}
+                  </li>
+                  <li class="navigation__link navigation__link--secondary navigation__entrance-animation">
+                    <a href="{{ routes.account_logout_url }}">{{ 'layout.customer.log_out' | t }}</a>
+                  </li>
+                {% else %}
+                  <li class="navigation__link navigation__link--secondary navigation__entrance-animation">
+                    <a href="{{ routes.account_login_url }}">{{ 'layout.customer.log_in' | t }}</a>
+                  </li>
+                  <li class="navigation__link navigation__link--secondary navigation__entrance-animation">
+                    <a href="{{ routes.account_register_url }}">{{ 'layout.customer.create_account' | t }}</a>
+                  </li>
+                {% endif %}
+              {% endif %}
+              {% for link in linklists[section.settings.secondary_navigation].links %}
+                <li class="navigation__link navigation__link--secondary navigation__entrance-animation{% if link.active %} navigation__link--active{% endif %}">
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
 
             {% if section.settings.show_social_icons %}
               <div class="navigation__social-sharing navigation__entrance-animation">
@@ -139,11 +166,37 @@
               </div>
             {% endif %}
 
-<!-- search bar -->
-              {%- comment -%}{% include 'search-bar', animate: true, disableTab: true %}{%- endcomment -%}
-            </div>
+            {% include 'search-bar', animate: true, disableTab: true %}
+          </div>
         </div>
       </nav>
+
+      {% if section.settings.header_left_text != empty %}
+        <div class="site-header__section left-text">
+          <p>{{ section.settings.header_left_text }}</p>
+        </div>
+      {% endif %}
+      {% if section.settings.logo_left %}
+      {%- style -%}
+        @media only screen and (min-width: 749px) {
+          .site-header__section {
+          -webkit-justify-content: left;
+          -ms-justify-content: left;
+          justify-content: left;
+          }
+        }
+        {%- endstyle -%}
+        {% else %}
+          {%- style -%}
+            @media only screen and (min-width: 749px) {
+              .site-header__section {
+                -webkit-justify-content: center;
+                -ms-justify-content: center;
+                justify-content: center;
+              }
+            }
+          {%- endstyle -%}
+      {% endif %}
       <div class="site-header__section site-header__section--title">
         {% comment %}
         Use the uploaded logo from theme settings if enabled.
@@ -189,70 +242,72 @@
         {% endif %}
       </div>
 
-      <!-- RIGHT NAV -->
-      <div class="site-header__section site-header__section--button desktop">
-        <ul class="navigation__links">
-          {% for link in linklists[section.settings.primary_navigation].links%}
-          {% assign child_list_handle = link.title | handleize %}
-          {% if link.links != blank %}
-          <li
-            class="navigation__link navigation__has-sublinks navigation__has-sublinks--collapsed navigation__entrance-animation">
-            <button class="navigation__expand-sublinks" aria-expanded="{% if link.active %}true{% else %}false{% endif %}">
-              <span aria-hidden="true">{{ link.title }}</span>
-              <span class="visually-hidden">{{ 'general.navigation.toggle_sublinks' | t: link_title: link.title }}</span>
-              {% include 'icon-arrow-down' %}
-            </button>
-            <div class="navigation__sublinks-container">
-              <ul class="navigation__sublinks">
-                {% for childlink in link.links %}
-                <li
-                  class="navigation__sublink{% if childlink.links != blank %} navigation__has-sublinks navigation__has-sublinks--collapsed{% endif %}">
-                  {% if childlink.links != blank %}
-                  <button class="navigation__expand-sublinks navigation__expand-sublinks--third-level"
-                    aria-expanded="{% if link.active %}true{% else %}false{% endif %}">
-                    <span aria-hidden="true">{{ childlink.title }}</span>
-                    <span
-                      class="visually-hidden">{{ 'general.navigation.toggle_sublinks' | t: link_title: childlink.title }}</span>
-                    {% include 'icon-arrow-down' %}
-                  </button>
-                  <div class="navigation__sublinks-container">
-                    <ul class="navigation__sublinks navigation__sublinks--third-level">
-                      {% for grandchildlink in childlink.links %}
-                      <li class="navigation__sublink--third-level">
-                        <a href="{{ grandchildlink.url }}" {% if grandchildlink.active %} aria-current="page"
-                          {% endif %}>{{ grandchildlink.title | escape }}</a>
-                      </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                  {% else %}
-                  <a href="{{ childlink.url }}" {% if childlink.active %} aria-current="page"
-                    {% endif %}>{{ childlink.title | escape }}</a>
-                  {% endif %}
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </li>
-          {% else %}
-          <li class="navigation__link navigation__link--active">
-            <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
-          </li>
-          {% endif %}
-          {% endfor %}
-        
-        </ul>
-      </div>
-      <div class="site-header__section cart-icon">
-        <!-- cart icon -->
-        <a href="{{ routes.cart_url }}" class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle"
-          aria-expanded="false">
-          {%- assign icon = 'icon-header-' | append: section.settings.icon %}
-          {% include icon %}
-          <span class="icon__fallback-text">{{ 'general.header.view_cart' | t }}</span>
-          <span
-            class="site-header__cart-bubble{% if cart.item_count > 0 %} site-header__cart-bubble--visible{% endif %}"></span>
-        </a>
+      <!-- desktop navigation -->
+      <div class="custom-nav-container">
+        <div class="no-moblie">
+          <ul class="navigation__links">
+            {% for link in linklists[section.settings.primary_navigation].links%}
+            {% assign child_list_handle = link.title | handleize %}
+            {% if link.links != blank %}
+            <li class="navigation__link navigation__has-sublinks">
+              <button class="navigation__expand-sublinks" aria-expanded="{% if link.active %}true{% else %}false{% endif %}">
+                <span aria-hidden="true">{{ link.title }}</span>
+                <span class="visually-hidden">{{ 'general.navigation.toggle_sublinks' | t: link_title: link.title }}</span>
+              </button>
+              <div class="navigation__sublinks-container">
+                <div class="arrow-up"></div>
+                <ul class="navigation__sublinks">
+                  {% for childlink in link.links %}
+                  <li
+                    class="navigation__sublink{% if childlink.links != blank %} navigation__has-sublinks navigation__has-sublinks--collapsed{% endif %}">
+                    {% if childlink.links != blank %}
+                    <button class="navigation__expand-sublinks navigation__expand-sublinks--third-level"
+                      aria-expanded="{% if link.active %}true{% else %}false{% endif %}">
+                      <span aria-hidden="true">{{ childlink.title }}</span>
+                      <span
+                        class="visually-hidden">{{ 'general.navigation.toggle_sublinks' | t: link_title: childlink.title }}</span>
+                      {% include 'icon-arrow-down' %}
+                    </button>
+                    <div class="navigation__sublinks-container">
+                      <ul class="navigation__sublinks navigation__sublinks--third-level">
+                        {% for grandchildlink in childlink.links %}
+                        <li class="navigation__sublink--third-level">
+                          <a href="{{ grandchildlink.url }}" {% if grandchildlink.active %} aria-current="page"
+                            {% endif %}>{{ grandchildlink.title | escape }}</a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    {% else %}
+                    <a href="{{ childlink.url }}" {% if childlink.active %} aria-current="page"
+                      {% endif %}>{{ childlink.title | escape }}</a>
+                    {% endif %}
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </li>
+            {% else %}
+            <li class="navigation__link{% if link.active %} navigation__link--active{% endif %}">
+              <a href="{{ link.url }}" {% if link.active %} aria-current="page" {% endif %}>{{ link.title }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+
+
+        </div>
+
+        <div class="site-header__section site-header__section--button cart-icon">
+          <a href="{{ routes.cart_url }}"
+            class="btn btn--clear btn--square btn--hover-scale site-header__cart ajax-cart__toggle" aria-expanded="false">
+            {%- assign icon = 'icon-header-' | append: section.settings.icon %}
+            {% include icon %}
+            <span class="icon__fallback-text">{{ 'general.header.view_cart' | t }}</span>
+            <span
+              class="site-header__cart-bubble{% if cart.item_count > 0 %} site-header__cart-bubble--visible{% endif %}"></span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -282,6 +337,32 @@
     "zh-TW": "標頭"
   },
   "settings": [
+  {
+      "id": "header_left_text",
+      "type": "text",
+      "label": {
+        "da": "Brugerdefineret logohøjde (i pixels)",
+        "de": "Benutzerdefinierte Logohöhe (Pixel)",
+        "en": "Left header text",
+        "es": "Altura del logotipo personalizado (en píxeles)",
+        "fi": "Mukautettu logon korkeus (pikseleinä)",
+        "fr": "Hauteur personnalisée du logo (en pixels)",
+        "hi": "कस्टम लोगो ऊंचाई (पिक्सेल में)",
+        "it": "Altezza logo personalizzato (in pixel)",
+        "ja": "ロゴの高さをカスタムする（ピクセルで）",
+        "ko": "사용자 지정 로고 높이 (픽셀)",
+        "ms": "Ketinggian logo tersuai (dalam piksel)",
+        "nb": "Tilpasset logohøyde (i piksler)",
+        "nl": "Aangepaste logohoogte (in pixels)",
+        "pt-BR": "Altura do logotipo personalizado (em pixels)",
+        "pt-PT": "Altura do logótipo personalizado (em píxeis)",
+        "sv": "Anpassad logotypbredd (i pixlar)",
+        "th": "ความสูงของโลโก้แบบกำหนดเอง (เป็นพิกเซล)",
+        "zh-CN": "自定义 logo 高度（像素）",
+        "zh-TW": "自訂標誌高度 (單位為像素)"
+      },
+      "default": "But first, immunity."
+    },  
     {
       "type": "select",
       "id": "icon",
@@ -362,35 +443,36 @@
       "type": "image_picker",
       "id": "logo",
       "label": {
-        "da": "Logo",
-        "de": "Logo",
-        "en": "Logo",
-        "es": "Logotipo",
-        "fi": "Logo",
-        "fr": "Logo",
-        "hi": "लोगो",
-        "it": "Logo",
-        "ja": "ロゴ",
-        "ko": "로고",
-        "ms": "Logo",
-        "nb": "Logo",
-        "nl": "Logo",
-        "pt-BR": "Logotipo",
-        "pt-PT": "Logótipo",
-        "sv": "Logotyp",
-        "th": "โลโก้",
-        "zh-CN": "logo",
-        "zh-TW": "商標"
+        "da": "Logobillede",
+        "de": "Logo-Foto",
+        "en": "Logo image",
+        "es": "Imagen del logotipo",
+        "fi": "Logokuva",
+        "fr": "Image du logo",
+        "hi": "लोगो इमेज",
+        "it": "Immagine del logo",
+        "ja": "ロゴ画像",
+        "ko": "로고 이미지",
+        "ms": "Imej logo",
+        "nb": "Logobilde",
+        "nl": "Afbeelding van logo",
+        "pt-BR": "Imagem do logotipo",
+        "pt-PT": "Imagem do logótipo",
+        "sv": "Logobild",
+        "th": "รูปภาพโลโก้",
+        "zh-CN": "logo 图片",
+        "zh-TW": "標誌圖片"
       }
     },
     {
+      "type": "checkbox",
+      "id": "logo_left",
+      "label": "Logo left (desktop)",
+      "default": false
+    },
+    {
       "id": "logo_max_height",
-      "type": "range",
-      "min": 10,
-      "max": 60,
-      "step": 5,
-      "unit": "px",
-      "default": 10,
+      "type": "text",
       "label": {
         "da": "Brugerdefineret logohøjde (i pixels)",
         "de": "Benutzerdefinierte Logohöhe (Pixel)",
@@ -411,6 +493,27 @@
         "th": "ความสูงของโลโก้แบบกำหนดเอง (เป็นพิกเซล)",
         "zh-CN": "自定义 logo 高度（像素）",
         "zh-TW": "自訂標誌高度 (單位為像素)"
+      },
+      "default": {
+        "da": "60",
+        "de": "60",
+        "en": "60",
+        "es": "60",
+        "fi": "60",
+        "fr": "60",
+        "hi": "60",
+        "it": "60",
+        "ja": "60",
+        "ko": "60",
+        "ms": "60",
+        "nb": "60",
+        "nl": "60",
+        "pt-BR": "60",
+        "pt-PT": "60",
+        "sv": "60",
+        "th": "60",
+        "zh-CN": "60",
+        "zh-TW": "60"
       }
     },
     {
@@ -461,98 +564,77 @@
         "zh-CN": "在主页上启用透明标题",
         "zh-TW": "啟用首頁上的透明標頭"
       },
-      "info": {
-        "da": "Gælder, når det øverste afsnit er et diasshow, et galleri eller et billede med tekstoverlejring.",
-        "de": "Anwendbar, wenn der oberste Abschnitt eine Slideshow, eine Galerie oder ein Bild mit Textüberlagerung ist.",
-        "en": "Applicable when the top section is a slideshow, gallery or image with text overlay.",
-        "es": "Aplica cuando la sección superior es una presentación de diapositivas, galería o imagen con texto superpuesto.",
-        "fi": "Sovelletaan, kun yläosa on diaesitys, galleria tai kuva, jonka päällä on tekstiä.",
-        "fr": "Applicable lorsque la section du haut est un diaporama, une galerie ou une image avec superposition de texte.",
-        "hi": "उस वक्त लागू होता है जब पहला सेक्शन स्लाइडशो, गैलरी या पाठ ओवरले के साथ इमेज हो.",
-        "it": "Applicabile quando la sezione superiore è una presentazione, una galleria o un'immagine con sovrapposizione di testo.",
-        "ja": "上部のセクションがスライドショー、ギャラリー、またはテキストオーバーレイ付きの画像である場合に適用されます。",
-        "ko": "상단 섹션이 텍스트 오버레이를 포함한 슬라이드 쇼, 갤러리 또는 이미지인 경우 적용 가능합니다.",
-        "ms": "Terpakai apabila bahagian pertama adalah tayangan slaid, galeri atau imej dengan tindanan teks.",
-        "nb": "Gjelder når den første seksjonen er en lysbildefremvisning, et galleri eller et bilde med tekstoverlegg.",
-        "nl": "Van toepassing wanneer de bovenste sectie een diavoorstelling, galerij of afbeelding met tekstoverlay is.",
-        "pt-BR": "Aplicável quando a seção superior for uma apresentação de slides, galeria ou imagem com sobreposição de texto.",
-        "pt-PT": "Aplicável quando a secção superior é uma apresentação de diapositivos, uma galeria ou uma imagem com sobreposição de texto.",
-        "sv": "Tillämplig när det övre avsnittet är ett bildspel, galleri eller bild med text på.",
-        "th": "สามารถใช้งานได้เมื่อส่วนบนเป็นสไลด์โชว์ แกลเลอรี่ หรือรูปภาพที่มีข้อความประกอบ",
-        "zh-CN": "当顶部部分是幻灯片、图库或带文本叠加的图片时适用。",
-        "zh-TW": "可於第一個區段是輪播投影片、圖庫或附文字疊加的圖片時套用。"
-      },
       "default": true
     },
     {
       "type": "image_picker",
       "id": "transparent_logo",
       "label": {
-        "da": "Gennemsigtigt logo",
-        "de": "Transparentes Logo",
-        "en": "Transparent logo",
-        "es": "Logo transparente",
-        "fi": "Läpinäkyvä logo",
-        "fr": "Logo transparent",
-        "hi": "पारदर्शी लोगो",
-        "it": "Logo trasparente",
-        "ja": "透明なロゴ",
-        "ko": "투명 로고",
-        "ms": "Logo yang telus",
-        "nb": "Gjennomsiktig logo",
-        "nl": "Transparant logo",
-        "pt-BR": "Logotipo transparente",
-        "pt-PT": "Logótipo transparente",
-        "sv": "Transparent logotyp",
-        "th": "โลโก้โปร่งใส",
-        "zh-CN": "透明的 logo",
-        "zh-TW": "透明商標"
+        "da": "Gennemsigtigt logobillede",
+        "de": "Transparentes Logobild",
+        "en": "Tranparent logo image",
+        "es": "Imagen del logotipo de transparente",
+        "fi": "Läpinäkyvä logokuva",
+        "fr": "Image du logo transparent",
+        "hi": "पारदर्शी लोगो इमेज",
+        "it": "Immagine logo trasparente",
+        "ja": "透過ロゴ画像",
+        "ko": "투명 로고 이미지",
+        "ms": "Imej logo telus",
+        "nb": "Gjennomsiktig logobilde",
+        "nl": "Transparante afbeelding van logo",
+        "pt-BR": "Imagem do logotipo transparente",
+        "pt-PT": "Imagem do logótipo transparente",
+        "sv": "Tranparent logobild",
+        "th": "รูปภาพโลโก้โปร่งใส",
+        "zh-CN": "透明 logo 图片",
+        "zh-TW": "透明標誌圖片"
       },
       "info": {
-        "da": "Vises, når det gennemsigtige sidehoved aktiveres.",
-        "de": "Wird angezeigt, wenn ein transparenter Header aktiviert ist.",
-        "en": "Displayed when transparent header is enabled.",
-        "es": "Se muestra cuando el encabezado transparente está habilitado.",
-        "fi": "Näytetään silloin, kun läpinäkyvä ylätunniste ei ole käytössä.",
-        "fr": "Affiché lorsque l'en-tête transparent est activé.",
-        "hi": "पारदर्शी हैडर सक्षम होने पर दिखाई देता है.",
-        "it": "Visualizzato quando l'header trasparente è abilitato.",
-        "ja": "透明なヘッダーが有効になっている場合に表示されます。",
-        "ko": "투명 머리글이 사용 가능한 경우 표시됩니다.",
-        "ms": "Dipaparkan apabila tajuk telus diaktifkan.",
-        "nb": "Vises når gjennomsiktig topptekst er aktivert.",
-        "nl": "Weergegeven wanneer transparante kop is ingeschakeld.",
-        "pt-BR": "Exibido quando o cabeçalho transparente está habilitado.",
-        "pt-PT": "Apresentado quando o cabeçalho transparente está ativado.",
-        "sv": "Visas när transparent rubrik är aktiverad.",
-        "th": "จะแสดงเมื่อมีการใช้ส่วนหัวแบบโปร่งใส",
-        "zh-CN": "在启用透明标题时显示。",
-        "zh-TW": "在透明標頭啟用時顯示。"
+        "da": "Dette logo bruges på startsiden, hvis indstillingen for det gennemsigtige sidehoved vælges",
+        "de": "Dieses Logo wird auf der Homepage verwendet, wenn die Einstellung für den transparenten Header ausgewählt wird",
+        "en": "This logo will be used on the home page if the transparent header setting is selected",
+        "es": "Este logotipo se utilizará en la página de inicio si se selecciona la configuración del encabezado transparente",
+        "fi": "Tätä logoa käytetään kotisivulla, jos läpinäkyvä ylätunniste ‑asetus on valittu",
+        "fr": "Ce logo sera utilisé sur la page d'accueil si le paramètre d'en-tête transparent est sélectionné",
+        "hi": "यदि पारदर्शी हैडर सेटिंग का चयन किया जाता है तो यह लोगो होमपेज पर उपयोग किया जाएगा",
+        "it": "Questo logo verrà utilizzato nella home page se è selezionata l'impostazione di header trasparente",
+        "ja": "透過ヘッダー設定が選択されている場合、このロゴがホームページで使用されます。",
+        "ko": "이 로고는 투명 머리글 설정이 선택된 경우 홈페이지에서 사용됩니다",
+        "ms": "Logo ini akan digunakan pada halaman utama jika tetapan tajuk telus dipilih",
+        "nb": "Denne logoen brukes på hjemmesiden hvis innstillingen for den gjennomsiktige overskriften er valgt",
+        "nl": "Dit logo wordt gebruikt op de startpagina als de instelling Transparante koptekst is geselecteerd",
+        "pt-BR": "Esse logotipo será usado na página inicial quando a configuração de cabeçalho transparente estiver selecionada",
+        "pt-PT": "Este logótipo será utilizado na página inicial quando a definição de cabeçalho transparente estiver selecionada",
+        "sv": "Den här logotypen kommer att användas på hemsidan om den transparenta rubrikinställningen är vald",
+        "th": "โลโก้นี้จะใช้ในหน้าหลัก หากเลือกการตั้งค่าหัวเรื่องโปร่งใส",
+        "zh-CN": "如果选择透明标题设置，则将在主页上使用此 logo",
+        "zh-TW": "如果您選擇使用透明標頭設定的話，則首頁上會使用此標誌"
       }
     },
     {
       "type": "color",
       "id": "transparent_text_color",
       "label": {
-        "da": "Ikoner for gennemsigtigt sidehoved",
-        "de": "Transparente Header-Symbole",
-        "en": "Transparent header icons",
-        "es": "Íconos de encabezado transparente",
-        "fi": "Läpinäkyvät ylätunnisteen kuvakkeet",
-        "fr": "Icônes d'en-tête transparentes",
-        "hi": "पारदर्शी हैडर आइकन",
-        "it": "Icone header trasparenti",
-        "ja": "透過ヘッダーアイコン",
-        "ko": "투명 머리글 아이콘",
-        "ms": "Tajuk Ikon Telus",
-        "nb": "Gjennomsiktige topptekstikoner",
-        "nl": "Transparante koptekstpictogrammen",
-        "pt-BR": "Ícones de cabeçalho transparentes",
-        "pt-PT": "Ícones do cabeçalho transparente",
-        "sv": "Transparenta rubrikikoner",
-        "th": "ไอคอนส่วนหัวแบบโปร่งใส",
-        "zh-CN": "透明标题图标",
-        "zh-TW": "透明標頭圖示"
+        "da": "Farve på ikoner for gennemsigtigt sidehoved",
+        "de": "Farbe des Symbols für den transparenten Header",
+        "en": "Transparent header icons color",
+        "es": "Color de iconos de encabezado transparente",
+        "fi": "Läpinäkyvän ylätunnisteen kuvakkeen väri",
+        "fr": "Couleur des icônes d'en-tête transparent",
+        "hi": "पारदर्शी हैडर आइकन रंग",
+        "it": "Colore icone header trasparente",
+        "ja": "透過ヘッダーアイコンの色",
+        "ko": "투명 머리글 아이콘 색상",
+        "ms": "Warna ikon tajuk telus",
+        "nb": "Farge for ikoner i gjennomsiktig overskrift",
+        "nl": "Pictogramkleur van transparante koptekst",
+        "pt-BR": "Cor de ícones do cabeçalho transparente",
+        "pt-PT": "Cor de ícones do cabeçalho transparente",
+        "sv": "Färg för transparent rubrikikon",
+        "th": "สีไอคอนส่วนหัวโปร่งใส",
+        "zh-CN": "透明标题图标颜色",
+        "zh-TW": "透明標頭圖示顏色"
       },
       "default": "#ffffff"
     },
@@ -746,7 +828,7 @@
         "ms": "Halaman utama sahaja",
         "nb": "Kun på startsiden",
         "nl": "Alleen startpagina",
-        "pt-BR": "Apenas na página inicial",
+        "pt-BR": "Apenas página inicial",
         "pt-PT": "Apenas página inicial",
         "sv": "Endast hemsida",
         "th": "หน้าแรกเท่านั้น",
@@ -779,7 +861,7 @@
         "zh-CN": "公告文本",
         "zh-TW": "公告文字"
       },
-      "default": "Announce something here"
+      "default": "Now available at"
     },
     {
       "type": "url",

@@ -1,0 +1,21 @@
+
+{% if section.settings.product_carousel_full_width %}
+    {% assign carousel_width = '' %}
+{% else %}
+    {% assign carousel_width = 'page-width page-width--no-gutter grid__item' %}
+{% endif %}
+<h1>{{ carousel_width }}</h1>
+<section class="{{ section.id }}--product-carousel grid">
+    <div class="product-carousel {{ carousel_width }} one-whole">
+    
+        {%- assign carouselImages = product.metafields.global.carousel_image_urls -%}
+        {%- assign items = carouselImages | split: ',' -%}
+        
+        {%- for item in items -%}
+            {% assign productImage = item | split:',' %}
+            <img class="carousel-image" src="{{ productImage }}"/>
+        {%- endfor -%}
+
+    </div>
+</section>
+

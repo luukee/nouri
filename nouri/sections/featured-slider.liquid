@@ -1,3 +1,4 @@
+{% if section.settings.show_section %}
 <style>
   #featured-slider-{{ section.id }} .featured-slider__slides-container {
     background-color: {{ section.blocks[0].settings.background_color }}
@@ -130,7 +131,7 @@
 
   </div>
 </div>
-
+{% endif %}
 {% schema %}
 {
   "name": {
@@ -147,6 +148,12 @@
   },
   "class": "index-section index-section--featured-sider",
   "settings": [
+   {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show section",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "use_second_button",

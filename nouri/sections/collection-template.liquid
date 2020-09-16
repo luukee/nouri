@@ -13,9 +13,6 @@
       </noscript>
     </div>
   {% endif %}
-
-  <div class="page-width">
-    <!-- header WAS HERE-->
     
     {%- assign desktopColumns = section.settings.products -%}
     {%- assign mobileColumns = '1' -%}
@@ -25,10 +22,10 @@
       {% if mobileColumns == '2' %}small--one-half {% endif %}
     {%- endcapture -%}
 
-    <div class="card-list grid" data-desktop-columns="{{ desktopColumns }}" data-mobile-columns="{{ mobileColumns }}" data-grid-style="{{ section.settings.grid_style }}">
+    <div class="card-list thisisit grid" data-desktop-columns="{{ desktopColumns }}" data-mobile-columns="{{ mobileColumns }}" data-grid-style="{{ section.settings.grid_style }}">
       <div class="card-list__column{% if totalProducts == 1 %} card-list__column--center{% endif %} grid grid__item {{ gridClasses }}">
         {% for product in collection.products %}
-          {% include 'product-card', product: product, grid_style: section.settings.grid_style %}
+            {% include 'product-card', product: product, grid_style: section.settings.grid_style %}
         {% endfor %}
       </div>
     </div>
@@ -42,7 +39,6 @@
         {% include 'pagination' %}
       </div>
     {% endif %}
-  </div>
 
   {% endpaginate %}
 </div>
@@ -438,6 +434,12 @@
       "type": "checkbox",
       "id": "show_product_subtitle",
       "label": "Show product subtitle",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_price",
+      "label": "Show product price",
       "default": true
     },
     {

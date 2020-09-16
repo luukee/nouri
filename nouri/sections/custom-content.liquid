@@ -1,10 +1,15 @@
+{% if section.settings.show_section %}
+
+{% if section.settings.section_header_text_border %}
+  {%- assign section_border = '2px solid' -%}
+{% endif %}
 
 <style>
   .custom-content-wrapper--{{ section.id }} .custom-content__section-header  {
     color: {{ section.settings.heading_color }};
     font-size: {{ section.settings.heading_size | append: 'em' }};
-    border-bottom: 2px solid {{ block.settings.heading_color }};
     padding-bottom: 20px;
+    border-bottom: {{ section_border }};
   }
 
   {% if section.settings.background_color != blank %}
@@ -37,10 +42,16 @@
 </style>
 
 <div class="custom-content-wrapper custom-content-wrapper--{{ section.id }} 
-  {% if section.settings.select_top_margin == 'none' %}custom-content-wrapper--top-margin
+  {% if section.settings.select_top_margin == 'none' %}
   {% elsif section.settings.select_top_margin == 'small' %}custom-content-wrapper--top-margin sm
   {% elsif section.settings.select_top_margin == 'medium' %}custom-content-wrapper--top-margin md 
-  {% elsif section.settings.select_top_margin == 'large' %}custom-content-wrapper--top-margin lg{% endif %} 
+  {% elsif section.settings.select_top_margin == 'large' %}custom-content-wrapper--top-margin lg{% endif %}
+  
+  {% if section.settings.select_top_padding == 'none' %}
+  {% elsif section.settings.select_top_padding == 'small' %}custom-content-wrapper--top-padding sm
+  {% elsif section.settings.select_top_padding == 'medium' %}custom-content-wrapper--top-padding md 
+  {% elsif section.settings.select_top_padding == 'large' %}custom-content-wrapper--top-padding lg{% endif %}
+
   {% if section.settings.bottom_margin %}custom-content-wrapper--bottom-margin{% endif %} 
   {% if section.settings.section_move_up == "20" %}section_move_up {% else %}{%- endif -%}
   one-whole" 
@@ -48,18 +59,10 @@
   data-section-type="custom-content">
   {% if section.settings.heading_text != blank %}
     <div class="{% if section.settings.section_width %}{% else %}page-width{% endif %}">
-        <div class="grid">
-            <div class="grid__item medium-up--eight-twelfths">
-              <span class="custom-content__section-header {% if section.settings.text_alignment %}text-{{ section.settings.text_alignment }}{% endif %}" data-animate>{{ section.settings.heading_text }}</span>
-            </div>
-        </div>
+      <div class="custom-content__section-header text-{{ section.settings.section_header_align_text }}" data-animate>{{ section.settings.heading_text }}</div>
     </div>
   {% endif %}
-  <div class="
-  {% if section.settings.section_width == "full_width" %}
-  {% else %}page-width{% endif %}
-  {% if section.settings.thin_section %}--narrow page-width{% endif %}
-  ">
+  <div {% if section.settings.section_width == "full_width" %}{% else %}class="page-width{% if section.settings.thin_section %}--narrow page-width" {% endif %}{% endif %}">
 {% if section.settings.flip_for_mobile %}
 
     {%- assign block_flip = 'flip-for-mobile' -%}
@@ -175,7 +178,7 @@
                       }
                   {% endif %}
 
-                    {% if block.settings.heading_full_width_text != blank %}
+                    {% if block.settings.heading_full_width_text_border %}
                     .custom-content-wrapper--{{ section.id }} .custom__item--{{ block.id }} .custom__block-heading-text-container {
                         border-bottom: 1px solid {{ block.settings.heading_color }};
                     }
@@ -198,7 +201,7 @@
 
                 {% if block.settings.heading_full_width_text != blank %}
                     <div class="text custom__block-heading-text-container">
-                          <h2 class="custom__block-heading-text {% if section.settings.text_alignment %}text-{{ section.settings.text_alignment }}{% endif %} full-width {{ block.settings.heading_full_width_style }}" data-animate>{{ block.settings.heading_full_width_text | escape }}</h2>
+                          <h2 class="custom__block-heading-text text-{{ block.settings.align_text }} full-width {{ block.settings.heading_full_width_style }}" data-animate>{{ block.settings.heading_full_width_text | escape }}</h2>
                     </div>
                 {% endif %}
 
@@ -211,13 +214,13 @@
                     <div class="custom__block-body-text rte-setting" data-animate>{{ block.settings.paragraph_text }}</div>
                   {% endif %}
                   {% if block.settings.button_link %}
-                      <a href="{{ block.settings.button_link }}" class="btn wide{% if block.settings.use_second_button %} btn--secondary{% endif %} custom-content__btn {%if block.settings.popup_button %}modalbtn--{{ block.settings.button_label | replace: " ", "-" }}{% endif %}" data-animate>
+                      <a href="{{ block.settings.button_link }}" class="btn wide{% if block.settings.select_button_style == 'btn--secondary' %} btn--secondary{% elsif block.settings.select_button_style == 'btn--tertiary' %} btn--tertiary{% else %}{% endif %} custom-content__btn {%if block.settings.popup_button %}modalbtn--{{ block.settings.button_label | replace: " ", "-" }}{% endif %}" data-animate>
                         {{ block.settings.button_label }}
                       </a>
                   {% endif %}
                   {% if block.settings.popup_button %}
                     <div class="button-modal {%if block.settings.popup_image %}modalbtn--{{ block.settings.button_label | replace: " ", "-" }}{% endif %}">
-                        <a href="{{ block.settings.button_link }}" class="btn wide{% if block.settings.use_second_button %} btn--secondary{% endif %} custom-content__btn {%if block.settings.popup_image %}modalbtn--{{ block.settings.button_label | replace: " ", "-" }}{% endif %}" data-animate>
+                        <a href="{{ block.settings.button_link }}" class="btn wide{% if block.settings.select_button_style %} btn--secondary{% endif %} custom-content__btn {%if block.settings.popup_image %}modalbtn--{{ block.settings.button_label | replace: " ", "-" }}{% endif %}" data-animate>
                           {{ block.settings.button_label }}
                         </a>
 
@@ -433,7 +436,7 @@
     {% endif %}
   </div>
 </div>
-
+{% endif %}
 {% schema %}
 {
   "name": {
@@ -450,6 +453,12 @@
   },
   "class": "index-section index-section--custom-content",
   "settings": [
+    {
+    "type": "checkbox",
+    "id": "show_section",
+    "label": "Show section",
+    "default": true
+    },
     {
       "type": "text",
       "id": "heading_text",
@@ -477,6 +486,23 @@
         "zh-CN": "自定义内容",
         "zh-TW": "自訂內容"
       }
+    },
+    {
+      "type": "checkbox",
+      "id": "section_header_text_border",
+      "label": {
+        "de": "Oberer Rand",
+        "en": "Section header border",
+        "es": "Margen superior",
+        "fr": "Marge supérieure",
+        "it": "Margine superiore",
+        "ja": "上マージン",
+        "nl": "Bovenmarge",
+        "pt-BR": "Margem superior",
+        "zh-CN": "上边距",
+        "zh-TW": "上方邊界"
+      },
+      "default": true
     },
     {
       "type": "color",
@@ -513,10 +539,10 @@
     },
     {
       "type": "select",
-      "id": "text_alignment",
+      "id": "section_header_align_text",
       "label": {
         "de": "Horizontale Ausrichtung",
-        "en": "Horizontal alignment",
+        "en": "Alignment",
         "es": "Alineación horizontal",
         "fr": "Alignement horizontal",
         "it": "Allineamento orizzontale",
@@ -547,7 +573,7 @@
           "value": "center",
           "label": {
             "de": "Mittig",
-            "en": "Centered",
+            "en": "Center",
             "es": "Centrado",
             "fr": "Centré",
             "it": "Centrato",
@@ -745,6 +771,30 @@
       ]
     },
     {
+      "type": "select",
+      "id": "select_top_padding",
+      "label": "Top padding",
+      "default": "medium",
+      "options": [
+      {
+        "value": "none",
+        "label": "None"
+      },
+      {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ]
+    },
+    {
       "type": "checkbox",
       "id": "bottom_margin",
       "label": {
@@ -837,6 +887,23 @@
           "zh-CN": "谈论您的品牌",
           "zh-TW": "描述您的品牌"
         }
+      },
+      {
+        "type": "checkbox",
+        "id": "heading_full_width_text_border",
+        "label": {
+          "de": "Unterer Rand",
+          "en": "Header bottom border",
+          "es": "Margen inferior",
+          "fr": "Marge inférieure",
+          "it": "Margine inferiore",
+          "ja": "下マージン",
+          "nl": "Ondermarge",
+          "pt-BR": "Margem inferior",
+          "zh-CN": "下边距",
+          "zh-TW": "下方邊界"
+        },
+        "default": true
       },
       {
         "type": "select",
@@ -1093,6 +1160,21 @@
               "label": {
                 "de": "Überschrift 6",
                 "en": "Heading 6",
+                "es": "Título 6",
+                "fr": "Titre 6",
+                "it": "Titolo 6",
+                "ja": "見出し6",
+                "nl": "Kop 6",
+                "pt-BR": "Título 6",
+                "zh-CN": "标题 6",
+                "zh-TW": "標題 6"
+              }
+            },
+            {
+              "value": "p",
+              "label": {
+                "de": "Überschrift 6",
+                "en": "Paragraph",
                 "es": "Título 6",
                 "fr": "Titre 6",
                 "it": "Titolo 6",
@@ -1538,21 +1620,24 @@
           ]
       },
       {
-        "type": "checkbox",
-        "id": "use_second_button",
-        "label": {
-          "de": "Stil für sekundäre Schaltflächen verwenden",
-          "en": "Use secondary button style",
-          "es": "Utiliza el estilo de botón secundario",
-          "fr": "Utiliser le style de bouton secondaire",
-          "it": "Usa stile pulsante secondario",
-          "ja": "サブボタンのスタイルを使用する",
-          "nl": "Secundaire knopstijl gebruiken",
-          "pt-BR": "Usar o estilo de botão secundário",
-          "zh-CN": "使用辅助按钮样式",
-          "zh-TW": "使用次要按鈕樣式"
-        },
-        "default": false
+        "type": "select",
+        "id": "select_button_style",
+        "label": "Button Style",
+        "default": "basic",
+        "options": [
+          {
+            "value": "btn--secondary",
+            "label": "Secondary"
+          },
+          {
+            "value": "btn--tertiary",
+            "label": "Accent"
+          },
+          {
+            "value": "basic",
+            "label": "Basic"
+          }
+        ]
       },
       {
         "type": "text",

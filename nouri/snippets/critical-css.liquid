@@ -300,9 +300,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -webkit-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
 }
 
 .site-header__logo-wrapper {
@@ -485,7 +482,6 @@ html.supports-no-js .site-header__logo-image--transparent {
   width: 100%;
   position: relative;
   overflow: hidden;
-  min-height: 300px;
   max-height: calc(100vh - 35px);
   background-color: {{ settings.color_main_bg | color_darken: 15}};
 }
@@ -494,12 +490,6 @@ html.supports-no-js .site-header__logo-image--transparent {
   height: calc(100vh - 35px);
 }
 
-@media only screen and (max-width: 749px) {
-  .slideshow--adapt .slideshow {
-    max-height: 125vw;
-    min-height: 75vw;
-  }
-}
 
 .slideshow__slides {
   margin: 0;

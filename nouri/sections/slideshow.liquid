@@ -38,10 +38,17 @@
   {%- else -%}
     {%- assign min_aspect_ratio = first_block.settings.image.aspect_ratio -%}
   {%- endif -%}
-  {%- assign wrapper_height = 100 | divided_by: min_aspect_ratio -%}
+  {%- assign wrapper_height = 150 | divided_by: min_aspect_ratio -%}
+  {%- assign mobile_wrapper_height = 100 | divided_by: min_aspect_ratio -%}
+  
   {%- style -%}
     #Slideshow-{{ section.id }} {
-      height: {{- wrapper_height -}}vw;
+      height: {{- mobile_wrapper_height -}}vh;
+    }
+    @media only screen and (min-width: 750px) {
+      #Slideshow-{{ section.id }} {
+        height: {{- wrapper_height -}}vh;
+      }
     }
   {%- endstyle -%}
 {%- endif -%}
@@ -57,80 +64,121 @@
       <ul class="slideshow__slides">
 
         {%- for block in section.blocks -%}
-          <li class="slideshow__slide slideshow__slide--{{ block.id }}{% if forloop.first %} slideshow__slide--active{% endif %}{% if section.settings.show_overlay %} slideshow__overlay{% endif %}"
-              id="Slide{{ forloop.index0 }}"
+
+        {%- if section.settings.show_overlay_image -%}
+          {%- assign img_url_overlay = block.settings.image | img_url: '2500x' -%}
+          <style>
+            .slideshow__slide--{{ block.id }} .slideshow-row__text {
+              margin: inherit;
+            }
+            .slideshow__slide {
+              background-image: url('{{ img_url_overlay }}');
+            }
+          </style>
+        {%- endif -%}
+        
+          <li class="slideshow__slide slideshow__slide--{{ block.id }}{% if forloop.first %} slideshow__slide--active{% endif %}{% if section.settings.show_overlay %} slideshow__overlay{% endif %}"    
+          id="Slide{{ forloop.index0 }}"
               {% unless forloop.first %}aria-hidden="true"{% endunless %}
               {{ block.shopify_attributes }}>
-            {%- if block.settings.image == blank -%}
-              <div class="slideshow__image slideshow__image--{{ block.id }}">
-                <div class="placeholder-background">
-                  {% capture current %}{% cycle 1, 2 %}{% endcapture %}
-                  {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            <div class="slideshow-row grid">
+
+              <div class="slideshow-row__text grid__item one-third medium-up--one-third medium-up--push-two-twelfths large-up--push-one-sixth">
+              
+                <div class="slideshow-row__heading" data-animate>
+
+                  <div class="grid__item">
+
+                  <div class="slideshow__text-container">
+                    
+                    {%- if block.type == 'video' -%}
+                    <button class="slideshow__play-button btn btn--clear" disabled aria-live="polite"
+                      aria-label="{{ 'sections.slider.pause' | t }}" aria-pressed="false"
+                      data-label-pause="{{ 'sections.slider.pause' | t }}" data-label-play="{{ 'sections.slider.play' | t }}"
+                      data-pause-button>
+                      <span class="visually-hidden" data-play-label>{{ 'video.play' | t }}</span>
+                      <span class="slideshow__play-button-icon"></span>
+                      <span class="slideshow__play-button-circle"></span>
+                    </button>
+                    {%- endif -%}
+                    <div class="slideshow__text-content" data-animate>
+                      {%- if block.settings.title != blank -%}
+                      <h2 class="slideshow__heading weight-600">
+                        {{ block.settings.title }}
+                      </h2>
+                      {%- endif -%}
+                      {%- if block.settings.subtitle != blank -%}
+                      <p class="slideshow__heading">
+                        {{ block.settings.subtitle }}
+                      </p>
+                      {%- endif -%}
+                      {%- if show_center_cta and block.settings.cta_link != blank -%}
+                      <a href="{{ block.settings.cta_link }}"
+                        class="slideshow__heading-cta btn{% if section.blocks.size == 1 and section.settings.slider_height == 'adapt' %} small--hide{% endif %}">
+                        {{ block.settings.cta | escape }}
+                      </a>
+                      {%- endif -%}
+                    </div>
+                  </div>
+
+                  </div>
+
                 </div>
+              
               </div>
-            {%- else -%}
-              {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-              {%- assign mobile_img_url = block.settings.mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-              <style>
-                .slideshow__image--{{ block.id }} {
-                  object-position: {{ block.settings.alignment }};
-                  font-family: "object-fit: cover; object-position: {{ block.settings.alignment }};";
-                }
-              </style>
+              {%- if section.settings.show_overlay_image -%}
 
-              <img class="slideshow__image desktop slideshow__image--{{ block.id }} lazyload"
-                  src="{{ block.settings.image | img_url: '300x' }}"
-                  data-src="{{ img_url }}"
-                  data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-                  data-sizes="auto"
-                  data-parent-fit="cover"
-                  alt="{{ block.settings.image.alt | escape }}">
-              <img class="slideshow__image mobile slideshow__image--{{ block.id }} lazyload"
-                  src="{{ block.settings.mobile_image | mobile_img_url: '300x' }}"
-                  data-src="{{ mobile_img_url }}"
-                  data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-                  data-aspectratio="{{ block.settings.mobile_image.aspect_ratio }}"
-                  data-sizes="auto"
-                  data-parent-fit="cover"
-                  alt="{{ block.settings.mobile_image.alt | escape }}">
-            {%- endif -%}
+              {% else %}
+              <div class="slideshow-row__item medium-up--two-thirds slideshow-row__image-wrapper">
 
-            {%- if block.type == 'video' and block.settings.video_url != blank -%}
-              <div class="slideshow__video slideshow__video--{{ block.id }}"
-                data-video-type="{{ block.settings.video_url.type }}"
-                data-video-id="{{ block.settings.video_url.id }}"
-                data-block-id="{{ block.id }}"></div>
-            {%- endif -%}
+                {%- if block.settings.image == blank -%}
+                <!-- placeholder -->
+                  <div class="slideshow__image slideshow__image--{{ block.id }}">
+                    <div class="placeholder-background">
+                      {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  </div>
+                {%- else -%}
+                  {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- assign mobile_img_url = block.settings.mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-            <div class="slideshow__text-container page-width">
-              {%- if block.type == 'video' -%}
-                <button class="slideshow__play-button btn btn--clear"
-                        disabled
-                        aria-live="polite"
-                        aria-label="{{ 'sections.slider.pause' | t }}"
-                        aria-pressed="false"
-                        data-label-pause="{{ 'sections.slider.pause' | t }}"
-                        data-label-play="{{ 'sections.slider.play' | t }}"
-                        data-pause-button>
-                  <span class="visually-hidden" data-play-label>{{ 'video.play' | t }}</span>
-                  <span class="slideshow__play-button-icon"></span>
-                  <span class="slideshow__play-button-circle"></span>
-                </button>
-              {%- endif -%}
-              <div class="slideshow__text-content" data-animate>
-                  {%- if block.settings.title != blank -%}
-                  <h2 class="slideshow__heading weight-600">
-                    {{ block.settings.title }}
-                  </h2>
-                  {%- endif -%}
-                {%- if show_center_cta and block.settings.cta_link != blank -%}
-                  <a href="{{ block.settings.cta_link }}" class="slideshow__heading-cta btn{% if section.blocks.size == 1 and section.settings.slider_height == 'adapt' %} small--hide{% endif %}">
-                    {{ block.settings.cta | escape }}
-                  </a>
+                  <style>
+                    .slideshow__image--{{ block.id }} {
+                      object-position: {{ block.settings.alignment }};
+                      font-family: "object-fit: cover; object-position: {{ block.settings.alignment }};";
+                    }
+                  </style>
+
+                  <img class="slideshow__image desktop slideshow__image--{{ block.id }} lazyload"
+                      src="{{ block.settings.image | img_url: '300x' }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                      data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                      data-sizes="auto"
+                      data-parent-fit="cover"
+                      alt="slideshow image">
+                  <img class="slideshow__image mobile slideshow__image--{{ block.id }} lazyload"
+                      src="{{ block.settings.mobile_image | mobile_img_url: '300x' }}"
+                      data-src="{{ mobile_img_url }}"
+                      data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+                      data-aspectratio="{{ block.settings.mobile_image.aspect_ratio }}"
+                      data-sizes="auto"
+                      data-parent-fit="cover"
+                      alt="slideshow image">
                 {%- endif -%}
+                {%- if block.type == 'video' and block.settings.video_url != blank -%}
+                  <div class="slideshow__video slideshow__video--{{ block.id }}"
+                    data-video-type="{{ block.settings.video_url.type }}"
+                    data-video-id="{{ block.settings.video_url.id }}"
+                    data-block-id="{{ block.id }}">
+                  </div>
+                {%- endif -%}
+
               </div>
+              {%- endif -%}
+
             </div>
           </li>
         {%- endfor -%}
@@ -214,7 +262,16 @@
           </h2>
           {%- endif -%}
           {%- endcomment -%}
-          <h2 class="slideshow__heading weight-600">Reinventing Gut Health<br><span class="small--hide">Starting with your daily probiotic</span></h2>
+          {%- if block.settings.title != blank -%}
+          <h2 class="slideshow__heading weight-600">
+            {{ block.settings.title }}
+          </h2>
+          {%- endif -%}
+          {%- if block.settings.subtitle != blank -%}
+          <p class="slideshow__subheading">
+            {{ block.settings.subtitle }}
+          </p>
+          {%- endif -%}
         </div>
       {%- endfor -%}
       {%- if section.blocks.size == 1 and first_block.settings.cta_link != blank -%}
@@ -345,6 +402,27 @@
       "label": {
         "de": "Überlagerung anzeigen",
         "en": "Show overlay",
+        "es": "Mostrar superposición",
+        "fr": "Afficher la superposition",
+        "it": "Mostra sovrapposizione",
+        "ja": "オーバーレイを表示する",
+        "nl": "Overlay weergeven",
+        "pt-BR": "Exibir sobreposição",
+        "zh-CN": "显示叠加",
+        "zh-TW": "顯示疊加層"
+      },
+      "default": true
+    },
+    {
+      "type": "paragraph",
+      "content": "To show the image as a full width background image, select Show overlay image."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_overlay_image",
+      "label": {
+        "de": "Überlagerung anzeigen",
+        "en": "Show overlay image",
         "es": "Mostrar superposición",
         "fr": "Afficher la superposition",
         "it": "Mostra sovrapposizione",
@@ -656,6 +734,23 @@
             "zh-TW": "標題"
           },
           "default": "<p>Tell your story</p>"
+        },
+        {
+          "type": "html",
+          "id": "subtitle",
+          "label": {
+            "de": "Titel",
+            "en": "Subtitle",
+            "es": "Título",
+            "fr": "Titre",
+            "it": "Heading",
+            "ja": "見出し",
+            "nl": "Kop",
+            "pt-BR": "Título",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": "<p>Say hello to your solution for good gut health.</p>"
         },
         {
           "type": "text",
