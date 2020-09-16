@@ -1,6 +1,11 @@
 
 
-<div id="list-icons-{{ section.id }}" class="{% if section.settings.top_margin %}list-icons-wrapper--top-margin{% endif %} {% if section.settings.bottom_margin %}list-icons-wrapper--bottom-margin{% endif %}" data-section-id="{{ section.id }}" data-section-type="list-icons" style="background: {{ section.settings.icon_bg }}">
+<div id="list-icons-{{ section.id }}" class="list-icons {% if section.settings.top_margin %}list-icons-wrapper--top-margin{% endif %} {% if section.settings.bottom_margin %}list-icons-wrapper--bottom-margin{% endif %}" data-section-id="{{ section.id }}" data-section-type="list-icons" style="background: {{ section.settings.icon_bg }}">
+  {% if section.settings.icons_header != empty %}
+    <div class="list-icons--header page-width">
+      <p class="text-center" style="font-size:{{ section.settings.icons_header_size }}">{{ section.settings.icons_header }}</p>
+    </div>
+  {% endif %}
   <div class="page-width list-icons">
         {% if section.blocks.size > 0 %}
 
@@ -20,6 +25,16 @@
     "max_blocks": 7,
     "class": "index-section index-section--list-icons",
     "settings": [
+    {
+      "type": "text",
+      "id": "icons_header",
+      "label": "Icons header"
+    },
+    {
+      "type": "text",
+      "id": "icons_header_size",
+      "label": "Icons header size(px, em, rem, ext.)"
+    },
     {
       "type": "select",
       "id": "icon_style",
@@ -49,10 +64,10 @@
         "default": "#FFFFFF"
       },
       {
-        "type": "text",
+        "type": "html",
         "id": "cta_text_heading",
         "label": "CTA text",
-        "default": "click the icons to learn more"
+        "default": "<p>click the icons to learn more</p>"
       },
       {
         "type": "checkbox",
@@ -96,10 +111,34 @@
   },
   {
     "type": "select",
+    "id": "icon_alignment",
+    "label": "Icon Alignment",
+    "default": "top",
+    "options": [
+      {
+        "value": "top",
+        "label": "Top"
+      },
+      {
+        "value": "center",
+        "label": "Center"
+      },
+      {
+        "value": "bottom",
+        "label": "Bottom"
+      }
+    ]
+  },
+  {
+    "type": "select",
     "id": "icon_size",
     "label": "Icon Size",
     "default": "medium",
     "options": [
+      {
+        "value": "x-large",
+        "label": "X-large"
+      },
       {
         "value": "large",
         "label": "Large"

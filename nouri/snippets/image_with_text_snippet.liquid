@@ -6,13 +6,14 @@
 {%- endcapture -%}
 
 {%- capture gridTwoBlockSizing -%}
-    {%- if blockSizing == 'half' -%} medium-up--one-half medium-up--push-one-sixth{%- else -%} medium-up--one-third{%- endif -%}
+    {%- if blockSizing == 'half' -%} medium-up--one-half medium-up--push-one-sixth{%- else -%} medium-up--one-third medium-up--push-one-tenth{%- endif -%}
 {%- endcapture -%}
 
 
 {%- if alignmentSetting == 'right' -%}
 
-    <section class="{{ section.id }}--image-with-text grid custom-content-wrapper--top-margin bottom-padding one">
+    <section class="{{ section.id }}--image-with-text page-width--no-gutter custom-content-wrapper--top-margin bottom-padding one">
+        
         <div class="grid__item {{ gridTwoBlockSizing }} ingredients-info">
             <h2 class="title">{{ section.settings.title }}</h2>
 
@@ -39,7 +40,7 @@
 
 {%- elsif alignmentSetting == 'left' -%}
     
-    <section class="{{ section.id }}--image-with-text grid custom-content-wrapper--top-margin bottom-padding one">
+    <section class="{{ section.id }}--image-with-text grid__item page-width--no-gutter custom-content-wrapper--top-margin bottom-padding one">
     
         <div class="grid__item {{ gridOneBlockSizing }} ingredients-image">
             {%- if section.settings.image == blank -%}
@@ -89,9 +90,10 @@
             {% comment %}
             END add to cart button
             {% endcomment %}
- 
+
         </div>
 
     </section>
 
 {%- endif -%}
+

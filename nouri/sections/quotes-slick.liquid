@@ -1,4 +1,52 @@
-{% include 'quote-carousel' %}
+<style>
+  /* #QuotesSection-{{ section.id }} .quotes-slider {
+    background-color: {{ section.settings.color_bg }};
+  }
+  #QuotesSection-{{ section.id }} .quote,
+  #QuotesSection-{{ section.id }} .quote__heading {
+    color: {{ section.settings.color_text }};
+  }
+  #QuotesSection-{{ section.id }} .quote__author {
+      color: {{ section.settings.color_text }};
+  } */
+</style>
+
+{% if section.blocks.size > 0 %}
+  <div id="QuotesSection-{{ section.id }}">
+    {%- comment -%}data-section-id="{{ section.id }}" data-section-type="quotes-section"{%- endcomment -%}
+    <div class="page-width">
+      {%- comment -%}data-count="{{ section.blocks.size }}" data-speed="{{ section.settings.autoplay_speed }}"{%- endcomment -%}
+
+      <div class="quotes-slick-slider">
+        {% for block in section.blocks %}
+          <div>
+            {% if block.settings.heading != blank %}
+              <h1 class="quote-slick__heading">
+                {{ block.settings.heading | escape }}
+              </h1>
+            {% endif %}
+
+            {% if block.settings.quote != blank %}
+              <div class="quote-slick">
+                {{ block.settings.quote }}
+              </div>
+            {% endif %}
+
+            {% if block.settings.author != blank %}
+              <h4 class="quote-slick__author">
+                {{ block.settings.author | escape }}
+              </h4>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+    <hr>
+  </div>
+{% else %}
+  {% include 'no-blocks' %}
+{% endif %}
 
 {% schema %}
 {
@@ -50,13 +98,7 @@
         "zh-TW": "文字顏色"
       },
       "default": "#ffffff"
-		},
-		{
-      "type": "checkbox",
-      "id": "show_image",
-      "label": "Show image",
-      "default": true
-		},
+    },
     {
       "type": "select",
       "id": "autoplay_speed",
@@ -132,55 +174,9 @@
             "zh-CN": "6 秒",
             "zh-TW": "6 秒"
           }
-				},
-				{
-          "value": "7000",
-          "label": {
-            "de": "7 Sekunden",
-            "en": "7 seconds",
-            "es": "7 segundos",
-            "fr": "7 secondes",
-            "it": "7 secondi",
-            "ja": "7秒",
-            "nl": "7 seconden",
-            "pt-BR": "7 segundos",
-            "zh-CN": "7 秒",
-            "zh-TW": "7 秒"
-          }
-				},
-				{
-          "value": "8000",
-          "label": {
-            "de": "8 Sekunden",
-            "en": "8 seconds",
-            "es": "8 segundos",
-            "fr": "8 secondes",
-            "it": "8 secondi",
-            "ja": "8秒",
-            "nl": "8 seconden",
-            "pt-BR": "8 segundos",
-            "zh-CN": "8 秒",
-            "zh-TW": "8 秒"
-          }
         }
       ],
       "default": "4000"
-		},
-		{
-      "type": "header",
-      "content": "Layout"
-    },
-		{
-      "type": "text",
-      "id": "top_margin",
-      "label": "Top Margin",
-      "default": "0"
-		},
-		{
-      "type": "text",
-      "id": "bottom_margin",
-      "label": "Bottom Margin",
-      "default": "0"
     }
   ],
   "blocks": [

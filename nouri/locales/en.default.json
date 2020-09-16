@@ -274,7 +274,7 @@
       "regular_price": "Regular price",
       "on_sale_from_html": "On sale from {{ price }}",
       "on_sale": "Sale",
-      "from_text_html": "From {{ price }}",
+      "from_text_html": "{{ price }}",
       "include_taxes": "Tax included.",
       "shipping_policy_html": "<a href=\"{{ link }}\">Shipping<\/a> calculated at checkout.",
       "add_to_cart": "+ cart",

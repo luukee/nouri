@@ -1,15 +1,27 @@
 {% if section.settings.narrow_icons == true %}
   {% assign justifyIcons = "center" %}
 {% else %}
-  {% assign justifyIcons = 'space-around' %}
+  {% assign justifyIcons = '' %}
 {% endif %}
 
-{% if section.settings.icon_size == 'large' %}
+{% if section.settings.icon_size == 'x-large' %}
+  {% assign iconSize = "150px" %}
+{% elsif section.settings.icon_size == 'large' %}
   {% assign iconSize = "100px" %}
 {%- elsif section.settings.icon_size == 'small' -%}
     {% assign iconSize = "50px" %}
 {% else %}
     {% assign iconSize = "60px" %}
+{% endif %}
+
+{% if section.settings.icon_alignment == 'top' %}
+  {% assign iconAlign = "flex-start" %}
+{% elsif section.settings.icon_alignment == 'center' %}
+  {% assign iconAlign = "center" %}
+{%- elsif section.settings.icon_alignment == 'bottom' -%}
+    {% assign iconAlign = "flex-end" %}
+{% else %}
+    {% assign iconAlign = "flex-start" %}
 {% endif %}
 
 <style type="text/css">
@@ -20,14 +32,18 @@
     color: {{ section.settings.icon_text }};
   }
 
-    .icons-{{ section.id }}.icons-main {
+    .icons-{{ section.id }}.icons-main,
+    .icons-{{ section.id }}.icons__toggle-main {
       justify-content: {{ justifyIcons }};
     }
 
     .icons-{{ section.id }} .icon__image {
-        width: {{ iconSize }};
         height: auto;
+        width: {{ iconSize }};
         min-width: {{ iconSize }};
+    }
+    .icons-{{ section.id }} .icon-title {
+        justify-content: {{ iconAlign }};
     }
 </style>
 
@@ -42,7 +58,7 @@
 {% if section.settings.cta_text_heading != blank %}
   <div class="grid icons-{{ section.id }}">
     <div class="grid__item text-center icons-cta-text" data-animate>
-    <h6>{{ section.settings.cta_text_heading | escape }}</h6>
+    <h6>{{ section.settings.cta_text_heading }}</h6>
     </div>
   </div>
 {% endif %}
@@ -59,18 +75,19 @@
 
                 <img data-src="{{ block.settings.image }}" class="icon__image lazyload" />
 
-                <div class="icon__text">
+                {% if block.settings.icon_text_heading %}
+                  <div class="icon__text">
+                      {{ block.settings.icon_text_heading | escape }}
+                  </div>
+                {% endif %}
 
-                    {{ block.settings.icon_text_heading | escape }}
-
-                </div>
                 <!-- toggle active line -->
                 {% if block.settings.show_popup %}
-                <div class="active-line">
-                    <svg width="2" height="124" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1.0547.5v122.80469" stroke="{{ section.settings.icon_text }}" fill="none" fill-rule="evenodd" stroke-linecap="square"/>
-                    </svg>
-                </div>
+                  <div class="active-line">
+                      <svg width="2" height="124" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.0547.5v122.80469" stroke="{{ section.settings.icon_text }}" fill="none" fill-rule="evenodd" stroke-linecap="square"/>
+                      </svg>
+                  </div>
                 {% endif %}
 
             {% endif %}
