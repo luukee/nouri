@@ -5,9 +5,6 @@
 {% endunless %}
 
 {% form 'product', product, data-productid: product.id, class:'product-form' %}
-<!-- Begin ReCharge code -->
-{% if product.available %}{% include 'subscription-product' %}{% endif %}
-<!-- End ReCharge code -->
 
   {% unless product.has_only_default_variant %}
     {% for option in product.options_with_values %}
@@ -44,24 +41,77 @@
     {% endfor %}
   </select>
 
-  {% if section.settings.show_quantity_selector %}
-    <div class="product-form__item product-form__quantity-selector">
-      <label class="product-form__quantity-label{% unless section.settings.show_variant_labels %} product-form__quantity-label--hidden{% endunless %}" for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
-      <input class="product-form__quantity-input" type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" pattern="[0-9]*">
-    </div>
-  {% endif %}
+  <div class="purchase-items">
 
-  <button class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
-    data-cart-submit
-    type="submit" name="add"
-    {% unless current_variant.available %} disabled="true"{% endunless %}
-    aria-label="{{ button_text }}"
-  >
-    <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
-      {{ button_text }}
-    </span>
-    <span class="secondary-text" aria-hidden=true data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
-  </button>
+    <div class="grid-flex">
+
+      {%- comment -%}
+      product price
+      {%- endcomment -%}
+      <p class="product__price {% if current_variant_sale %} product__price--sale{% endif %}" data-product-price
+        aria-live="polite">
+
+        <span class="product__sale-price-label visually-hidden">{{ 'products.product.sale_price' | t }}</span>
+        <span class="product__regular-price-label visually-hidden">{{ 'products.product.price' | t }}</span>
+        <span class="product__current-price" data-regular-price>{{ current_variant.price | money }}</span>
+
+        <span class="product__compare-price-label visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+        <s class="product__compare-price" data-compare-price>{{ current_variant.compare_at_price | money }}</s>
+
+        {% include 'product-unit-price', variant: current_variant %}
+      </p>
+      {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+      <div class="product__policies rte">
+        {%- if shop.taxes_included -%}
+        {{ 'products.product.include_taxes' | t }}
+        {%- endif -%}
+        {%- if shop.shipping_policy.body != blank -%}
+        {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+        {%- endif -%}
+      </div>
+      {%- endif -%}
+      {%- comment -%}
+      END product price
+      {%- endcomment -%}
+
+      {%- comment -%}
+      Product quantity
+      {%- endcomment -%}
+      {% if section.settings.show_quantity_selector %}
+        <div class="product-form__quantity-selector quantity">
+          <label class="product-form__quantity-label{% unless section.settings.show_variant_labels %} product-form__quantity-label--hidden{% endunless %}" for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+          <input class="product-form__quantity-input" type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1" pattern="[0-9]*">
+        </div>
+      {% endif %}
+      {%- comment -%}
+      END product quantity
+      {%- endcomment -%}
+
+      {%- comment -%}
+      Product button
+      {%- endcomment -%}
+      <button
+        class="btn btn--to-secondary btn--full product__add-to-cart-button{% if section.settings.enable_payment_button and current_variant.available %} shopify-payment-btn btn--secondary{% endif %}"
+        data-cart-submit type="submit" name="add" {% unless current_variant.available %} disabled="true" {% endunless %}
+        aria-label="{{ button_text }}">
+        <span class="primary-text" aria-hidden="false" data-cart-primary-submit-text>
+          {{ button_text }}
+        </span>
+        <span class="secondary-text" aria-hidden=true
+          data-cart-secondary-submit-text>{{ 'products.product.view_cart' | t }}</span>
+      </button>
+      {%- comment -%}
+      END product button
+      {%- endcomment -%}
+
+    </div> {%- comment -%}END grid-flex{%- endcomment -%}
+
+    {%- comment -%} Begin ReCharge code {%- endcomment -%}
+    {% if product.available %}{% include 'subscription-product' %}{% endif %}
+    {%- comment -%} End ReCharge code {%- endcomment -%}
+
+  </div> {%- comment -%}END purchase-items{%- endcomment -%}
+
   <p class="product__notification text-small text-center" data-cart-notification></p>
   {% if section.settings.enable_payment_button and current_variant.available %}
     {{ form | payment_button }}

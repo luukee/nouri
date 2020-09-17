@@ -11,7 +11,6 @@
     "color_main_bg": "#ffffff",
     "color_secondary_bg": "#454545",
     "color_product_cards": "#fff",
-    "color_button_tertiary": "#E0E0E0",
     "color_form_elements": "#ffffff",
     "color_cart_flag": "#eb4f47",
     "type_base_size": "75%",
@@ -46,14 +45,16 @@
     "checkout_accent_color": "#1990c6",
     "checkout_button_color": "#1990c6",
     "checkout_error_color": "#ff6d6d",
+    "color_button_tertiary": "#E0E0E0",
     "logo_max_height": "15",
     "sections": {
       "header": {
         "type": "header",
         "settings": {
-          "header_left_text": "But first, immunity.",
+          "header_left_text": "",
           "icon": "bag",
           "logo": "shopify:\/\/shop_images\/logo_mobile_29ede666-3c23-4aaa-bbfb-90fb2678b03e.png",
+          "logo_left": true,
           "logo_max_height": "30",
           "enable_transparent": false,
           "transparent_logo": "",
@@ -277,6 +278,7 @@
           "icon_size": "small",
           "cta_text_heading": "",
           "product_carousel_full_width": true,
+          "show_img_with_text": false,
           "image": "shopify:\/\/shop_images\/pink-bottle.jpg",
           "block_sizing": "third",
           "alignment": "left",
@@ -302,7 +304,7 @@
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/bottles_boxes_colored_2048px_9234041a-52d1-4d6b-8360-1ceafd82671d.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/nouri-immune-health.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/bottles_boxes_colored_2048px_9234041a-52d1-4d6b-8360-1ceafd82671d.jpg",
               "alignment": "center center",
               "title": "It takes guts<br>\nto feel good.",
               "subtitle": "Say hello to your solution<br> for good gut health.",
@@ -318,10 +320,10 @@
         "settings": {
           "slider_height": "adapt",
           "center_cta": true,
-          "show_overlay": true,
+          "show_overlay": false,
           "show_overlay_image": true,
           "overlay_color": "rgba(0,0,0,0)",
-          "overlay_text": "#000000",
+          "overlay_text": "#454545",
           "overlay_opacity": 0
         }
       },
@@ -441,9 +443,9 @@
           "section_move_up": "0",
           "thin_section": false,
           "no_l_r_padding": false,
-          "select_top_margin": "small",
-          "select_top_padding": "medium",
-          "bottom_margin": true,
+          "select_top_margin": "none",
+          "select_top_padding": "none",
+          "bottom_margin": false,
           "flip_for_mobile": false
         }
       },
@@ -545,207 +547,103 @@
           "1561013099161": {
             "type": "separator",
             "settings": {
-              "separator": "Probiotics"
+              "separator": "Why probiotics?"
             }
           },
           "1561013094346": {
             "type": "text",
             "settings": {
-              "question": "What are probiotics?",
-              "answer": "According to the World Health Organization (WHO), probiotics are live microorganisms, when consumed in adequate amounts, confer a health benefit on the host. That is a fancy way of saying, they are good, living bacteria that have a benefit when consuming them."
+              "question": "Why do I need a probiotic?",
+              "answer": "Science is continuing to learn that a healthy gut not only has digestive benefits, but also to other areas of the body, outside of the gut, including immunity. One important way to support your gut is to take a probiotic, or healthy bacteria on a daily basis."
             }
           },
           "1561013121548": {
             "type": "text",
             "settings": {
-              "question": "I am not sure if I am having gut health issues. How do I know?",
-              "answer": "Gut health issues present themselves in many different ways that you can feel from head to toe. The most common way that gut health issues first present themselves is through an upset stomach. If you are experiencing bloating, discomfort after a meal, constipation, or heartburn you may be experiencing symptoms of an unhealthy gut. Other common symptoms of gut health issues can include unintentional weight changes, sleep disturbances, skin irritation, autoimmune conditions, and food intolerances. We always recommend consulting your physician when determining if you are experiencing gut health issues and before taking any new supplements.*"
+              "question": "Which product should I start with?",
+              "answer": "Take our QUIZ and you'll find out. https:\/\/dailynouri.com\/#finder-quiz-2903"
             }
           },
           "1561073437521": {
             "type": "text",
             "settings": {
-              "question": "If I don't have any gut health issues right now, why would I take Nouri?",
-              "answer": "If you are not experiencing gut issues today, you have the opportunity to take a proactive versus a reactive approach to your health. 70% of your immune system is located in your gut. This means that supplementing your diet with a probiotic supports your immune system in staying strong against the attacks that are to come. Further, a daily probiotic supports nutrient absorption. No matter how many superfoods you eat, your body cannot break them down without heathy bacteria. And ultimately, a body robust in healthy and diverse bacteria can impact your mood, and support your mental and emotional balance each and every day.*"
+              "question": "What is a 2-in-1 capsule?",
+              "answer": "The only product on the market to deliver double the dose of good bacteria, when compared to a standard capsule. Our probiotic and plant-based omega oil helps your body receive concentrated benefits with just one daily effort by you. Targeted probiotics give your body the daily support it needs for digestive and immune health and plant-based omega fatty acids support your body and brain.*"
             }
           },
           "1561073454622": {
             "type": "text",
             "settings": {
-              "question": "What are prebiotics? And how are they different from probiotics?",
-              "answer": "Prebiotics are a fiber that can be used by the good bacteria already found in your intestinal tract, grow better. Where probiotics add the good bacteria, prebiotics feed the good bacteria already there. You will find prebiotic fiber is present in many plant-based, whole foods."
-            }
-          },
-          "1561073592700": {
-            "type": "text",
-            "settings": {
-              "question": "Does Nouri need to be taken with food?",
-              "answer": "Nouri can be taken with or without food. We suggest you take Nouri in the morning with a large glass of water."
-            }
-          },
-          "1561073618750": {
-            "type": "text",
-            "settings": {
-              "question": "How often do I take probiotics?",
-              "answer": "For best results, Nouri recommends taking a probiotic daily and consistently during all stages of life."
-            }
-          },
-          "1562361309564": {
-            "type": "text",
-            "settings": {
-              "question": "Do your probiotics require refrigeration?",
-              "answer": "Our probiotics do no require refrigeration. We partnered with one of the most trusted probiotic manufacturers in the world to ensure that Nouri's probiotics are developed, tested and manufactured for stability over 24 months. That said, it is important you store your probiotics out of heat, humidity, and in a cool place (under 77 F is best)."
-            }
-          },
-          "1562361368297": {
-            "type": "text",
-            "settings": {
-              "question": "Are your labs organic and non-GMO?",
-              "answer": "Yes, our probiotics come from a lab that is USDA certified organic and NON-GMO Project Verified by North America’s most trusted third-party verification organization."
+              "question": "How do I shop for a probiotic?",
+              "answer": "Once you have decided to buy a probiotic supplement, there are two important items to look for on the label. The first is to make sure that they are labeled with the strain designation. These are normally a series of letters and\/or numbers as part of the probiotic name. This tells you exactly which probiotic is in the product. If you find one without this, there is no way to know exactly what you are getting, or even if you are getting the same probiotic every time you purchase it. Each strain is genetically unique and health benefits can vary. Transparency of strain identification is the only way to trace back to specific, science supported benefits. The second item to look for on the label is that it does not say that CFU counts are guaranteed at the time of manufacture. This means they only guarantee what they tell you is in the product when it is first made. Rather, you want a product that guarantees you get the stated amount through the end of shelf life of the product."
             }
           },
           "1561013271891": {
             "type": "separator",
             "settings": {
-              "separator": "Omega"
+              "separator": "Nouri"
             }
           },
           "1561013278561": {
             "type": "text",
             "settings": {
-              "question": "Why do you include Ahiflower oil in your products?",
-              "answer": "Research suggests that probiotics are better absorbed in the gut when they are accompanied by omega-3 oil. We set out to achieve that result, but with a sustainable omega oil that relieves the environmental pressure placed upon the marine system with the rising demand of fish oil. Plus, it also happens to be a super plant-based oil that delivers omega-3,6,9, which helps to support the body and brain."
+              "question": "What is different about these products?",
+              "answer": "While there are many probiotic capsules on the market, Nouri delivers it in a unique format with a unique combination of ingredients. First, the duo-cap, a capsule in capsule technology that allows the delivery of different products that normally cannot be put together in a capsule. Second, using the duo-cap, Nouri can combine high quality probiotics with a natural plant based omega, getting the benefits of two products in one. Nouri is able to do this, using ingredients that allow for a very clean label, allergen free product that does not require refrigeration."
             }
           },
           "1561014063618": {
             "type": "text",
             "settings": {
-              "question": "What are the omega fatty acid components of Ahiflower oil?",
-              "answer": "Ahiflower offers a rich single-plant source of omega-3 ALA (alpha-linolenic acid) and SDA (stearidonic acid); omega-6 GLA (gamma linolenic acid) and LA (linoleic acid); and omega-9 OA (oleic acid)."
+              "question": "Are your products safe to be taken alongside other supplements or medications?",
+              "answer": "Nouri should be safe to take alongside other supplements or medication but as with any new introduction of supplements, we recommend first consulting with your physician."
             }
           },
           "1562361496118": {
             "type": "text",
             "settings": {
-              "question": "How does Ahiflower oil compare to other plant oils like flax seed oil?",
-              "answer": "Most plant-sourced omega fatty acid oils contain omega-3 ALA and omega-6 LA. Few contain omega-6 GLA in meaningful quantities. Even fewer contain any SDA at all. Ahiflower is unique in that it contains ALL of these components, and its highest-available SDA content results in a far more efficient conversion to EPA in the body as compared to flax and other plant-based oils that primarily supply ALA. To put this into perspective, it would take 4 softgels of flax seed oil to yield the same amount of beneficial EPA in the body as 1 softgel of Ahiflower oil."
+              "question": "Where can I buy Nouri ?",
+              "answer": "You can find us in your local Whole Foods Market or online at dailynouri.com"
             }
           },
           "1562361528577": {
             "type": "text",
             "settings": {
-              "question": "How does Ahiflower oil compare to algal oil?",
-              "answer": "As with fish oils, algal oils contain EPA and\/or DHA, while Ahiflower does not, but algal oils do not contain omega-6 GLA, which is prized for its cellular benefits, or omega-9 OA, which has been associated with cardiovascular health."
+              "question": "Do your products require refrigeration?",
+              "answer": "Our products do no require refrigeration. Just store your product out of heat, humidity, and in a cool place (under 77 F is best)."
             }
           },
           "1562361552753": {
             "type": "text",
             "settings": {
-              "question": "How does Ahiflower oil compare to marine omega sources like fish and krill?",
-              "answer": "Ahiflower oil does not contain EPA or DHA, which are the main fatty acids present in marine oils (e.g., fish and krill) and algal oils. Ahiflower instead contains the omega-3s SDA (a precursor to EPA) and ALA at high levels. Our bodies naturally convert ALA and SDA to longer chain omega-3s, as needed, to support cell functioning. In addition, Ahiflower contains the omega-6 fatty acid GLA, which is recognized for its cellular benefits, and is not found in marine oils. People seeking a more sustainable, traceable, and single-plant source for omega 3-6-9 fatty acids can benefit from Ahiflower oil. Marine omega-3 fatty acid sources face issues related to finite supply, sustainability, possible contamination (e.g., bio-accumulation of heavy metals and radiation), formulation challenges, and are generally not appropriate for vegetarian or vegan diets."
+              "question": "What if this isn’t for me?",
+              "answer": "We are bummed that you are unhappy with your order and are going to refund you your first month in full. Just send us a note at hello@dailynouri.com"
             }
           },
           "1562361590194": {
-            "type": "text",
-            "settings": {
-              "question": "Is Ahiflower oil produced from a genetically modified organism (GMO)?",
-              "answer": "A big no to that! Our Ahiflower oil is non-GMO and each batch is tested free of pesticides and other potential impurities like heavy metals, PCBs, and PAHs."
-            }
-          },
-          "1562361683440": {
-            "type": "separator",
-            "settings": {
-              "separator": "Product"
-            }
-          },
-          "1562361714405": {
-            "type": "text",
-            "settings": {
-              "question": "Is this product allergen-free?",
-              "answer": "Yes! Nouri's products are allergen-free."
-            }
-          },
-          "1562361752645": {
-            "type": "text",
-            "settings": {
-              "question": "Are your products safe to be taken alongside other supplements or medications?",
-              "answer": "Nouri should be safe to take alongside other supplements or medication but as with any new introduction of supplements, we recommend first consulting with your doctor or healthcare practitioner."
-            }
-          },
-          "1562362389886": {
-            "type": "text",
-            "settings": {
-              "question": "When is the best time to take a Nouri?",
-              "answer": "The best time of day to take a Nouri is in the morning. Remember that probiotics are living organisms, they need food water and warmth the thrive. So taking Nouri with breakfast or within 30 minutes beforehand is our highest recommendation. Also, studies show that your willpower is at its peak state in the morning, which makes it the best time of day to form healthy habits."
-            }
-          },
-          "1562362420920": {
-            "type": "text",
-            "settings": {
-              "question": "Is Nouri vegan-friendly?",
-              "answer": "Yes! Nouri’s products are authentically vegan and free and clear of any possible source of animal products. In fact, with each Nouri product bought instead of marine-based fish oil, you can actually save the lives of animals, which is a fact we’re oh so very proud of."
-            }
-          },
-          "1562362443583": {
-            "type": "text",
-            "settings": {
-              "question": "How and where should I store Nouri products?",
-              "answer": "It is best to store your Nouri products at room temperature and away from direct sunlight. Place in a spot where you'll remember to take it every day, because consistency is key here!"
-            }
-          },
-          "1562362464163": {
             "type": "text",
             "settings": {
               "question": "Are Nouri products FDA approved?",
               "answer": "By law, the FDA does not approve any dietary supplements. However the FDA does regulate dietary ingredients and supplements. All of Nouri's facilities follow Good Manufacturing Practices (GMPs) to ensure that Nouri's ingredients are tested and free from any yucky additives, heavy metals, microbes or unwanted contamination."
             }
           },
-          "1562362628208": {
+          "1562361683440": {
             "type": "separator",
             "settings": {
-              "separator": "Nouri"
+              "separator": "Gut Health"
             }
           },
-          "1562362491511": {
+          "1562361714405": {
             "type": "text",
             "settings": {
-              "question": "Who was Nouri created for?",
-              "answer": "Nouri was created for men and women around the world who believe it is possible to increase their mental and physical health. We created Nouri in such a way to meet you wherever you are at but we care about you too much to leave you there. Increasing your life is a journey and Nouri is your partner along the way."
+              "question": "Why should I take care of my gut?",
+              "answer": "Gut health issues present themselves in many different ways that you can feel from head to toe. The most common way that gut health issues first present themselves is through an upset stomach. If you are experiencing bloating, discomfort after a meal, constipation, or heartburn you may be experiencing symptoms of an unhealthy gut. Other common symptoms of gut health issues can include unintentional weight changes, sleep disturbances, skin irritation, autoimmune conditions, and food intolerances. We always recommend consulting your physician when determining if you are experiencing gut health issues and before taking any new supplements.*"
             }
           },
-          "1562362511182": {
+          "1562361752645": {
             "type": "text",
             "settings": {
-              "question": "How is Nouri different from other probiotic brands?",
-              "answer": "Nouri is committed to delivering uniquely better gut health solutions that empower people like you to take a proactive approach to personal gut health. Our products are rooted and rich in science and always labeled transparently so that you know exactly what you are putting in your body. Fun fact- we also happen to be the first in the world to deliver a 2-in-1 capsule technology containing probiotics and plant-based omega oil."
-            }
-          },
-          "1562362553062": {
-            "type": "text",
-            "settings": {
-              "question": "Where in the world is Nouri?",
-              "answer": "Nouri is headquartered in Atlanta, Georgia. Our probiotics are made in Wisconsin, capsules made in South Carolina, and Ahiflower oil made in England."
-            }
-          },
-          "1562362574588": {
-            "type": "text",
-            "settings": {
-              "question": "What does “Nouri” mean?",
-              "answer": "Nouri is a word that means “light.” Our belief is that there is no darkness light cannot overcome. To achieve Nouri's mission of increasing life, we must first increase light."
-            }
-          },
-          "1562362596642": {
-            "type": "text",
-            "settings": {
-              "question": "Who founded Nouri?",
-              "answer": "Nouri was founded in 2018 by American entrepreneur Caroline Beckman."
-            }
-          },
-          "1562362658441": {
-            "type": "text",
-            "settings": {
-              "question": "What's next for Nouri?",
-              "answer": "Great question! One thing to know about Nouri is that we are motivated to give the very best to you, our consumer. What you can expect of us is a primary commitment to the cornerstone of life, which is the life inside your gut, delivered through our probiotics and then an ancillary focus on addressing other specific health issues such as skin, energy and mood."
+              "question": "When should I start taking care of my gut?",
+              "answer": "If you are not experiencing gut issues today, you have the opportunity to take a proactive versus a reactive approach to your health. 70% of your immune system is located in your gut. This means that supplementing your diet with a probiotic supports your immune system in staying strong against the attacks that are to come. Further, a daily probiotic supports nutrient absorption. No matter how many superfoods you eat, your body cannot break them down without heathy bacteria. And ultimately, a body robust in healthy and diverse bacteria can impact your mood, and support your mental and emotional balance each and every day.*"
             }
           },
           "1562362693056": {
@@ -782,10 +680,6 @@
           "1561013121548",
           "1561073437521",
           "1561073454622",
-          "1561073592700",
-          "1561073618750",
-          "1562361309564",
-          "1562361368297",
           "1561013271891",
           "1561013278561",
           "1561014063618",
@@ -796,17 +690,6 @@
           "1562361683440",
           "1562361714405",
           "1562361752645",
-          "1562362389886",
-          "1562362420920",
-          "1562362443583",
-          "1562362464163",
-          "1562362628208",
-          "1562362491511",
-          "1562362511182",
-          "1562362553062",
-          "1562362574588",
-          "1562362596642",
-          "1562362658441",
           "1562362693056",
           "1562362708053",
           "1562362727657",
@@ -1217,9 +1100,9 @@
           "section_move_up": "0",
           "thin_section": true,
           "no_l_r_padding": false,
-          "select_top_margin": "small",
-          "select_top_padding": "medium",
-          "bottom_margin": true,
+          "select_top_margin": "none",
+          "select_top_padding": "small",
+          "bottom_margin": false,
           "flip_for_mobile": true
         }
       },
@@ -1261,7 +1144,7 @@
               "heading_full_width_text_border": true,
               "heading_full_width_style": "h3",
               "header_text_content_inner_padding": "none",
-              "heading_color": "#ffffff",
+              "heading_color": "#454545",
               "heading_style": "h5",
               "simple_heading_text": "<p>Wondering which product is right for you?<\/p>",
               "paragraph_text": "",
@@ -1290,7 +1173,7 @@
           "heading_text": "",
           "section_header_text_border": false,
           "heading_color": "rgba(0,0,0,0)",
-          "background_color": "#454545",
+          "background_color": "#e0e0e0",
           "section_header_align_text": "left",
           "heading_size": "1.5",
           "section_width": "full_width",
@@ -1307,19 +1190,14 @@
         "type": "featured-collection",
         "settings": {
           "collection": "frontpage",
+          "title": "",
           "show_custom_product_image": true,
-          "left_image_pull": "",
+          "show_spacing": false,
+          "show_vendor": false,
           "show_product_info": true,
           "show_product_subtext": true,
-          "show_spacing": false,
-          "show_dot": false,
-          "dot_01": "",
-          "dot_02": "",
-          "dot_03": "",
           "show_product_button": true,
-          "title": "",
-          "show_vendor": false,
-          "hide_product_price": false,
+          "link_product_image": true,
           "show_view_all": false,
           "button_title": "shop all",
           "use_second_button": false,
@@ -1520,7 +1398,7 @@
           "thin_section": false,
           "no_l_r_padding": false,
           "select_top_margin": "none",
-          "select_top_padding": "medium",
+          "select_top_padding": "small",
           "bottom_margin": false,
           "flip_for_mobile": false
         }
@@ -1651,7 +1529,7 @@
           "type": "header",
           "settings": {
             "icon": "bag",
-            "logo_max_height": 15,
+            "logo_max_height": "15",
             "enable_transparent": true,
             "transparent_text_color": "#ffffff",
             "primary_navigation": "main-menu",
@@ -2007,7 +1885,7 @@
           "type": "header",
           "settings": {
             "icon": "bag",
-            "logo_max_height": 10,
+            "logo_max_height": "10",
             "enable_transparent": true,
             "transparent_text_color": "#dfa160",
             "primary_navigation": "main-menu",
@@ -2324,7 +2202,7 @@
           "type": "header",
           "settings": {
             "icon": "cart",
-            "logo_max_height": 10,
+            "logo_max_height": "10",
             "enable_transparent": true,
             "transparent_text_color": "#00b490",
             "primary_navigation": "main-menu",

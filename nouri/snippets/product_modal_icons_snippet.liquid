@@ -11,12 +11,13 @@
 {% else %}
 {% endif %}
 
-{% if section.settings.top_line %}
-    <hr>
-{% endif %}
+
 
 <section class="grid__item page-width--no-gutter medium-up--one-whole list-icons-section {{ marginSetting }}">
-    <style>
+{% if section.settings.top_line %}
+<hr class="no-mobile">
+{% endif %}
+   <style>
         .list-icons-section  .icon__text {
             color: #{{ product.metafields.global.icons_text_color }};
         }
@@ -30,7 +31,7 @@
         </style>
     {% endif %}
     
-    <div class="page-width--narrow">
+    <div class="page-width--narrow {{ marginSetting }}">
             {%- comment -%}{% include 'list-icons-modal-snippet' %}{%- endcomment -%}
 
         <!-- Icons Section -->
