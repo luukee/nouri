@@ -3561,7 +3561,7 @@ $card-image-placeholder: rgba($color-body-text, 0.35);
 
     &:not(.alt) {
         @include media-query($medium-up) {
-            padding: 9rem 0;
+            padding: 4.5rem 0;
             &:last-child {
                 padding-bottom: 0;
             }
@@ -5539,10 +5539,12 @@ html {
 }
 
 .flex-footer__links {
-    @include flex(1 1 100%);
     padding: 0 0 $gutter;
 
     @include media-query($small) {
+        &> div {
+            padding: 1rem 0;
+        }
         .flex-footer--full & {
             @include flex(1 0 100%);
 
@@ -5675,8 +5677,7 @@ html {
 
 .site-footer__linklist-item,
 .social_icons_title {
-    display: inline-block;
-    padding: 0 ($gutter / 2);
+    display: flex;
     margin-bottom: $gutter / 2;
     font-size: rem(12);
     font-weight: $font-weight-bold;
@@ -5751,7 +5752,6 @@ html {
     }
     @include media-query($small) {
         text-align: center !important; // sass-lint:disable-line no-important
-        padding-bottom: 30px;
     }
     @include media-query($small) {
         .social-links {
@@ -7424,6 +7424,9 @@ dl:not(.faq-section),
         padding-bottom: 2rem;
         color: $settings-color-primary-body-text;
         text-decoration: none;
+        @include media-query($small) {
+            padding: 0 0 2rem 1rem;
+        }
     }
     &.selected dt::after{
         content: "";
@@ -7997,6 +8000,9 @@ img.hover-shadow {
     dt:not(.plain),
     dd {
         padding: 0 0 2rem 0;
+        @include media-query($small) {
+            margin-left: 1rem;
+        }
     }
 }
 
@@ -8389,18 +8395,8 @@ $button-size: 30px;
     overflow: hidden;
     max-height: calc(100vh - #{$container-padding-bottom});
 
-    @include media-query($small) {
-        margin-top: 60px;
-    }
-
     @include media-query($medium-up) {
         margin-top: 76px;
-    }
-}
-
-.slideshow--adapt {
-    @include media-query($medium-up) {
-        margin-top: 60px;
     }
 }
 
@@ -8981,8 +8977,7 @@ $site-header-wrapper-color: rgba($color-header, 0);
   z-index: $z-index-header;
 }
 
-.site-header--transparent,
-.site-header--homepage {
+.site-header--transparent {
   position: absolute;
   top: 0;
   left: 0;

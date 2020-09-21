@@ -38,10 +38,16 @@
   {%- else -%}
     {%- assign min_aspect_ratio = first_block.settings.image.aspect_ratio -%}
   {%- endif -%}
-  {%- assign wrapper_height = 60 | divided_by: min_aspect_ratio -%}
+  {%- assign wrapper_height = 150 | divided_by: min_aspect_ratio -%}
+  {%- assign mobile_wrapper_height = 100 | divided_by: min_aspect_ratio -%}
   {%- style -%}
     #Slideshow-{{ section.id }} {
-      height: {{- wrapper_height -}}vw;
+      height: {{- mobile_wrapper_height -}}vh;
+    }
+    @media only screen and (min-width: 750px) {
+      #Slideshow-{{ section.id }} {
+        height: {{- wrapper_height -}}vh;
+      }
     }
   {%- endstyle -%}
 {%- endif -%}

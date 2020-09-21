@@ -1,4 +1,4 @@
-{%- if section.settings.show_overlay -%}
+{%- if section.settings.show_overlay or section.settings.show_overlay_image -%}
   <style>
     #Slideshow-{{ section.id }} .slideshow__overlay::before {
       background-color: {{ section.settings.overlay_color }};

@@ -561,7 +561,7 @@
             "type": "text",
             "settings": {
               "question": "Which product should I start with?",
-              "answer": "Take our QUIZ and you'll find out. https:\/\/dailynouri.com\/#finder-quiz-2903"
+              "answer": "Take our QUIZ and you'll find out.\n<br>\n<a class=\"btn\" href=\"https:\/\/dailynouri.com\/#finder-quiz-2903\">Take Quiz<\/a>"
             }
           },
           "1561073437521": {
