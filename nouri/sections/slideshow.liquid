@@ -6,8 +6,12 @@
     }
 
     #Slideshow-{{ section.id }} .slideshow__heading,
-    #Slideshow-{{ section.id }} .slideshow__button-label {
+    #Slideshow-{{ section.id }} .slideshow__button-label,
+    #Slideshow-{{ section.id }} .slideshow__heading-cta {
       color: {{ section.settings.overlay_text }};
+    }
+    #Slideshow-{{ section.id }} .slideshow__heading-cta {
+      border-color: {{ section.settings.overlay_text }};
     }
   </style>
 {%- endif -%}
@@ -38,7 +42,7 @@
   {%- else -%}
     {%- assign min_aspect_ratio = first_block.settings.image.aspect_ratio -%}
   {%- endif -%}
-  {%- assign wrapper_height = 150 | divided_by: min_aspect_ratio -%}
+  {%- assign wrapper_height = 155 | divided_by: min_aspect_ratio -%}
   {%- assign mobile_wrapper_height = 100 | divided_by: min_aspect_ratio -%}
   
   {%- style -%}
@@ -67,12 +71,22 @@
 
         {%- if section.settings.show_overlay_image -%}
           {%- assign img_url_overlay = block.settings.image | img_url: '2500x' -%}
+          {%- assign img_url_overlay_mobile = block.settings.mobile_image | img_url: '2500x' -%}
           <style>
             .slideshow__slide--{{ block.id }} .slideshow-row__text {
               margin: inherit;
             }
-            .slideshow__slide {
-              background-image: url('{{ img_url_overlay }}');
+            @media only screen and (max-width: 989px) {
+              .slideshow__slide {
+                background-image: url('{{ img_url_overlay_mobile }}');
+                background-position: center;
+                background-size: cover;
+              }
+            }
+            @media only screen and (min-width: 990px) {
+              .slideshow__slide {
+                background-image: url('{{ img_url_overlay }}');
+              }
             }
           </style>
         {%- endif -%}

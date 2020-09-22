@@ -294,6 +294,102 @@ Usage:
     @include mt-4;
 }
 
+// margin-bottom
+@mixin mb-0() {
+    margin-bottom: 0 !important;
+}
+.mb-0 {
+    @include mb-0;
+}
+@mixin mb-1() {
+    margin-bottom: 1rem !important;
+}
+.mb-1 {
+    @include mb-1;
+}
+@mixin mb-2() {
+    margin-bottom: 2rem !important;
+}
+.mb-2 {
+    @include mb-2;
+}
+@mixin mb-3() {
+    margin-bottom: 3rem !important;
+}
+.mb-3 {
+    @include mb-3;
+}
+@mixin mb-4() {
+    margin-bottom: 4rem !important;
+}
+.mb-4 {
+    @include mb-4;
+}
+
+// padding-top
+@mixin pt-0() {
+    padding-top: 0 !important;
+}
+.pt-0 {
+    @include pt-0;
+}
+@mixin pt-1() {
+    padding-top: 1rem !important;
+}
+.pt-1 {
+    @include pt-1;
+}
+@mixin pt-2() {
+    padding-top: 2rem !important;
+}
+.pt-2 {
+    @include pt-2;
+}
+@mixin pt-3() {
+    padding-top: 3rem !important;
+}
+.pt-3 {
+    @include pt-3;
+}
+@mixin pt-4() {
+    padding-top: 4rem !important;
+}
+.pt-4 {
+    @include pt-4;
+}
+
+// padding-bottom
+@mixin pb-0() {
+    padding-bottom: 0 !important;
+}
+.pb-0 {
+    @include pb-0;
+}
+@mixin pb-1() {
+    padding-bottom: 1rem !important;
+}
+.pb-1 {
+    @include pb-1;
+}
+@mixin pb-2() {
+    padding-bottom: 2rem !important;
+}
+.pb-2 {
+    @include pb-2;
+}
+@mixin pb-3() {
+    padding-bottom: 3rem !important;
+}
+.pb-3 {
+    @include pb-3;
+}
+@mixin pb-4() {
+    padding-bottom: 4rem !important;
+}
+.pb-4 {
+    @include pb-4;
+}
+
 
 // padding: top and bottom
 @mixin p-tb-1 {
@@ -2761,7 +2857,7 @@ a[href^="tel"] {
     &.site-header__cart {
         height: 32px;
         @include media-query($medium-up) {
-            height: 50px;
+            height: 40px;
         }
     }
     .supports-no-svg & {
@@ -6403,7 +6499,7 @@ nav.site-header__section.site-header__section--button {
     @include prefix('appearance', none, webkit moz spec);
     position: relative;
     padding: 0 ($gutter / 2);
-    font-size: rem(14);
+    font-size: 14.4px;
     line-height: line-height(64, 18);
     font-weight: $font-weight-bold;
     letter-spacing: normal;
@@ -6472,7 +6568,7 @@ nav.site-header__section.site-header__section--button {
     text-transform: none;
 
     @include media-query($medium-up) {
-        font-size: rem(16);
+        font-size: 14.4px;
         line-height: line-height(42, 16);
 
         &:hover {
@@ -6887,6 +6983,7 @@ nav.site-header__section.site-header__section--button {
         cursor: pointer;
         height: auto;
         min-height: 80px;
+        object-fit: contain;
         width: 100%;
     }
     .icon__text {
@@ -9099,11 +9196,6 @@ $site-header-wrapper-color: rgba($color-header, 0);
 .site-header-sections {
   @include display-flexbox;
   @include align-items(center);
-  @include media-query($medium-down) {
-      .no-moblie {
-        //   display: none;
-      }
-  }
   .site-header__section {
       &.left-text {
           display: none;
@@ -9113,21 +9205,23 @@ $site-header-wrapper-color: rgba($color-header, 0);
         width: 35px;
     }
     .navigation__expand-sublinks {
-        font-size: 1.4rem;
+        font-size: 14.4px;
         color: $settings-color-primary-body-text;
         span {
             height: 100%;
             display: block;
         }
     }
-  /* END navigation large media query */
+  /* navigation large media query */
   @include media-query($large-up) {
+      margin: 5px auto;
       position: relative;
       .custom-nav-container {
           position: absolute;
           right: 0;
           display: flex;
             align-items: center;
+            padding-top: 3px;
       }
       .navigation__links {
           margin: 0;
@@ -9196,7 +9290,7 @@ $site-header-wrapper-color: rgba($color-header, 0);
 .site-header__logo-wrapper {
   display: inline-block;
   margin-bottom: 0;
-  padding: ($gutter / 2) 0;
+  padding: 0;
   text-align: center;
   line-height: 1.2;
 }

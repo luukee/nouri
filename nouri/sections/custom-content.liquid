@@ -1,73 +1,118 @@
 {% if section.settings.show_section %}
 
+{% if section.settings.custom_top_margin == 'xlarge' %}
+    {% assign marginTop = 'mt-4' %}
+{% elsif section.settings.custom_top_margin == 'large' %}
+    {% assign marginTop = 'mt-3' %}
+{% elsif section.settings.custom_top_margin == 'medium' %}
+    {% assign marginTop = 'mt-2' %}
+{% elsif section.settings.custom_top_margin == 'small' %}
+    {% assign marginTop = 'mt-1' %}
+{% elsif section.settings.custom_top_margin == 'none' %}
+    {% assign marginTop = 'mt-0' %}
+{% else %}
+{% endif %}
+
+{% if section.settings.custom_content_bottom_margin == 'xlarge' %}
+    {% assign marginBottom = 'mb-4' %}
+{% elsif section.settings.custom_content_bottom_margin == 'large' %}
+    {% assign marginBottom = 'mb-3' %}
+{% elsif section.settings.custom_content_bottom_margin == 'medium' %}
+    {% assign marginBottom = 'mb-2' %}
+{% elsif section.settings.custom_content_bottom_margin == 'small' %}
+    {% assign marginBottom = 'mb-1' %}
+{% elsif section.settings.custom_content_bottom_margin == 'none' %}
+    {% assign marginBottom = 'mb-0' %}
+{% else %}
+{% endif %}
+
+{% if section.settings.custom_top_padding == 'xlarge' %}
+    {% assign paddingTop = 'pt-4' %}
+{% elsif section.settings.custom_top_padding == 'large' %}
+    {% assign paddingTop = 'pt-3' %}
+{% elsif section.settings.custom_top_padding == 'medium' %}
+    {% assign paddingTop = 'pt-2' %}
+{% elsif section.settings.custom_top_padding == 'small' %}
+    {% assign paddingTop = 'pt-1' %}
+{% elsif section.settings.custom_top_padding == 'none' %}
+    {% assign paddingTop = 'pt-0' %}
+{% else %}
+{% endif %}
+
+{% if section.settings.custom_bottom_padding == 'xlarge' %}
+    {% assign paddingBottom = 'pb-4' %}
+{% elsif section.settings.custom_bottom_padding == 'large' %}
+    {% assign paddingBottom = 'pb-3' %}
+{% elsif section.settings.custom_bottom_padding == 'medium' %}
+    {% assign paddingBottom = 'pb-2' %}
+{% elsif section.settings.custom_bottom_padding == 'small' %}
+    {% assign paddingBottom = 'pb-1' %}
+{% elsif section.settings.custom_bottom_padding == 'none' %}
+    {% assign paddingBottom = 'pb-0' %}
+{% else %}
+{% endif %}
+
+
 {% if section.settings.section_header_text_border %}
   {%- assign section_border = '2px solid' -%}
 {% endif %}
 
+
 <style>
   .custom-content-wrapper--{{ section.id }} .custom-content__section-header  {
-    color: {{ section.settings.heading_color }};
-    font-size: {{ section.settings.heading_size | append: 'em' }};
+    color: {{- section.settings.heading_color -}};
+    font-size: {{- section.settings.heading_size | append: 'em' -}};
     padding-bottom: 20px;
-    border-bottom: {{ section_border }};
+    border-bottom: {{- section_border -}};
   }
-
-  {% if section.settings.background_color != blank %}
+  {%- if section.settings.background_color != blank -%}
     .custom-content-wrapper--{{ section.id }} {
-      background-color: {{ section.settings.background_color }};
+      background-color: {{- section.settings.background_color -}};
     }
-  {% endif %}
+  {%- endif -%}
 
-      {% if section.settings.image_horizontal_alignment == right %}
+      {%- if section.settings.image_horizontal_alignment == right -%}
           .custom-content-wrapper--{{ section.id }} .custom-content {
             justify-content: space-between;
         }
 
-    {% endif %}
+    {%- endif -%}
 
-    {% if section.settings.image_horizontal_alignment == center %}
+    {%- if section.settings.image_horizontal_alignment == center -%}
         .custom-content-wrapper--{{ section.id }} .custom-content {
           justify-content: center;
         }
-    {% endif %}
-    {% if section.settings.no_l_r_padding == true %}
+    {%- endif -%}
+    {%- if section.settings.no_l_r_padding == true -%}
 
     .custom-content-wrapper--{{ section.id }} .custom-content > .custom__item {
         padding-left: 0;
     }
-    {% else %}
+    {%- else -%}
 
-    {% endif %}
+    {%- endif -%}
 
 </style>
-
-<div class="custom-content-wrapper custom-content-wrapper--{{ section.id }} 
-  {% if section.settings.select_top_margin == 'none' %}
-  {% elsif section.settings.select_top_margin == 'small' %}custom-content-wrapper--top-margin sm
-  {% elsif section.settings.select_top_margin == 'medium' %}custom-content-wrapper--top-margin md 
-  {% elsif section.settings.select_top_margin == 'large' %}custom-content-wrapper--top-margin lg{% endif %}
-  
-  {% if section.settings.select_top_padding == 'none' %}
-  {% elsif section.settings.select_top_padding == 'small' %}custom-content-wrapper--top-padding sm
-  {% elsif section.settings.select_top_padding == 'medium' %}custom-content-wrapper--top-padding md 
-  {% elsif section.settings.select_top_padding == 'large' %}custom-content-wrapper--top-padding lg{% endif %}
-
-  {% if section.settings.bottom_margin %}custom-content-wrapper--bottom-margin{% endif %} 
+{{ simpleHeadingSize }}
+<div class="custom-content-wrapper custom-content-wrapper--{{ section.id }} {{ marginTop }} {{ marginBottom }}
   {% if section.settings.section_move_up == "20" %}section_move_up {% else %}{%- endif -%}
   one-whole" 
   data-section-id="{{ section.id }}" 
   data-section-type="custom-content">
+  <div class="{{ paddingTop }} {{ paddingBottom }}">
+
   {% if section.settings.heading_text != blank %}
-    <div class="{% if section.settings.section_width %}{% else %}page-width{% endif %}">
+    <div {% if section.settings.section_width == "full_width" %}{% else %}class="page-width{% if section.settings.thin_section %}--narrow page-width" {% endif %}{% endif %}">
       <div class="custom-content__section-header text-{{ section.settings.section_header_align_text }}" data-animate>{{ section.settings.heading_text }}</div>
     </div>
   {% endif %}
   <div {% if section.settings.section_width == "full_width" %}{% else %}class="page-width{% if section.settings.thin_section %}--narrow page-width" {% endif %}{% endif %}">
-{% if section.settings.flip_for_mobile %}
+  
+   {% if section.settings.flip_for_mobile %}
 
-    {%- assign block_flip = 'flip-for-mobile' -%}
+      {%- assign block_flip = 'flip-for-mobile' -%}
 
-{% endif %}
+  {% endif %}
 
     <div class="custom-content {{ block_flip }}">
       {% for block in section.blocks %}
@@ -100,8 +145,8 @@
                 .custom-content-wrapper--{{ section.id }} .custom__item--{{ block.id }} .custom__item-inner--image:after {
                   content: "";
                   background-image: url("{{ graphicURL }}");
-                  top: {{ graphicURLverticalPlacement }}%;
-                  left: {{ graphicURLhorizontalPlacement }}%;
+                  top: {{- graphicURLverticalPlacement -}}%;
+                  left: {{- graphicURLhorizontalPlacement -}}%;
                 }
               </style>
               {% endif %}
@@ -135,7 +180,11 @@
                 {% comment %}
                   Custom Text Block
                 {% endcomment %}
+                {% assign simpleHeadingSize = block.settings.simple_heading_size %}
                 <style>
+                  .custom-content-wrapper--{{ section.id }} .custom__block-heading-text * {
+                    font-size: {{- simpleHeadingSize -}};
+                  }
                   .custom-content-wrapper--{{ section.id }} .custom__item--{{ block.id }} .custom__block-heading-text {
                     color: {{ block.settings.heading_color }};
                   }
@@ -434,6 +483,9 @@
     {% if section.blocks.size == 0 %}
       {% include 'no-blocks' %}
     {% endif %}
+
+    </div>
+
   </div>
 </div>
 {% endif %}
@@ -748,7 +800,7 @@
     },
     {
       "type": "select",
-      "id": "select_top_margin",
+      "id": "custom_top_margin",
       "label": "Top margin",
       "default": "medium",
       "options": [
@@ -767,12 +819,44 @@
         {
           "value": "large",
           "label": "Large"
+        },
+        {
+          "value": "xlarge",
+          "label": "XLarge"
         }
       ]
     },
     {
       "type": "select",
-      "id": "select_top_padding",
+      "id": "custom_content_bottom_margin",
+      "label": "Bottom margin",
+      "default": "medium",
+      "options": [
+      {
+        "value": "none",
+        "label": "None"
+      },
+      {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "xlarge",
+          "label": "XLarge"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "custom_top_padding",
       "label": "Top padding",
       "default": "medium",
       "options": [
@@ -791,26 +875,41 @@
         {
           "value": "large",
           "label": "Large"
+        },
+        {
+          "value": "xlarge",
+          "label": "XLarge"
         }
       ]
     },
     {
-      "type": "checkbox",
-      "id": "bottom_margin",
-      "label": {
-        "de": "Unterer Rand",
-        "en": "Bottom margin",
-        "es": "Margen inferior",
-        "fr": "Marge inférieure",
-        "it": "Margine inferiore",
-        "ja": "下マージン",
-        "nl": "Ondermarge",
-        "pt-BR": "Margem inferior",
-        "zh-CN": "下边距",
-        "zh-TW": "下方邊界"
+      "type": "select",
+      "id": "custom_bottom_padding",
+      "label": "Bottom padding",
+      "default": "medium",
+      "options": [
+      {
+        "value": "none",
+        "label": "None"
       },
-      "default": true
-  },
+      {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "xlarge",
+          "label": "XLarge"
+        }
+      ]
+    },
     {
       "type": "checkbox",
       "id": "flip_for_mobile",
@@ -1191,6 +1290,11 @@
           "type": "richtext",
           "id": "simple_heading_text",
           "label": "Simple Heading"
+        },
+        {
+          "type": "text",
+          "id": "simple_heading_size",
+          "label": "Simple heading size(ex. 12px)"
         },
         {
           "type": "header",

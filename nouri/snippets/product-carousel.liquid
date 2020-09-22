@@ -1,21 +1,53 @@
 
-{% if section.settings.product_carousel_full_width %}
-    {% assign carousel_width = '' %}
-{% else %}
-    {% assign carousel_width = 'page-width page-width--no-gutter grid__item' %}
-{% endif %}
-<h1>{{ carousel_width }}</h1>
-<section class="{{ section.id }}--product-carousel grid">
-    <div class="product-carousel {{ carousel_width }} one-whole">
-    
-        {%- assign carouselImages = product.metafields.global.carousel_image_urls -%}
-        {%- assign items = carouselImages | split: ',' -%}
+<style>
+    @media only screen and (min-width: 990px) {
+        .desktop-only {
+            display: block;
+        }
+        .mobile-only {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 989px) {
+        .desktop-only {
+            display: none;
+        }
+        .mobile-only {
+            display: block;
+            margin-left: unset;
+        }
+    }
+</style>
+
+{% if product.metafields.global.carousel_image_urls %}
+    {% if section.settings.product_carousel_full_width %}
+        {% assign carousel_width = '' %}
+    {% else %}
+        {% assign carousel_width = 'page-width page-width--no-gutter grid__item' %}
+    {% endif %}
+    <section class="{{ section.id }}--product-carousel grid desktop-only">
+        <div class="product-carousel {{ carousel_width }} one-whole">
         
-        {%- for item in items -%}
-            {% assign productImage = item | split:',' %}
-            <img class="carousel-image" src="{{ productImage }}"/>
-        {%- endfor -%}
+            {%- assign carouselImages = product.metafields.global.carousel_image_urls -%}
+            {%- assign items = carouselImages | split: ',' -%}
+            
+            {%- for item in items -%}
+                {% assign productImage = item | split:',' %}
+                <img class="carousel-image" src="{{ productImage }}"/>
+            {%- endfor -%}
+        </div>
+    </section>
 
-    </div>
-</section>
-
+    <section class="{{ section.id }}--product-carousel grid mobile-only">
+        <div class="product-carousel {{ carousel_width }} one-whole">
+        
+            {%- assign carouselMobileImages = product.metafields.global.carousel_mobile_image_urls -%}
+            {%- assign items = carouselMobileImages | split: ',' -%}
+            
+            {%- for item in items -%}
+                {% assign productImage = item | split:',' %}
+                <img class="carousel-image" src="{{ productImage }}"/>
+            {%- endfor -%}
+        </div>
+    </section>
+{% endif %}

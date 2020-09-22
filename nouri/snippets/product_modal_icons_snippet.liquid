@@ -1,25 +1,53 @@
 {% if section.settings.icon_top_margin == 'xlarge' %}
-    {% assign marginSetting = 'mt-4' %}
+    {% assign marginTop = 'mt-4' %}
 {% elsif section.settings.icon_top_margin == 'large' %}
-    {% assign marginSetting = 'mt-3' %}
+    {% assign marginTop = 'mt-3' %}
 {% elsif section.settings.icon_top_margin == 'medium' %}
-    {% assign marginSetting = 'mt-2' %}
+    {% assign marginTop = 'mt-2' %}
 {% elsif section.settings.icon_top_margin == 'small' %}
-    {% assign marginSetting = 'mt-1' %}
+    {% assign marginTop = 'mt-1' %}
 {% elsif section.settings.icon_top_margin == 'none' %}
-    {% assign marginSetting = 'mt-0' %}
+    {% assign marginTop = 'mt-0' %}
 {% else %}
 {% endif %}
 
+{% if section.settings.icon_bottom_margin == 'xlarge' %}
+    {% assign marginBottom = 'mb-4' %}
+{% elsif section.settings.icon_bottom_margin == 'large' %}
+    {% assign marginBottom = 'mb-3' %}
+{% elsif section.settings.icon_bottom_margin == 'medium' %}
+    {% assign marginBottom = 'mb-2' %}
+{% elsif section.settings.icon_bottom_margin == 'small' %}
+    {% assign marginBottom = 'mb-1' %}
+{% elsif section.settings.icon_bottom_margin == 'none' %}
+    {% assign marginBottom = 'mb-0' %}
+{% else %}
+{% endif %}
+
+{% if section.settings.icon_size == 'x-large' %}
+{% assign iconSize = "150px" %}
+{% elsif section.settings.icon_size == 'large' %}
+{% assign iconSize = "100px" %}
+{%- elsif section.settings.icon_size == 'small' -%}
+{% assign iconSize = "50px" %}
+{% else %}
+{% assign iconSize = "60px" %}
+{% endif %}
 
 
-<section class="grid__item page-width--no-gutter medium-up--one-whole list-icons-section {{ marginSetting }}">
+<!-- product modal icons snippet -->
+<section class="grid__item page-width--no-gutter medium-up--one-whole list-icons-section {{ marginTop }} {{ marginBottom }}">
 {% if section.settings.top_line %}
 <hr class="no-mobile">
 {% endif %}
    <style>
         .list-icons-section  .icon__text {
             color: #{{ product.metafields.global.icons_text_color }};
+        }
+        .icons-{{ product.title | handleize }} .icon__image {
+            height: auto;
+            width: {{ iconSize }};
+            min-width: {{ iconSize }};
         }
     </style>
     {% if settings.section.show_modal == blank %}
@@ -31,7 +59,7 @@
         </style>
     {% endif %}
     
-    <div class="page-width--narrow {{ marginSetting }}">
+    <div class="page-width--narrow {{ marginTop }}">
             {%- comment -%}{% include 'list-icons-modal-snippet' %}{%- endcomment -%}
 
         <!-- Icons Section -->

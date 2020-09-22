@@ -93,6 +93,9 @@
   <!-- stamped.io -->
   <script async type="text/javascript" data-api-key="" id="stamped-script-widget" src="https://cdn-stamped-io.azureedge.net/files/widget.min.js"></script>
 
+  <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=pz4p4dda6xgmgsutjkf8ww"
+    async="true"></script>
+
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{% if template.name != blank %}{{ template.name }}{% else %}none{% endif %} data-animations">
@@ -138,6 +141,8 @@
 
         $('.product-carousel').slick({
           speed: 500,
+          arrows: false,
+          dots: true,
           fade: true,
           autoplay: true,
           mobileFirst: true,
